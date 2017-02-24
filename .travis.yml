@@ -1,0 +1,27 @@
+# Project: 
+#   bootstrap 
+
+# Purpose: 
+#   This Travis continuous integration file is use to build and test boostrap
+#   software written in Haskell.
+
+language: haskell 
+
+sudo: required
+
+ghc: 
+  - 7.8
+
+cache:
+  directories:
+    - $HOME/.ghc
+    - $HOME/.cabal
+
+install:
+  - cabal install QuickChecks
+
+script:
+ - cabal configure --enable-tests -fFOO && cabal build && cabal test
+
+notifications:
+  slack: allanconsulting:SDtIBjXdzbkBxeprTBsUIRbM
