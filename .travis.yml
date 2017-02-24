@@ -18,7 +18,7 @@ cache:
     - $HOME/.cabal
 
 script:
- - cabal configure --enable-tests -fFOO && cabal build && cabal test
+ - cabal build
 
 notifications:
   slack: allanconsulting:SDtIBjXdzbkBxeprTBsUIRbM
