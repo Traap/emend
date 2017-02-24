@@ -1,0 +1,116 @@
+# Schema: bootstrap.yaml
+symlinks:
+  symlink:
+    source: ~/git/dotfiles
+      hidden: false
+    target: ~/
+      hidden: true
+    name:
+      - bash_profile
+      - bashrc
+      - gitconfig
+      - gitignore_global
+      - inputrc
+      - ssh
+  symlink:
+    source: ~/git/ssh 
+      hidden: false
+    target: ~/
+      hidden: true 
+    name:
+      - ssh 
+  symlink:
+    source: ~/git/vim 
+      hidden: false
+    target: ~
+      hidden: true 
+    name:
+      - gvimrc
+      - vim
+      - vimrc
+      - vimrc_background
+  symlink:
+    target: ~
+      hidden: true 
+    source: ~/git/tmux 
+      hidden: false
+    name:
+      - tmux
+      - tmux.config
+
+repos:
+  repo: http://github.com
+    symlink: 
+      source: Traap/dotfiles
+      target: ~/git
+    symlink: 
+      source: Traap/vim
+      target: ~/git
+    symlink: 
+      source: Traap/tmux
+      target: ~/git
+    symlink: 
+      source: tmux-plugins/tpm 
+      target: ~/git/tmux
+    symlink: 
+      source: Traap/ssh
+      target: ~/git
+    symlink: 
+      source: junejunn/vim-plug
+      target: ~/git/vim/autoload
+    symlink:
+      source: chriskempson/base16-gnome-terminal
+      target: ~/git/color
+    symlink:
+      source: chriskempson/base16-iterm2
+      target: ~/git/color
+    symlink:
+      source: chriskempson/base16-shell
+      target: ~/git/color
+
+commands:
+  os: darwin 
+    command:
+      program: /usr/bin/ruby
+      argument:
+        - -e
+        - $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)
+      sudo: false
+    command:
+      program: brew
+      sudo: false
+      argument:
+        - install 
+        - bash-git-prompt
+        - haskell-stack
+        - mutt
+        - vim --with-client-server
+        - tmuxx
+      sudo: false
+  os: linux
+    command:
+      program: apt-get
+      argument:
+        - install
+        - vim
+      sudo: true 
+    command:
+      program: curl 
+      argument:
+        - -ssL
+        - https://get.haskell.org/
+        - |
+        - sh
+      sudo: false
+  os:
+    command:
+      program: /bin/bash
+        sudo: false
+        argument:
+          - ~/.tmux/plugins/tpm/bin/update_plugins all
+      program: vim 
+        sudo: false
+        argument:
+          - "+PlugInstall!" 
+          - "+PlugClean" 
+          - "+qall"
