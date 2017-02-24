@@ -17,9 +17,6 @@ cache:
     - $HOME/.ghc
     - $HOME/.cabal
 
-install:
-  - cabal install QuickChecks
-
 script:
  - cabal configure --enable-tests -fFOO && cabal build && cabal test
 
