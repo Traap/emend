@@ -89,7 +89,4 @@ name, where
 
 [Current](https://github.com/Traap/bootstrap/releases/latest)
 [releases](https://github.com/Traap/bootstrap/releases) include a the deployed
-version of **GettingStarted.pdf**.logo.png)
-The **Bootstrap** repository uses a SCRUM framework adapted to standard GitHub
-tooling.  **Bootstrap** is integrated with Travis-ci.org for continuous
-integration and AllanConsulting.slack.com for centralized notification.
+version of Bootstrap source code.
