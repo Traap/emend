@@ -14,7 +14,7 @@ maintainer:          gary.a.howard@mac.com
 category:            Configuration
 build-type:          Simple
 extra-source-files:  README.md
-cabal-version:       >=1.10
+cabal-version:       >=1.18
 
 library
   exposed-modules:
@@ -23,7 +23,7 @@ library
     Traap.Workflow
   hs-source-dirs: src
   build-depends:
-    base >=4.8 && <4.10,
+    base,
     directory,
     filepath,
     process,
@@ -35,7 +35,7 @@ executable bootstrap
   main-is: bootstrap.hs
   hs-source-dirs: src
   build-depends:
-    base >=4.8 && <4.10,
+    base,
     directory,
     filepath,
     process
