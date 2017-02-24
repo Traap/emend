@@ -21,4 +21,5 @@ script:
  - cabal build
 
 notifications:
+  email: false
   slack: allanconsulting:SDtIBjXdzbkBxeprTBsUIRbM
