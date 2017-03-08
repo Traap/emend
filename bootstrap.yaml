@@ -8,16 +8,17 @@ symlinks:
     name:
       - bash_profile
       - bashrc
-      - gitconfig
       - gitignore_global
       - inputrc
-      - ssh
   symlink:
     source: ~/git/ssh 
       hidden: false
     target: ~/
       hidden: true 
     name:
+      - vimconfig
+      - gitconfig
+      - gitignore_global
       - ssh 
   symlink:
     source: ~/git/vim 
@@ -27,11 +28,12 @@ symlinks:
     name:
       - gvimrc
       - vim
+      - viminfo
       - vimrc
       - vimrc_background
   symlink:
     target: ~
-      hidden: true 
+      hidden: true jk
     source: ~/git/tmux 
       hidden: false
     name:
