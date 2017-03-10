@@ -72,14 +72,16 @@ data Path = PATH
   , target :: T.Text
   } deriving (Show, Generic, FromJSON)
 
-toRepos :: Repos -> [T.Text]
-toRepos = concatMap toRepo . repos
+toRepos :: Repos -> Action -> [T.Text]
+toRepos r = concatMap toRepo (r repos)
 
-toRepo :: Repo -> [T.Text]
+toRepo :: Repo -> Action -> [T.Text]
 toRepo REPO {..} = map (toPath url) paths
 
-toPath :: T.Text -> Path -> T.Text
-toPath u p = mconcat ["git clone ", u, "/", source p, target p]
+toPath :: T.Text -> Path -> Action -> T.Text
+toPath u p a = case a of 
+  Clone -> mconcat ["git clone ", u, "/", source p, target p]
+  Delete -> mconcat [target p]
 
 -- -----------------------------------------------------------------------------
 -- | The Installations type defines a program to run and the argument is is passed.
