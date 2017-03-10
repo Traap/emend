@@ -24,10 +24,12 @@ library
   hs-source-dirs: src
   build-depends:
     base,
+    bytestring, 
     directory,
     filepath,
     process,
-    template-haskell
+    text,
+    yaml
   default-language: Haskell2010
   ghc-options: -Wall
 
@@ -36,9 +38,12 @@ executable bootstrap
   hs-source-dirs: src
   build-depends:
     base,
+    bytestring, 
     directory,
     filepath,
-    process
+    process,
+    text,
+    yaml
   other-modules:
     Traap.Configuration,
     Traap.DataTypes,

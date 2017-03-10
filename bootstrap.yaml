@@ -1,118 +1,132 @@
-# Schema: bootstrap.yaml
-symlinks:
-  symlink:
-    source: ~/git/dotfiles
-      hidden: false
-    target: ~/
-      hidden: true
-    name:
-      - bash_profile
-      - bashrc
-      - gitignore_global
-      - inputrc
-  symlink:
-    source: ~/git/ssh 
-      hidden: false
-    target: ~/
-      hidden: true 
-    name:
-      - vimconfig
-      - gitconfig
-      - gitignore_global
-      - ssh 
-  symlink:
-    source: ~/git/vim 
-      hidden: false
-    target: ~
-      hidden: true 
-    name:
-      - gvimrc
-      - vim
-      - viminfo
-      - vimrc
-      - vimrc_background
-  symlink:
-    target: ~
-      hidden: true jk
-    source: ~/git/tmux 
-      hidden: false
-    name:
-      - tmux
-      - tmux.config
+# {{{ Symbolic Links
+symlinks:  
+  - file: ~/git/dotfiles/bash_profile
+    link: ~/.bash_profile
+    directory: false
 
+  - file: ~/git/dotfiles/bashrc
+    link: ~/.bashrc
+    directory: false
+
+  - file: ~/git/ssh/config.vim
+    link: ~/.config.vim"
+    directory: false
+
+  - file: ~/git/ssh/gitconfig
+    link: ~/.gitconfig"
+    directory: false
+
+  - file: ~/git/ssh/gitignore_global
+    link: ~/.gitignore_global
+    directory: false
+
+  - file: ~/git/vim/gvimrc
+    link: ~/.gvimrc
+    directory: false
+
+  - file: ~/git/dotfiles/inputrc
+    link: ~/.inputrc
+    directory: false
+
+  - file: ~/git/ssh
+    link: ~/.ssh
+    directory: true
+
+  - file: ~/git/tmux
+    link: ~/.tmux
+    directory: true
+
+  - file: ~/git/tmux/tmux.conf
+    link: ~/.tmux.conf
+    directory: false
+
+  - file: ~/git/vim
+    link: ~/.vim
+    directory: true
+
+  - file: ~/git/vim/viminfo
+    link: ~/.viminfo
+    directory: false
+
+  - file: ~/git/vim/vimrc
+    link: ~/.vimrc
+    directory: false
+
+  - file: ~/git/vim/vimrc_background
+    link: ~/.vimrc_background
+    directory: false
+# -------------------------------------------------------------------------- }}}
+# {{{ Repositories
 repos:
-  repo: http://github.com
-    symlink: 
-      source: Traap/dotfiles
-      target: ~/git
-    symlink: 
-      source: Traap/vim
-      target: ~/git
-    symlink: 
-      source: Traap/tmux
-      target: ~/git
-    symlink: 
-      source: tmux-plugins/tpm 
-      target: ~/git/tmux
-    symlink: 
-      source: Traap/ssh
-      target: ~/git
-    symlink: 
-      source: junejunn/vim-plug
-      target: ~/git/vim/autoload
-    symlink:
-      source: chriskempson/base16-gnome-terminal
-      target: ~/git/color
-    symlink:
-      source: chriskempson/base16-iterm2
-      target: ~/git/color
-    symlink:
-      source: chriskempson/base16-shell
-      target: ~/git/color
+  - repo:
+    url: http://github.com
+    paths:
+      - source: Traap/dotfiles
+        target: ~/git
 
-commands:
-  os: darwin 
+      - source: Traap/vim
+        target: ~/git
+
+      - source: Traap/tmux
+        target: ~/git
+
+      - source: tmux-plugins/tpm
+        target: ~/git/tmux
+
+      - source: Traap/ssh
+        target: ~/git
+
+      - source: junejunn/vim-plug
+        target: ~/git/vim/autoload
+
+      - source: chriskempson/base16-gnome-terminal
+        target: ~/git/color
+
+      - source: chriskempson/base16-iterm2
+        target: ~/git/color
+
+      - source: chriskempson/base16-shell
+        target: ~/git/color
+# -------------------------------------------------------------------------- }}}
+# {{{ Installations 
+installations:
+  - os:
+    name: darwin
     command:
-      program: /usr/bin/ruby
-      argument:
-        - -e
-        - $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)
-      sudo: false
+      - sudo: false
+        program: /usr/bin/ruby
+        argument: "-e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+      - sudo: false
+        program: brew
+        argument: 
+           install 
+           bash-git-prompt 
+           haskell-stack 
+           mutt 
+           vim --with-client-server 
+           tmuxx
+  - os:
+    name: linux
     command:
-      program: brew
-      sudo: false
-      argument:
-        - install 
-        - bash-git-prompt
-        - haskell-stack
-        - mutt
-        - vim --with-client-server
-        - tmuxx
-      sudo: false
-  os: linux
+      - sudo: true
+        program: apt-get
+        argument: install vim
+      - sudo: false
+        program: curl
+        argument: "-ssL https://get.haskell.org/ | sh"
+  - os:
+    name: any
     command:
-      program: apt-get
-      argument:
-        - install
-        - vim
-      sudo: true 
-    command:
-      program: curl 
-      argument:
-        - -ssL
-        - https://get.haskell.org/
-        - |
-        - sh
-      sudo: false
-  os:
-    command:
-      program: /bin/bash
-        sudo: false
-        argument:
-          - ~/.tmux/plugins/tpm/bin/update_plugins all
-      program: vim 
-        sudo: false
-        argument:
-          - "+PlugInstall!" 
-          - "+PlugClean" 
-          - "+qall"
+      - sudo: false
+        program: /bin/bash
+        argument: ~/.tmux/plugins/tpm/bin/update_plugins all
+      - sudo: false
+        program: cabal
+        argument: install hoogle
+      - sudo: false
+        program: hoogle
+        argument: data
+      - sudo: false
+        program: vim
+        argument: '"+PlugInstall!" "+PlugClean" "+qall"'
+# -------------------------------------------------------------------------- }}}

@@ -1,0 +1,131 @@
+input:
+SYMLINKS 
+{symlinks = 
+  [SYMLINK {file = "~/git/dotfiles/bash_profile", link = "~/.bash_profile", directory = False}
+  ,SYMLINK {file = "~/git/dotfiles/bashrc", link = "~/.bashrc", directory = False}
+  ,SYMLINK {file = "~/git/ssh/config.vim", link = "~/.config.vim\"", directory = False}
+  ,SYMLINK {file = "~/git/ssh/gitconfig", link = "~/.gitconfig\"", directory = False}
+  ,SYMLINK {file = "~/git/ssh/gitignore_global", link = "~/.gitignore_global", directory = False}
+  ,SYMLINK {file = "~/git/vim/gvimrc", link = "~/.gvimrc", directory = False}
+  ,SYMLINK {file = "~/git/dotfiles/inputrc", link = "~/.inputrc", directory = False}
+  ,SYMLINK {file = "~/git/ssh", link = "~/.ssh", directory = True}
+  ,SYMLINK {file = "~/git/tmux", link = "~/.tmux", directory = True}
+  ,SYMLINK {file = "~/git/tmux/tmux.conf", link = "~/.tmux.conf", directory = False}
+  ,SYMLINK {file = "~/git/vim", link = "~/.vim", directory = True}
+  ,SYMLINK {file = "~/git/vim/viminfo", link = "~/.viminfo", directory = False}
+  ,SYMLINK {file = "~/git/vim/vimrc", link = "~/.vimrc", directory = False}
+  ,SYMLINK {file = "~/git/vim/vimrc_background", link = "~/.vimrc_background", directory = False}
+  ]
+}
+
+
+output: [T.Text] 
+[ln -s ~/git/dotfiles/bash_profile ~/.bash_profile
+,ln -s ~/git/dotfiles/bashrc ~/.bashrc
+,ln -s ~/git/ssh/config.vim ~/.config.vim
+,ln -s ~/git/ssh/gitconfig ~/.gitconfig
+,ln -s ~/git/ssh/gitignore_global ~/.gitignore_global
+,ln -s ~/git/vim/gvimrc ~/.gvimrc
+,ln -s ~/git/dotfiles/inputrc ~/.inputrc
+,ln -s ~/git/ssh ~/.ssh
+,ln -s ~/git/tmux ~/.tmux
+,ln -s ~/git/tmux/tmux.conf ~/.tmux.conf
+,ln -s ~/git/vim ~/.vim
+,ln -s ~/git/vim/viminfo ~/.viminfo
+,ln -s ~/git/vim/vimrc ~/.vimrc
+,ln -s ~/git/vim/vimrc_background ~/.vimrc_background
+]
+
+input:
+Repositories
+REPOS 
+{repos = 
+  [REPO 
+    {url = "http://github.com"
+    ,paths = 
+      [PATH {source = "Traap/dotfiles", target = "~/git"}
+      ,PATH {source = "Traap/vim", target = "~/git"}
+      ,PATH {source = "Traap/tmux", target = "~/git"}
+      ,PATH {source = "tmux-plugins/tpm", target = "~/git/tmux"}
+      ,PATH {source = "Traap/ssh", target = "~/git"}
+      ,PATH {source = "junejunn/vim-plug", target = "~/git/vim/autoload"}
+      ,PATH {source = "chriskempson/base16-gnome-terminal", target = "~/git/color"}
+      ,PATH {source = "chriskempson/base16-iterm2", target = "~/git/color"}
+      ,PATH {source = "chriskempson/base16-shell", target = "~/git/color"}
+      ]
+    }
+  ]
+}
+
+Output: [T.Text]
+[git clone http://github.com/Traap/dotfiles.git ~/git
+,git clone http://github.com/Traap/vim.git ~/git
+,git clone http://github.com/Traap/tmux.git ~/git
+,git clone http://github.com/tmux-plugins/tmp ~/git/tmux
+,git clone http://github.com/Traap/ssh ~/git
+,git clone http://github.com/junejunn/vim-plug ~/git/vim/autoload
+,git clone http://github.com/chriskempson/base16-gnome-terminal ~/git/color
+,git clone http://github.com/chriskempson/base16-iterm2 ~/git/color
+,git clone http://github.com/chriskempson/base16-shell ~/git/color
+]
+
+Input:
+INSTALLATIONS 
+{installations = 
+   [OS {name = "darwin"
+       ,command = 
+         [COMMAND {sudo = False
+                  ,program = "/usr/bin/ruby"
+                  ,argument = "-e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+                  }
+         ,COMMAND {sudo = False
+                  ,program = "brew"
+                  ,argument = "install bash-git-prompt haskell-stack mutt vim --with-client-server tmuxx"
+                  }
+         ]
+       }
+   ,OS {name = "linux"
+       ,command = 
+         [COMMAND {sudo = True
+                  ,program = "apt-get"
+                  ,argument = "install vim"
+                  }
+         ,COMMAND {sudo = False
+                  ,program = "curl"
+                  ,argument = "-ssL https://get.haskell.org/ | sh"
+                  }
+         ]
+       }
+   ,OS {name = "any"
+       ,command = 
+         [COMMAND {sudo = False
+                  ,program = /bin/bash
+                  ,argument = "${HOME}/.tmux/plugins/tpm/bin/update_plugins all"
+                  }
+         ,COMMAND {sudo = False
+                  ,program = cabal
+                  ,argument = install hoogle
+                  }
+         ,COMMAND {sudo = False
+                  ,program = hoogle
+                  ,argument = data
+                  }
+         ,COMMAND {sudo = False
+                  ,program = vim
+                  ,argument = +PlugInstall! +PlugClean +qall
+                  }
+         ]
+       }
+   ]
+}
+
+Oupput:
+[/usr/bin/ruby "-e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+,brew "install bash-git-prompt haskell-stack mutt vim --with-client-server tmuxx"
+,apt-get "install vim"
+,curl "-ssL https://get.haskell.org/ | sh"
+,/bin/bash "${HOME}/.tmux/plugins/tpm/bin/update_plugins all"
+,cabal install hogle
+,hoogle data
+,vim +PlugInstll! +PlugClean +qall
+]
