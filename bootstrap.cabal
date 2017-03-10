@@ -18,7 +18,6 @@ cabal-version:       >=1.18
 
 library
   exposed-modules:
-    Traap.Configuration,
     Traap.DataTypes,
     Traap.Workflow
   hs-source-dirs: src
@@ -45,7 +44,6 @@ executable bootstrap
     text,
     yaml
   other-modules:
-    Traap.Configuration,
     Traap.DataTypes,
     Traap.Workflow
   default-language: Haskell2010
