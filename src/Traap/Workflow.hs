@@ -29,6 +29,7 @@ orchestrate = do
   mapM_ deleteSymLink $ decodeEither contents
   mapM_ cloneRepo $ decodeEither contents
   mapM_ makeSymLink $ decodeEither content
+  mapM_ install $ decodeEither content
 
 -- -----------------------------------------------------------------------------
 -- | Recursively delete objects referenced by SymLink.
@@ -59,3 +60,8 @@ safelyRemoveDirectory f = do
 -- | Clone a repository.
 clone :: Text.T -> IO ()
 clone = map system
+
+-- -----------------------------------------------------------------------------
+-- | Install other program
+install :: Os -> IO ()
+install = map system $ toOs Install

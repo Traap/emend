@@ -100,11 +100,12 @@ data Command = COMMAND
   , argument :: T.Text
   } deriving (Show, Generic, FromJSON)
 
-toInstallations :: Installations -> [T.Text]
-toInstallations = concatMap toOs . installations
+toInstallations :: Installations -> Action -> [T.Text]
+toInstallations i = concatMap toOs (i installations)
 
-toOs :: Os -> [T.Text]
-toOs = map toCommand . command
+toOs :: Os -> Action -> [T.Text]
+toOs o = map toCommand (o command) 
 
-toCommand :: Command -> T.Text
-toCommand c = mconcat [program c, argument c]
+-- TODO: Needs operating system and sudo awareness.
+toCommand :: Command -> Action -> T.Text
+toCommand c a = case a of Install -> mconcat [program c, argument c]
