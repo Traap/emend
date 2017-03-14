@@ -3,14 +3,10 @@ tooling.  **Bootstrap** is integrated with Travis-ci.org for continuous
 integration and AllanConsulting.slack.com for centralized notification.
 
 # Installation
-## Bootstrap Haskell Source code 
+## Bootstrap 
 ```bash
 $ cd $HOME
-$ git clone git@github.com:Traap/bootstrap.git
-$ cd bootstrap
-$ stack init
-$ stack exec -- build
-$ stack exec -- bootstrap 
+$ git clone http://github.com/Traap/bootstrap.git && cd bootstrap && chmod +x install.sh && ./install.sh --all
 ```
 
 ## Dependencies 
