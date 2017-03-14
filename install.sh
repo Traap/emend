@@ -23,6 +23,7 @@ main() {
     runFunction aptUpdate 
     runFunction installHaskellStack 
     runFunction installTmux
+    runFunction bootstrapPersonalization
   else
     runFunction $fctToRun
   fi
@@ -121,6 +122,14 @@ installTmux() {
   sudo apt-get install tmux 
 }
 
+# ------------------------------------------------------------------------------
+# A function to bootstrap your personalization.  
+# ------------------------------------------------------------------------------
+bootstrapPersonalization() {
+  stack init
+  stack exec -- build
+  stack exec -- bootstrap
+}
 # ------------------------------------------------------------------------------
 # Kick start this script.
 # ------------------------------------------------------------------------------
