@@ -99,4 +99,3 @@ main = do
   putStrLn "\nInstallations"
   either putStrLn (print . toInstallations) $ decodeEither contents
 ---------------------------------------------------------------------------- }}}
-

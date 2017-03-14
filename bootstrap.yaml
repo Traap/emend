@@ -5,7 +5,7 @@ symlinks:
     directory: false
 
   - file: $(HOME)/git/dotfiles/bashrc
-    link: $(HOME)/.bashrc
+    link: $(HOME)/.bashrIssue #4 - refactor toXVY functions.  Broken.c
     directory: false
 
   - file: $(HOME)/git/ssh/config.vim

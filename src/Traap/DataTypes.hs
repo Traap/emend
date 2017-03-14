@@ -6,8 +6,10 @@
 {-# LANGUAGE RecordWildCards #-}
 
 module Traap.DataTypes
-  (-- Symbolic Links
-   Symlinks(..)
+  (-- Actions
+   Action(..)
+  -- Symbolic Links
+  ,Symlinks(..)
   ,Symlink(..)
   ,toSymlinks
   ,toSymlink
@@ -33,7 +35,7 @@ import           GHC.Generics
 
 -- -----------------------------------------------------------------------------
 -- Actions bootstrap can perform.
-data Action = Create | Delete | Clone | Install
+data Action = CREATE | DELETE | CLONE | INSTALL
 
 -- -----------------------------------------------------------------------------
 -- | The Symlinks type defines the target of a symlink operation and identifies
@@ -49,15 +51,12 @@ data Symlink = SYMLINK
   } deriving (Show, Generic, FromJSON)
 
 toSymlinks :: Symlinks -> Action -> [T.Text]
-toSymlinks s a = case a of
-  Create -> map toSymlink (symlinks s)
-  Delete -> map toSymlink' (symlinks s)
+toSymlinks s a = map (`toSymlink` a) (symlinks s) 
 
-toSymlink :: Symlink -> T.Text
-toSymlink s = mconcat ["lns -s ", file s, " ", link s]
-
-toSymlink' :: Symlink -> T.Text
-toSymlink' s = mconcat ["rm -vrf ", link s]
+toSymlink :: Symlink -> Action -> T.Text
+toSymlink s a = case a of
+  CREATE -> mconcat ["lns -s ", file s, " ", link s]
+  DELETE -> mconcat ["rm -vrf ", link s]
 
 -- -----------------------------------------------------------------------------
 -- | The Repos type defines a Repo and whether or not the Repo is cloned to .
@@ -77,15 +76,15 @@ data Path = PATH
   } deriving (Show, Generic, FromJSON)
 
 toRepos :: Repos -> Action -> [T.Text]
-toRepos r a = concatMap (toRepo a) (repos r)
+toRepos r a = concatMap (`toRepo` a) (repos r)
 
 toRepo :: Repo -> Action -> [T.Text]
-toRepo REPO {..} a = map (toPath url a) paths
+toRepo REPO {..} a = map (\p -> toPath url p a) paths
 
 toPath :: T.Text -> Path -> Action -> T.Text
-toPath u p a = case a of 
-  Clone -> mconcat ["git clone ", u, "/", source p, target p]
-  Delete -> mconcat [target p]
+toPath u p a = case a of
+  CLONE -> mconcat ["git clone ", u, "/", source p, target p]
+  DELETE -> mconcat [target p]
 
 -- -----------------------------------------------------------------------------
 -- | The Installations type defines a program to run and the argument is is passed.
@@ -105,11 +104,13 @@ data Command = COMMAND
   } deriving (Show, Generic, FromJSON)
 
 toInstallations :: Installations -> Action -> [T.Text]
-toInstallations = concatMap toOs . installations
+toInstallations i a = concatMap (`toOs` a) (installations i)
 
 toOs :: Os -> Action -> [T.Text]
-toOs = map toCommand . command
+toOs o a = map (`toCommand` a) (command o)
 
--- TODO: Needs operating system and sudo awareness.
 toCommand :: Command -> Action -> T.Text
-toCommand c a = case a of Install -> mconcat [program c, argument c]
+toCommand c a = case a of 
+  INSTALL -> if sudo c
+    then mconcat ["sudo ", program c, argument c]
+    else mconcat [program c, argument c]
