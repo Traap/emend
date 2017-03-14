@@ -113,7 +113,7 @@ installations:
         argument: install vim
       - sudo: false
         program: curl
-        argument: "-ssL https://get.haskell.org/ | sh"
+        argument: "-sSL https://get.haskellstack.org/ | sh"
   - os:
     name: any
     command:

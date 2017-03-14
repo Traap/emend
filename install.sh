@@ -101,7 +101,7 @@ runFunction() {
 # A function to install haskell stack.
 # ------------------------------------------------------------------------------
 installHaskellStack() {
-  curl -ssL https://get.haskell.org/ | sh
+  curl -sSL https://get.haskellstack.org/ | sh
 }
 
 # ------------------------------------------------------------------------------
