@@ -105,6 +105,7 @@ runFunction() {
 # ------------------------------------------------------------------------------
 installHaskellStack() {
   curl -sSL https://get.haskellstack.org/ | sh
+
   sudo apt-get install \
     g++ \
     gcc \
@@ -116,6 +117,8 @@ installHaskellStack() {
     zlib1g-dev \
     git \
     gnupg
+
+  stack setup
 }
 
 
