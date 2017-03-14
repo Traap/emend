@@ -141,8 +141,8 @@ installTmux() {
 # ------------------------------------------------------------------------------
 bootstrapPersonalization() {
   stack init --force
-  stack exec -- build
-  stack exec -- bootstrap
+  # stack build
+  # stack exec -- bootstrap
 }
 # ------------------------------------------------------------------------------
 # Kick start this script.
