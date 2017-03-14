@@ -1,7 +1,9 @@
 -- | Copyright (c) Gary Allan Howard aka Traap.
 -- License BSD-3-Clause
-{-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE DeriveAnyClass #-}
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE RecordWildCards #-}
 
 module Traap.DataTypes
   (-- Symbolic Links
@@ -29,7 +31,6 @@ import           Data.Yaml
 import qualified Data.Text as T
 import           GHC.Generics
 
-
 -- -----------------------------------------------------------------------------
 -- Actions bootstrap can perform.
 data Action = Create | Delete | Clone | Install
@@ -48,12 +49,15 @@ data Symlink = SYMLINK
   } deriving (Show, Generic, FromJSON)
 
 toSymlinks :: Symlinks -> Action -> [T.Text]
-toSymlinks s =  map toSymlink (s symlinks)
+toSymlinks s a = case a of
+  Create -> map toSymlink (symlinks s)
+  Delete -> map toSymlink' (symlinks s)
 
-toSymlink :: Symlink -> Action -> T.Text
-toSymlink s a = case a of
-  Create -> mconcat ["ln -s", file s, " ", link s]
-  Delete -> mconcat ["rm -vrf", link s]
+toSymlink :: Symlink -> T.Text
+toSymlink s = mconcat ["lns -s ", file s, " ", link s]
+
+toSymlink' :: Symlink -> T.Text
+toSymlink' s = mconcat ["rm -vrf ", link s]
 
 -- -----------------------------------------------------------------------------
 -- | The Repos type defines a Repo and whether or not the Repo is cloned to .
@@ -73,10 +77,10 @@ data Path = PATH
   } deriving (Show, Generic, FromJSON)
 
 toRepos :: Repos -> Action -> [T.Text]
-toRepos r = concatMap toRepo (r repos)
+toRepos r a = concatMap (toRepo a) (repos r)
 
 toRepo :: Repo -> Action -> [T.Text]
-toRepo REPO {..} = map (toPath url) paths
+toRepo REPO {..} a = map (toPath url a) paths
 
 toPath :: T.Text -> Path -> Action -> T.Text
 toPath u p a = case a of 
@@ -101,10 +105,10 @@ data Command = COMMAND
   } deriving (Show, Generic, FromJSON)
 
 toInstallations :: Installations -> Action -> [T.Text]
-toInstallations i = concatMap toOs (i installations)
+toInstallations = concatMap toOs . installations
 
 toOs :: Os -> Action -> [T.Text]
-toOs o = map toCommand (o command) 
+toOs = map toCommand . command
 
 -- TODO: Needs operating system and sudo awareness.
 toCommand :: Command -> Action -> T.Text
