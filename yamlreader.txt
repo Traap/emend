@@ -119,13 +119,23 @@ INSTALLATIONS
    ]
 }
 
-Oupput:
+Oupput: linux
 [/usr/bin/ruby "-e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-,brew "install bash-git-prompt haskell-stack mutt vim --with-client-server tmuxx"
-,apt-get "install vim"
+,sudo apt-get "install vim"
 ,curl "-ssL https://get.haskell.org/ | sh"
 ,/bin/bash "${HOME}/.tmux/plugins/tpm/bin/update_plugins all"
 ,cabal install hogle
 ,hoogle data
 ,vim +PlugInstll! +PlugClean +qall
 ]
+
+Output: darwin
+[/usr/bin/ruby "-e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+,brew "install bash-git-prompt haskell-stack mutt vim --with-client-server tmuxx"
+,curl "-ssL https://get.haskell.org/ | sh"
+,/bin/bash "${HOME}/.tmux/plugins/tpm/bin/update_plugins all"
+,cabal install hogle
+,hoogle data
+,vim +PlugInstll! +PlugClean +qall
+]
+
