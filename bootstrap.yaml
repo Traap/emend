@@ -110,7 +110,7 @@ installations:
     command:
       - sudo: true
         program: apt-get
-        argument: install vim
+        argument: install tmux 
       - sudo: false
         program: curl
         argument: "-sSL https://get.haskellstack.org/ | sh"

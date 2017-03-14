@@ -20,7 +20,9 @@ main() {
   if [ $helpFlag == 1 -o $errorFlag == 1 ]; then
     showHelp
   elif [ $allFlag == 1 ]; then
+    runFunction aptUpdate 
     runFunction installHaskellStack 
+    runFunction installTmux
   else
     runFunction $fctToRun
   fi
@@ -102,6 +104,21 @@ runFunction() {
 # ------------------------------------------------------------------------------
 installHaskellStack() {
   curl -sSL https://get.haskellstack.org/ | sh
+}
+
+
+# ------------------------------------------------------------------------------
+# A function to apt-get update 
+# ------------------------------------------------------------------------------
+aptUpdate() {
+  sudo apt-get update 
+}
+
+# ------------------------------------------------------------------------------
+# A function to install tmux
+# ------------------------------------------------------------------------------
+installTmux() {
+  sudo apt-get install tmux 
 }
 
 # ------------------------------------------------------------------------------
