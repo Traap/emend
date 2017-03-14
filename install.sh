@@ -137,7 +137,7 @@ installTmux() {
 # A function to bootstrap your personalization.  
 # ------------------------------------------------------------------------------
 bootstrapPersonalization() {
-  stack init
+  stack init --force
   stack exec -- build
   stack exec -- bootstrap
 }
