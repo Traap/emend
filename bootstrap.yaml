@@ -5,15 +5,15 @@ symlinks:
     directory: false
 
   - file: ${HOME}/git/dotfiles/bashrc
-    link: ${HOME}/.bashrIssue #4 - refactor toXVY functions.  Broken.c
+    link: ${HOME}/.bashrc
     directory: false
 
   - file: ${HOME}/git/ssh/config.vim
-    link: ${HOME}/.config.vim"
+    link: ${HOME}/.config.vim
     directory: false
 
   - file: ${HOME}/git/ssh/gitconfig
-    link: ${HOME}/.gitconfig"
+    link: ${HOME}/.gitconfig
     directory: false
 
   - file: ${HOME}/git/ssh/gitignore_global
@@ -76,7 +76,7 @@ repos:
       - source: Traap/ssh
         target: ${HOME}/git/ssh
 
-      - source: junejunn/vim-plug
+      - source: junegunn/vim-plug
         target: ${HOME}/git/vim/autoload/vim-plug
 
       - source: chriskempson/base16-gnome-terminal

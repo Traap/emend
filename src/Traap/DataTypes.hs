@@ -55,7 +55,7 @@ toSymlinks s a = map (`toSymlink` a) (symlinks s)
 
 toSymlink :: Symlink -> Action -> T.Text
 toSymlink s a = case a of
-  CREATE -> mconcat ["lns -s ", file s, " ", link s]
+  CREATE -> mconcat ["ln -s ", file s, " ", link s]
   DELETE -> mconcat ["rm -vrf ", link s]
   _ -> error "toSymlink Action must be [CREATE | DELETE]."
 -- -----------------------------------------------------------------------------
@@ -83,7 +83,7 @@ toRepo REPO {..} a = map (\p -> toPath url p a) paths
 
 toPath :: T.Text -> Path -> Action -> T.Text
 toPath u p a = case a of
-  CLONE -> mconcat ["git clone ", u, "/", source p, target p]
+  CLONE -> mconcat ["git clone ", u, "/", source p, " ", target p]
   DELETE -> mconcat [target p]
   _ -> error "toPath Action must be [CLONE | DELETE]."
 
