@@ -32,13 +32,13 @@ orchestrate = do
 -- -----------------------------------------------------------------------------
 -- | Recursively delete objects referenced by SymLink.
 deleteSymLink :: Symlinks -> IO () 
-deleteSymLink s = mapM_ (system . T.unpack) $ toSymlinks s DELETE
+deleteSymLink s = mapM_ (system' . T.unpack) $ toSymlinks s DELETE
 
 -- -----------------------------------------------------------------------------
 -- | Create symbolic links for objects referenced by SymLink.
 -- Concatenate source file name (ex: ~/git/dotfiles/bashrc).
 makeSymLink :: Symlinks -> IO () 
-makeSymLink s = mapM_ (system . T.unpack) $ toSymlinks s CREATE
+makeSymLink s = mapM_ (system' . T.unpack) $ toSymlinks s CREATE
 
 -- -----------------------------------------------------------------------------
 -- | Clone repositories
@@ -58,10 +58,18 @@ safelyRemoveDirectory (T.unpack -> f) = do
 -- | Clone a repository.
 clone :: T.Text -> IO ()
 clone f = do 
-  _ <- system $ T.unpack f
+  _ <- system' $ T.unpack f
   return ()
 
 -- -----------------------------------------------------------------------------
 -- | Install other program
 install :: Installations -> IO ()
-install i = mapM_ (system . T.unpack) $ toInstallations i INSTALL
+install i = mapM_ (system' . T.unpack) $ toInstallations i INSTALL
+
+-- -----------------------------------------------------------------------------
+-- Print a string and invoke the system command.
+system' :: String -> IO ()
+system' s = do
+  putStrLn $ "System command: " ++ s
+  _ <- system s
+  return ()
