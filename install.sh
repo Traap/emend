@@ -143,7 +143,7 @@ installHaskellStack() {
 # ------------------------------------------------------------------------------
 # A function to install haskell stack.
 # ------------------------------------------------------------------------------
-HaskellSetu() {
+HaskellSetup() {
   stack setup
 }
 
