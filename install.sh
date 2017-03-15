@@ -24,7 +24,6 @@ main() {
       runFunction aptUpdate 
       runFunction installHaskellStackDependencies
       runFunction installHaskellStack 
-      runFunction HaskellSetup
       runFunction installTmux
       runFunction bootstrapPersonalization
     elif [[ ${OSTYPE} =~ "darwin" ]]; then
@@ -111,14 +110,14 @@ runFunction() {
 # A function to apt-get update 
 # ------------------------------------------------------------------------------
 aptUpdate() {
-  sudo apt-get update 
+  sudo apt-get -y update 
 }
 
 # ------------------------------------------------------------------------------
 # A function to install haskell stack.
 # ------------------------------------------------------------------------------
 installHaskellStackDependencies() {
-  sudo apt-get install \
+  sudo apt-get -y install \
     g++ \
     gcc \
     libc6-dev \
@@ -129,8 +128,6 @@ installHaskellStackDependencies() {
     zlib1g-dev \
     git \
     gnupg
-
-  stack setup
 }
 
 # ------------------------------------------------------------------------------
@@ -138,13 +135,6 @@ installHaskellStackDependencies() {
 # ------------------------------------------------------------------------------
 installHaskellStack() {
   curl -sSL https://get.haskellstack.org/ | sh
-}
-
-# ------------------------------------------------------------------------------
-# A function to install haskell stack.
-# ------------------------------------------------------------------------------
-HaskellSetup() {
-  stack setup
 }
 
 # ------------------------------------------------------------------------------
@@ -158,6 +148,7 @@ installTmux() {
 # A function to bootstrap your personalization.  
 # ------------------------------------------------------------------------------
 bootstrapPersonalization() {
+  cd ${HOME}/bootstrap
   stack init --force
   stack setup
   stack build
