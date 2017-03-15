@@ -10,7 +10,7 @@ $ git clone http://github.com/Traap/bootstrap.git \
       && cd bootstrap \
       && chmod +x install.sh \
       && ./install.sh --all \
-      && source ${HOME).bashrc \
+      && source ${HOME}.bashrc \
       && vim
 ```
 

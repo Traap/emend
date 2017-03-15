@@ -20,10 +20,18 @@ main() {
   if [ $helpFlag == 1 -o $errorFlag == 1 ]; then
     showHelp
   elif [ $allFlag == 1 ]; then
-    runFunction aptUpdate 
-    runFunction installHaskellStack 
-    runFunction installTmux
-    runFunction bootstrapPersonalization
+    if [ ${OSTYPE} =~ "linux" ]; then
+      runFunction aptUpdate 
+      runFunction installHaskellStackDependencies
+      runFunction installHaskellStack 
+      runFunction HaskellSetup
+      runFunction installTmux
+      runFunction bootstrapPersonalization
+    elif [ ${OSTYPE} =~ "darwin" ]; then
+      echo "Darwin is not supported yet!"
+    else
+      echo "${OSTYPE} is not supported.  It probably never will be either!"
+    fi  
   else
     runFunction $fctToRun
   fi
@@ -99,13 +107,17 @@ runFunction() {
   cd ${HMST_ROOT}
 }
 
+# ------------------------------------------------------------------------------
+# A function to apt-get update 
+# ------------------------------------------------------------------------------
+aptUpdate() {
+  sudo apt-get update 
+}
 
 # ------------------------------------------------------------------------------
 # A function to install haskell stack.
 # ------------------------------------------------------------------------------
-installHaskellStack() {
-  curl -sSL https://get.haskellstack.org/ | sh
-
+installHaskellStackDependencies() {
   sudo apt-get install \
     g++ \
     gcc \
@@ -121,12 +133,18 @@ installHaskellStack() {
   stack setup
 }
 
+# ------------------------------------------------------------------------------
+# A function to install haskell stack.
+# ------------------------------------------------------------------------------
+installHaskellStack() {
+  curl -sSL https://get.haskellstack.org/ | sh
+}
 
 # ------------------------------------------------------------------------------
-# A function to apt-get update 
+# A function to install haskell stack.
 # ------------------------------------------------------------------------------
-aptUpdate() {
-  sudo apt-get update 
+HaskellSetu() {
+  stack setup
 }
 
 # ------------------------------------------------------------------------------
