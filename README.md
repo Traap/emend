@@ -6,7 +6,12 @@ integration and AllanConsulting.slack.com for centralized notification.
 ## Bootstrap 
 ```bash
 $ cd $HOME
-$ git clone http://github.com/Traap/bootstrap.git && cd bootstrap && chmod +x install.sh && ./install.sh --all
+$ git clone http://github.com/Traap/bootstrap.git \
+      && cd bootstrap \
+      && chmod +x install.sh \
+      && ./install.sh --all \
+      && source ${HOME).bashrc \
+      && vim
 ```
 
 ## Dependencies 

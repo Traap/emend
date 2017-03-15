@@ -57,7 +57,7 @@ toSymlink :: Symlink -> Action -> T.Text
 toSymlink s a = case a of
   CREATE -> mconcat ["lns -s ", file s, " ", link s]
   DELETE -> mconcat ["rm -vrf ", link s]
-
+  _ -> error "toSymlink Action must be [CREATE | DELETE]."
 -- -----------------------------------------------------------------------------
 -- | The Repos type defines a Repo and whether or not the Repo is cloned to .
 -- (here) or a new directory.
@@ -85,6 +85,7 @@ toPath :: T.Text -> Path -> Action -> T.Text
 toPath u p a = case a of
   CLONE -> mconcat ["git clone ", u, "/", source p, target p]
   DELETE -> mconcat [target p]
+  _ -> error "toPath Action must be [CLONE | DELETE]."
 
 -- -----------------------------------------------------------------------------
 -- | The Installations type defines a program to run and the argument is is passed.
@@ -110,7 +111,8 @@ toOs :: Os -> Action -> [T.Text]
 toOs o a = map (`toCommand` a) (command o)
 
 toCommand :: Command -> Action -> T.Text
-toCommand c a = case a of 
-  INSTALL -> if sudo c
-    then mconcat ["sudo ", program c, argument c]
-    else mconcat [program c, argument c]
+toCommand COMMAND{..} a = case a of 
+  INSTALL -> if sudo
+    then mconcat ["sudo ", program, argument]
+    else mconcat [program, argument]
+  _ -> error "toCommand Action must be INSTALL."
