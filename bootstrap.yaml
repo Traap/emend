@@ -1,59 +1,59 @@
 # {{{ Symbolic Links
 symlinks:  
-  - file: $(HOME)/git/dotfiles/bash_profile
-    link: $(HOME)/.bash_profile
+  - file: ${HOME}/git/dotfiles/bash_profile
+    link: ${HOME}/.bash_profile
     directory: false
 
-  - file: $(HOME)/git/dotfiles/bashrc
-    link: $(HOME)/.bashrIssue #4 - refactor toXVY functions.  Broken.c
+  - file: ${HOME}/git/dotfiles/bashrc
+    link: ${HOME}/.bashrIssue #4 - refactor toXVY functions.  Broken.c
     directory: false
 
-  - file: $(HOME)/git/ssh/config.vim
-    link: $(HOME)/.config.vim"
+  - file: ${HOME}/git/ssh/config.vim
+    link: ${HOME}/.config.vim"
     directory: false
 
-  - file: $(HOME)/git/ssh/gitconfig
-    link: $(HOME)/.gitconfig"
+  - file: ${HOME}/git/ssh/gitconfig
+    link: ${HOME}/.gitconfig"
     directory: false
 
-  - file: $(HOME)/git/ssh/gitignore_global
-    link: $(HOME)/.gitignore_global
+  - file: ${HOME}/git/ssh/gitignore_global
+    link: ${HOME}/.gitignore_global
     directory: false
 
-  - file: $(HOME)/git/vim/gvimrc
-    link: $(HOME)/.gvimrc
+  - file: ${HOME}/git/vim/gvimrc
+    link: ${HOME}/.gvimrc
     directory: false
 
-  - file: $(HOME)/git/dotfiles/inputrc
-    link: $(HOME)/.inputrc
+  - file: ${HOME}/git/dotfiles/inputrc
+    link: ${HOME}/.inputrc
     directory: false
 
-  - file: $(HOME)/git/ssh
-    link: $(HOME)/.ssh
+  - file: ${HOME}/git/ssh
+    link: ${HOME}/.ssh
     directory: true
 
-  - file: $(HOME)/git/tmux
-    link: $(HOME)/.tmux
+  - file: ${HOME}/git/tmux
+    link: ${HOME}/.tmux
     directory: true
 
-  - file: $(HOME)/git/tmux/tmux.conf
-    link: $(HOME)/.tmux.conf
+  - file: ${HOME}/git/tmux/tmux.conf
+    link: ${HOME}/.tmux.conf
     directory: false
 
-  - file: $(HOME)/git/vim
-    link: $(HOME)/.vim
+  - file: ${HOME}/git/vim
+    link: ${HOME}/.vim
     directory: true
 
-  - file: $(HOME)/git/vim/viminfo
-    link: $(HOME)/.viminfo
+  - file: ${HOME}/git/vim/viminfo
+    link: ${HOME}/.viminfo
     directory: false
 
-  - file: $(HOME)/git/vim/vimrc
-    link: $(HOME)/.vimrc
+  - file: ${HOME}/git/vim/vimrc
+    link: ${HOME}/.vimrc
     directory: false
 
-  - file: $(HOME)/git/vim/vimrc_background
-    link: $(HOME)/.vimrc_background
+  - file: ${HOME}/git/vim/vimrc_background
+    link: ${HOME}/.vimrc_background
     directory: false
 # -------------------------------------------------------------------------- }}}
 # {{{ Repositories
@@ -62,31 +62,31 @@ repos:
     url: http://github.com
     paths:
       - source: Traap/dotfiles
-        target: $(HOME)/git/dotfiles
+        target: ${HOME}/git/dotfiles
 
       - source: Traap/vim
-        target: $(HOME)/git/vim
+        target: ${HOME}/git/vim
 
       - source: Traap/tmux
-        target: $(HOME)/git/tmux
+        target: ${HOME}/git/tmux
 
       - source: tmux-plugins/tpm
-        target: $(HOME)/git/tmux/tpm
+        target: ${HOME}/git/tmux/tpm
 
       - source: Traap/ssh
-        target: $(HOME)/git/ssh
+        target: ${HOME}/git/ssh
 
       - source: junejunn/vim-plug
-        target: $(HOME)/git/vim/autoload/vim-plug
+        target: ${HOME}/git/vim/autoload/vim-plug
 
       - source: chriskempson/base16-gnome-terminal
-        target: $(HOME)/git/color/base16-gnome-terminal
+        target: ${HOME}/git/color/base16-gnome-terminal
 
       - source: chriskempson/base16-iterm2
-        target: $(HOME)/git/color/base16-iterm2
+        target: ${HOME}/git/color/base16-iterm2
 
       - source: chriskempson/base16-shell
-        target: $(HOME)/git/color/bas16-shell
+        target: ${HOME}/git/color/bas16-shell
 # -------------------------------------------------------------------------- }}}
 # {{{ Installations 
 installations:
@@ -119,7 +119,7 @@ installations:
     command:
       - sudo: false
         program: /bin/bash
-        argument: $(HOME)/.tmux/plugins/tpm/bin/update_plugins all
+        argument: ${HOME}/.tmux/plugins/tpm/bin/update_plugins all
       - sudo: false
         program: cabal
         argument: install hoogle
