@@ -35,7 +35,7 @@ import           GHC.Generics
 
 -- -----------------------------------------------------------------------------
 -- Actions bootstrap can perform.
-data Action = CREATE | DELETE | CLONE | INSTALL
+data Action = CREATE | DELETE | CLONE | INSTALL | NOOP
 
 -- -----------------------------------------------------------------------------
 -- | The Symlinks type defines the target of a symlink operation and identifies
@@ -111,7 +111,8 @@ toOs :: Os -> Action -> [T.Text]
 toOs o a = map (`toCommand` a) (command o)
 
 toCommand :: Command -> Action -> T.Text
-toCommand COMMAND{..} a = case a of 
+toCommand COMMAND{..} a = case a of
+  NOOP -> error "toCommand recieved NOOP - Successful Error exit. :)"
   INSTALL -> if sudo
     then mconcat ["sudo ", program, argument]
     else mconcat [program, argument]
