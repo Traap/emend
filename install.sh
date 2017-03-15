@@ -20,14 +20,14 @@ main() {
   if [ $helpFlag == 1 -o $errorFlag == 1 ]; then
     showHelp
   elif [ $allFlag == 1 ]; then
-    if [ ${OSTYPE} =~ "linux" ]; then
+    if [[ ${OSTYPE} =~ "linux" ]]; then
       runFunction aptUpdate 
       runFunction installHaskellStackDependencies
       runFunction installHaskellStack 
       runFunction HaskellSetup
       runFunction installTmux
       runFunction bootstrapPersonalization
-    elif [ ${OSTYPE} =~ "darwin" ]; then
+    elif [[ ${OSTYPE} =~ "darwin" ]]; then
       echo "Darwin is not supported yet!"
     else
       echo "${OSTYPE} is not supported.  It probably never will be either!"
