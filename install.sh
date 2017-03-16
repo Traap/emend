@@ -22,7 +22,7 @@ main() {
   elif [ $allFlag == 1 ]; then
     if [[ ${OSTYPE} =~ "linux" ]]; then
       runFunction aptUpdate 
-      runFunction installHaskellStackDependencies
+      runFunction aptInstall
       runFunction installHaskellStack 
       runFunction installTmux
       runFunction bootstrapPersonalization
@@ -116,7 +116,7 @@ aptUpdate() {
 # ------------------------------------------------------------------------------
 # A function to install haskell stack.
 # ------------------------------------------------------------------------------
-installHaskellStackDependencies() {
+aptInstall() {
   sudo apt-get -y install \
     g++ \
     gcc \
@@ -127,7 +127,9 @@ installHaskellStackDependencies() {
     xz-utils \
     zlib1g-dev \
     git \
-    gnupg
+    gnupg \
+    vim-gnome \
+    python
 }
 
 # ------------------------------------------------------------------------------
