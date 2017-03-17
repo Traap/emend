@@ -118,7 +118,7 @@ aptUpdate() {
 # A function to install Vim 8.0 
 # ------------------------------------------------------------------------------
 installVim() {
-  sudo apt-get - y install \
+  sudo apt-get -y install \
     libncurses5-dev \
     libgnome2-dev \
     libgnomeui-dev \
@@ -130,15 +130,15 @@ installVim() {
     libxpm-dev \
     libxt-dev
 
-  git clone http://github.com/vim/vim
+  git clone http://GitHub.com/vim/vim ${HOME}/vim
 
-  cd vim
+  cd ${HOME}vim
 
   ./configure --with-features=huge --enable-cscope --enable-gui=gnome2
 
   sudo make install
 
-  cd --
+  cd -
 }
 
 # ------------------------------------------------------------------------------
