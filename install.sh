@@ -23,6 +23,7 @@ main() {
     if [[ ${OSTYPE} =~ "linux" ]]; then
       runFunction aptUpdate 
       runFunction aptInstall
+      runFunction installVim
       runFunction installHaskellStack 
       runFunction installTmux
       runFunction bootstrapPersonalization
@@ -114,6 +115,15 @@ aptUpdate() {
 }
 
 # ------------------------------------------------------------------------------
+# A function to install Vim 8.0 
+# ------------------------------------------------------------------------------
+installVim() {
+  sudo add-apt-repository ppa:jonathonf/vim -y
+  sudo apt update
+  sudo apt install -y vim
+}
+
+# ------------------------------------------------------------------------------
 # A function to install haskell stack.
 # ------------------------------------------------------------------------------
 aptInstall() {
@@ -128,7 +138,6 @@ aptInstall() {
     zlib1g-dev \
     git \
     gnupg \
-    vim-gnome \
     python
 }
 
