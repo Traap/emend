@@ -89,40 +89,40 @@ repos:
         target: ${HOME}/git/color/base16-shell
 
       - source: magicmonty/bash-git-prompt
-        target: ${HOME}/.bash-git-prompt:w
+        target: ${HOME}/.bash-git-prompt
 # -------------------------------------------------------------------------- }}}
 # {{{ Installations 
 installations:
-  - os:
-    name: darwin
-    command:
-      - sudo: false
-        program: /usr/bin/ruby
-        argument: "-e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-      - sudo: false
-        program: brew
-        argument: 
-           install 
-           bash-git-prompt 
-           haskell-stack 
-           mutt 
-           vim --with-client-server 
-           tmuxx
-  - os:
-    name: linux
-    command:
-      - sudo: true
-        program: apt-get
-        argument: install tmux 
-      - sudo: false
-        program: curl
-        argument: "-sSL https://get.haskellstack.org/ | sh"
+  # - os:
+  #   name: darwin
+  #   command:
+  #     - sudo: false
+  #       program: /usr/bin/ruby
+  #       argument: "-e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  #     - sudo: false
+  #       program: brew
+  #       argument: 
+  #          install 
+  #          bash-git-prompt 
+  #          haskell-stack 
+  #          mutt 
+  #          vim --with-client-server 
+  #          tmuxx
+  # - os:
+  #   name: linux
+  #   command:
+  #     - sudo: true
+  #       program: apt-get
+  #       argument: install tmux 
+  #     - sudo: false
+  #       program: curl
+  #       argument: "-sSL https://get.haskellstack.org/ | sh"
   - os:
     name: any
     command:
       - sudo: false
-        program: /bin/bash
-        argument: ${HOME}/.tmux/plugins/tpm/bin/update_plugins all
+        program: ${HOME}/.tmux/plugins/tpm/bin/update_plugins
+        argument: all
       - sudo: false
         program: cabal
         argument: install hoogle
@@ -132,4 +132,7 @@ installations:
       - sudo: false
         program: vim
         argument: '"+PlugInstall!" "+PlugClean" "+qall"'
+      - sudo: false
+        program: chmod
+        argument: 600 ${HOME}/.ssh/*
 # -------------------------------------------------------------------------- }}}
