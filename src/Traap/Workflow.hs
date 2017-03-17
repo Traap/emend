@@ -64,7 +64,7 @@ clone f = do
 -- -----------------------------------------------------------------------------
 -- | Install other program
 install :: Installations -> IO ()
-install i = mapM_ (system' . T.unpack) $ toInstallations i NOOP --INSTALL
+install i = mapM_ (system' . T.unpack) $ toInstallations i INSTALL
 
 -- -----------------------------------------------------------------------------
 -- Print a string and invoke the system command.
