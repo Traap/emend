@@ -136,9 +136,11 @@ installVim() {
 
   ./configure --with-features=huge --enable-cscope --enable-gui=gnome2
 
+  cd ${HOME}/vim/src
+
   sudo make install
 
-  cd -
+  cd ${HOME}/bootstrap
 }
 
 # ------------------------------------------------------------------------------
