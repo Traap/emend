@@ -86,7 +86,10 @@ repos:
         target: ${HOME}/git/color/base16-iterm2
 
       - source: chriskempson/base16-shell
-        target: ${HOME}/git/color/bas16-shell
+        target: ${HOME}/git/color/base16-shell
+
+      - source: magicmonty/bash-git-prompt
+        target: ${HOME}/.bash-git-prompt:w
 # -------------------------------------------------------------------------- }}}
 # {{{ Installations 
 installations:
