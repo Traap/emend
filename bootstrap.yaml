@@ -71,7 +71,7 @@ repos:
         target: ${HOME}/git/tmux
 
       - source: tmux-plugins/tpm
-        target: ${HOME}/git/tmux/tpm
+        target: ${HOME}/git/tmux/plugins/tpm
 
       - source: Traap/ssh
         target: ${HOME}/git/ssh
@@ -124,14 +124,14 @@ installations:
         program: ${HOME}/.tmux/plugins/tpm/bin/update_plugins
         argument: all
       - sudo: false
-        program: cabal
-        argument: install hoogle
-      - sudo: false
-        program: hoogle
-        argument: data
+        # program: cabal
+        # argument: install hoogle
+      # - sudo: false
+        # program: hoogle
+        # argument: data
       - sudo: false
         program: vim
-        argument: '"+PlugInstall!" "+PlugClean" "+qall"'
+        argument: +PlugInstall! +PlugClean +qall
       - sudo: false
         program: chmod
         argument: 600 ${HOME}/.ssh/*
