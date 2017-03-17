@@ -114,6 +114,6 @@ toCommand :: Command -> Action -> T.Text
 toCommand COMMAND{..} a = case a of
   NOOP -> error "toCommand recieved NOOP - Successful Error exit. :)"
   INSTALL -> if sudo
-    then mconcat ["sudo ", program, argument]
-    else mconcat [program, argument]
+    then mconcat ["sudo ", program, " ", argument]
+    else mconcat [program, " ", argument]
   _ -> error "toCommand Action must be INSTALL."
