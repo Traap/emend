@@ -118,9 +118,27 @@ aptUpdate() {
 # A function to install Vim 8.0 
 # ------------------------------------------------------------------------------
 installVim() {
-  sudo add-apt-repository ppa:jonathonf/vim -y
-  sudo apt update
-  sudo apt install -y vim
+  sudo apt-get - y install \
+    libncurses5-dev \
+    libgnome2-dev \
+    libgnomeui-dev \
+    libgtk2.0-dev \
+    libatk1.0-dev \
+    libbonoboui2-dev \
+    libcairo2-dev \
+    libx11-dev \
+    libxpm-dev \
+    libxt-dev
+
+  git clone http://github.com/vim/vim
+
+  cd vim
+
+  ./configure --with-features=huge --enable-cscope --enable-gui=gnome2
+
+  sudo make install
+
+  cd --
 }
 
 # ------------------------------------------------------------------------------
