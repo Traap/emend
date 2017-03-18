@@ -129,7 +129,7 @@ installations:
       - sudo: false
         program: chmod
         argument: 600 ${HOME}/.ssh/*
-      - sudo: no
+      - sudo: false 
         program: base16_woodland
-        argument:
+        argument: " "
 # -------------------------------------------------------------------------- }}}
