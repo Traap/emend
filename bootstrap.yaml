@@ -121,7 +121,7 @@ installations:
     name: any
     command:
       - sudo: false
-        program: ${HOME}/.tmux/plugins/tpm/bin/update_plugins
+        program: ${HOME}/.tmux/plugins/tpm/bin/install_plugins
         argument: all
       - sudo: false
         program: vim
@@ -129,4 +129,7 @@ installations:
       - sudo: false
         program: chmod
         argument: 600 ${HOME}/.ssh/*
+      - sudo: no
+        program: base16_woodland
+        argument:
 # -------------------------------------------------------------------------- }}}
