@@ -5,36 +5,23 @@
 #   This Travis continuous integration file is use to build and test boostrap
 #   software written in Haskell.
 
+sudo: true 
+
 language: generic 
-
-sudo: false 
-
-ghc: 
-  - 7.8
 
 cache:
   directories:
     - $HOME/.stack
 
-addons:
-  apt:
-    packages:
-      -libgmp-dev
-
 before_install:
-- mkdir -p ~/.local/bin
-- export PATH=$HOME/.local/bin:$PATH
-- travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
-
-matrix:
-    fast_finish: true
-      included:
-        - env: BUILD=cabal CABALVER=1.24 GHCVER=7.10.3
-          compiler: ": #GHC 7.10.3"
-          addons: {apt: {packages: [cabal-install-1.24,ghc-7.10.3], sources: [hvr-ghc]}}
+  - sudo apt-get -qq update
+  - sudo apt-get install -y libgmp-dev
+  - mkdir -p ~/.local/bin
+  - export PATH=$HOME/.local/bin:$PATH
+  - travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
 
 install:
-- stack --no-terminal --install-ghc test --only-dependencies
+  - stack --no-terminal --install-ghc test --only-dependencies
 
 script:
  - stack --no-terminal build
