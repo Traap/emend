@@ -28,7 +28,9 @@ main() {
       runFunction installTmux
       runFunction bootstrapPersonalization
     elif [[ ${OSTYPE} =~ "darwin" ]]; then
-      echo "Darwin is not supported yet!"
+      runFunction installHomebrew
+      runFunction installHaskellStack 
+      runFunction bootstrapPersonalization
     else
       echo "${OSTYPE} is not supported.  It probably never will be either!"
     fi  
@@ -162,10 +164,23 @@ aptInstall() {
 }
 
 # ------------------------------------------------------------------------------
+# A function to install Homebrew.
+# ------------------------------------------------------------------------------
+installHomebrew() {
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+}
+
+# ------------------------------------------------------------------------------
 # A function to install haskell stack.
 # ------------------------------------------------------------------------------
 installHaskellStack() {
-  curl -sSL https://get.haskellstack.org/ | sh
+  if [[ ${OSTYPE} =~ "linux" ]]; then
+    curl -sSL https://get.haskellstack.org/ | sh
+  elif [[ ${OSTYPE} =~ "darwin" ]]; then
+    brew install haskell-stack
+  else
+   echo "${OSTYPE} is not installed.  Program exiting."
+  endif
 }
 
 # ------------------------------------------------------------------------------
@@ -184,7 +199,9 @@ bootstrapPersonalization() {
   stack setup
   stack build
   stack exec -- bootstrap
-} # ------------------------------------------------------------------------------
+}
+
+# ------------------------------------------------------------------------------
 # Kick start this script.
 # ------------------------------------------------------------------------------
 main $@
