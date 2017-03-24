@@ -1,0 +1,58 @@
+# {{{ Symbolic Links
+symlinks:  
+  - file: ${HOME}/git/dotfiles/bash_profile
+    link: ${HOME}/.bash_profile
+    directory: false
+
+  - file: ${HOME}/git/dotfiles/bashrc
+    link: ${HOME}/.bashrc
+    directory: false
+
+  - file: ${HOME}/git/ssh/config.vim
+    link: ${HOME}/.config.vim
+    directory: false
+
+  - file: ${HOME}/git/ssh/gitconfig
+    link: ${HOME}/.gitconfig
+    directory: false
+
+  - file: ${HOME}/git/ssh/gitignore_global
+    link: ${HOME}/.gitignore_global
+    directory: false
+
+  - file: ${HOME}/git/vim/gvimrc
+    link: ${HOME}/.gvimrc
+    directory: false
+
+  - file: ${HOME}/git/dotfiles/inputrc
+    link: ${HOME}/.inputrc
+    directory: false
+
+  - file: ${HOME}/git/ssh
+    link: ${HOME}/.ssh
+    directory: true
+
+  - file: ${HOME}/git/tmux
+    link: ${HOME}/.tmux
+    directory: true
+
+  - file: ${HOME}/git/tmux/tmux.conf
+    link: ${HOME}/.tmux.conf
+    directory: false
+
+  - file: ${HOME}/git/vim
+    link: ${HOME}/.vim
+    directory: true
+
+  - file: ${HOME}/git/vim/viminfo
+    link: ${HOME}/.viminfo
+    directory: false
+
+  - file: ${HOME}/git/vim/vimrc
+    link: ${HOME}/.vimrc
+    directory: false
+
+  - file: ${HOME}/git/vim/vimrc_background
+    link: ${HOME}/.vimrc_background
+    directory: false
+# -------------------------------------------------------------------------- }}}

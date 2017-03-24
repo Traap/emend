@@ -9,8 +9,7 @@ module Traap.DataTypes
   (-- Actions
    Action(..)
   -- Symbolic Links
-  ,Symlinks(..)
-  ,Symlink(..)
+  ,Symlinks(..) ,Symlink(..)
   ,toSymlinks
   ,toSymlink
   -- Git Repositories

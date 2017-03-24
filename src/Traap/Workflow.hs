@@ -21,9 +21,13 @@ import           Traap.DataTypes
 -- Step 1: Remove everything we are about to create.
 -- Step 2: Clone repositories from github.
 -- Step 3: Create symbolic links.
-orchestrate :: IO ()
-orchestrate = do
-  contents <- BL.readFile "bootstrap.yaml"
+orchestrate :: String -> Bool ->  IO ()
+orchestrate ofile oflag = do
+
+  if oflag then putStrLn "dryrun: True"
+           else putStrLn "dryrun: False"
+
+  contents <- BL.readFile ofile 
   mapM_ deleteSymLink $ decodeEither contents
   mapM_ cloneRepo $ decodeEither contents
   mapM_ makeSymLink $ decodeEither contents

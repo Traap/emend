@@ -5,10 +5,15 @@
 -- consists of two parts, namely: 1) setup symbolic links to files or
 -- directories that are under version control, and 2) clone GitHub.com
 -- repositories that are needed to personalize bash and vim.
+{-# LANGUAGE RecordWildCards #-}
 
 module Main (main) where
-
+import Options.Applicative
+import Traap.Options
 import Traap.Workflow
 
+-- -----------------------------------------------------------------------------
 main :: IO ()
-main = orchestrate
+main = do 
+  OPTS{..} <- execParser options 
+  orchestrate fpath dryrun
