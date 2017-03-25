@@ -180,7 +180,7 @@ installHaskellStack() {
     brew install haskell-stack
   else
    echo "${OSTYPE} is not installed.  Program exiting."
-  endif
+  fi
 }
 
 # ------------------------------------------------------------------------------
