@@ -177,8 +177,8 @@ installHaskell() {
   if [[ ${OSTYPE} =~ "linux" ]]; then
     curl -sSL https://get.haskellstack.org/ | sh
   elif [[ ${OSTYPE} =~ "darwin" ]]; then
-" haskell-stack never downloaded the Hackage index.
-"    brew install haskell-stack
+     # haskell-stack never downloaded the Hackage index.
+     # brew install haskell-stack
      brew cask install haskell-platform
   else
    echo "${OSTYPE} is not installed.  Program exiting."
