@@ -24,12 +24,12 @@ main() {
       runFunction aptUpdate 
       runFunction aptInstall
       runFunction installVim
-      runFunction installHaskellStack 
+      runFunction installHaskell 
       runFunction installTmux
       runFunction bootstrapPersonalization
     elif [[ ${OSTYPE} =~ "darwin" ]]; then
       runFunction installHomebrew
-      runFunction installHaskellStack 
+      runFunction installHaskell 
       runFunction bootstrapPersonalization
     else
       echo "${OSTYPE} is not supported.  It probably never will be either!"
@@ -53,7 +53,7 @@ function showHelp {
    echo "  --debug         Echo enviroment variables to sysout."
    echo
    echo "  --function=     Internal function name to run."
-   echo "             installHaskellStack"
+   echo "             installHaskell"
    echo "             installHomeBrew"
    echo
    echo "  --help          Display this help message."
@@ -171,13 +171,15 @@ installHomebrew() {
 }
 
 # ------------------------------------------------------------------------------
-# A function to install haskell stack.
+# A function to install haskell.
 # ------------------------------------------------------------------------------
-installHaskellStack() {
+installHaskell() {
   if [[ ${OSTYPE} =~ "linux" ]]; then
     curl -sSL https://get.haskellstack.org/ | sh
   elif [[ ${OSTYPE} =~ "darwin" ]]; then
-    brew install haskell-stack
+" haskell-stack never downloaded the Hackage index.
+"    brew install haskell-stack
+     brew cask install haskell-platform
   else
    echo "${OSTYPE} is not installed.  Program exiting."
   fi

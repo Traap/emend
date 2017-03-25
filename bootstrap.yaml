@@ -93,33 +93,18 @@ repos:
 # -------------------------------------------------------------------------- }}}
 # {{{ Installations 
 installations:
-  # - os:
-  #   name: darwin
-  #   command:
-  #     - sudo: false
-  #       program: /usr/bin/ruby
-  #       argument: "-e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  #     - sudo: false
-  #       program: brew
-  #       argument: 
-  #          install 
-  #          bash-git-prompt 
-  #          haskell-stack 
-  #          mutt 
-  #          vim --with-client-server 
-  #          tmuxx
-  # - os:
-  #   name: linux
-  #   command:
-  #     - sudo: true
-  #       program: apt-get
-  #       argument: install tmux 
-  #     - sudo: false
-  #       program: curl
-  #       argument: "-sSL https://get.haskellstack.org/ | sh"
-  - os:
-    name: any
-    command:
+ - os:
+   name: darwin 
+   command:
+      - sudo: false
+        program: brew
+        argument: install bash-git-prompt mutt 
+      - sudo: false
+        program: brew
+        argument: install Caskroom/cask/xquartz 
+      - sudo: false
+        program: brew
+        argument: install vim --with-client-server
       - sudo: false
         program: ${HOME}/.tmux/plugins/tpm/bin/install_plugins
         argument: all
