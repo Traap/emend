@@ -197,10 +197,17 @@ installTmux() {
 # ------------------------------------------------------------------------------
 bootstrapPersonalization() {
   cd ${HOME}/bootstrap
-  stack init --force
-  stack setup
-  stack build
-  stack exec -- bootstrap
+  if [[ ${OSTYPE} =~ "linux" ]]; then
+    stack init --force
+    stack setup
+    stack build
+    stack exec -- bootstrap
+  elif [[ ${OSTYPE} =~ "darwin" ]]; then
+    cabal install
+  else
+   echo "${OSTYPE} is not installed.  Program exiting."
+  fi
+
 }
 
 # ------------------------------------------------------------------------------
