@@ -26,11 +26,11 @@ main() {
       runFunction installVim
       runFunction installHaskell 
       runFunction installTmux
-      runFunction bootstrapPersonalization
+      runFunction runBootstrap
     elif [[ ${OSTYPE} =~ "darwin" ]]; then
       runFunction installHomebrew
       runFunction installHaskell 
-      runFunction bootstrapPersonalization
+      runFunction runBootstrap
     else
       echo "${OSTYPE} is not supported.  It probably never will be either!"
     fi  
@@ -195,7 +195,7 @@ installTmux() {
 # ------------------------------------------------------------------------------
 # A function to bootstrap your personalization.  
 # ------------------------------------------------------------------------------
-bootstrapPersonalization() {
+runBootstrap() {
   cd ${HOME}/bootstrap
   if [[ ${OSTYPE} =~ "linux" ]]; then
     stack init --force
@@ -204,6 +204,7 @@ bootstrapPersonalization() {
     stack exec -- bootstrap
   elif [[ ${OSTYPE} =~ "darwin" ]]; then
     cabal install
+    ~/Library/Haskell/bin/bootstrap -f bootstrap.yaml
   else
    echo "${OSTYPE} is not installed.  Program exiting."
   fi
