@@ -21,8 +21,6 @@ main() {
     showHelp
   elif [ $allFlag == 1 ]; then
     if [[ ${OSTYPE} =~ "linux" ]]; then
-      runFunction aptUpdate 
-      runFunction aptInstall
       runFunction installVim
       runFunction installHaskell 
       runFunction installTmux
@@ -110,13 +108,6 @@ runFunction() {
 }
 
 # ------------------------------------------------------------------------------
-# A function to apt-get update 
-# ------------------------------------------------------------------------------
-aptUpdate() {
-  sudo apt-get -y update 
-}
-
-# ------------------------------------------------------------------------------
 # A function to install Vim 8.0 
 # ------------------------------------------------------------------------------
 installVim() {
@@ -146,24 +137,6 @@ installVim() {
 }
 
 # ------------------------------------------------------------------------------
-# A function to install haskell stack.
-# ------------------------------------------------------------------------------
-aptInstall() {
-  sudo apt-get -y install \
-    g++ \
-    gcc \
-    libc6-dev \
-    libffi-dev \
-    libgmp-dev \
-    make \
-    xz-utils \
-    zlib1g-dev \
-    git \
-    gnupg \
-    python
-}
-
-# ------------------------------------------------------------------------------
 # A function to install Homebrew.
 # ------------------------------------------------------------------------------
 installHomebrew() {
@@ -177,8 +150,6 @@ installHaskell() {
   if [[ ${OSTYPE} =~ "linux" ]]; then
     curl -sSL https://get.haskellstack.org/ | sh
   elif [[ ${OSTYPE} =~ "darwin" ]]; then
-     # haskell-stack never downloaded the Hackage index.
-     # brew install haskell-stack
      brew cask install haskell-platform
   else
    echo "${OSTYPE} is not installed.  Program exiting."

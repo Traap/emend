@@ -1,0 +1,64 @@
+# {{{ Installations 
+installations:
+ - os:
+   name: linux 
+   command:
+      #
+      # apt-update
+      #
+      - sudo: true 
+        program: apt-get 
+        argument: update
+      #
+      # Libraries Haskell Platform compiles and links with.
+      #
+      - sudo: true 
+        program: apt-get 
+        argument: install g++ gcc libc6-dev libffi-dev libgmp-dev 
+      - sudo: true 
+        program: apt-get 
+        argument: install dev make xz-utils zlib1g-dev
+      - sudo: true 
+        program: apt-get 
+        argument: install gnupg python
+      #
+      # Build Vim from source 
+      #
+      - sudo: true 
+        program: apt-get 
+        argument: install libncurses5-dev libgnome2-dev libgnomeui-dev libgtk2.0-dev libatk1.0-dev libbonoboui2-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev
+      - sudo: true 
+        program: git
+        argument: clone http://GitHub.com/vim/vim ${HOME}/vim
+      - sudo: false
+        program: .${HOME}/vim/configure
+        argument: --with-features=huge --enable-cscope --enable-gui=gnome2
+      - sudo: true
+        program: make
+        argument: -f ${HOME}/vim/src install
+      #
+      # Tmux
+      #
+      - sudo: false
+        program: ${HOME}/.tmux/plugins/tpm/bin/install_plugins
+        argument: all
+      #
+      # Vim plugings
+      #
+      - sudo: false
+        program: vim
+        argument: +PlugInstall! +PlugClean +qall
+      #
+      # Set ssh protections. 
+      #
+      - sudo: false
+        program: chmod
+        argument: 600 ${HOME}/.ssh/*
+      #
+      # base16 colors 
+      #
+      - sudo: false 
+        program: base16_woodland
+        argument: " "
+# -------------------------------------------------------------------------- }}}
+
