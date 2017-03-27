@@ -21,9 +21,7 @@ main() {
     showHelp
   elif [ $allFlag == 1 ]; then
     if [[ ${OSTYPE} =~ "linux" ]]; then
-      runFunction installVim
       runFunction installHaskell 
-      runFunction installTmux
       runFunction runBootstrap
     elif [[ ${OSTYPE} =~ "darwin" ]]; then
       runFunction installHomebrew
