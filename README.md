@@ -20,8 +20,3 @@ $ git clone http://github.com/Traap/bootstrap.git \
 # Project Management
 Please refer to my [Lightweight Project Mangement](https://github.com/Traap/lpm)
 for the project management strategy I use.
-
-## Releases
-[Current](https://github.com/Traap/bootstrap/releases/latest)
-[releases](https://github.com/Traap/bootstrap/releases) include a the deployed
-version of Bootstrap source code.
