@@ -21,7 +21,7 @@ main() {
     showHelp
   elif [ $allFlag == 1 ]; then
     if [[ ${OSTYPE} =~ "linux" ]]; then
-      runFunction aptUdate
+      runFunction aptUpdate
       runFunction installHaskell 
     elif [[ ${OSTYPE} =~ "darwin" ]]; then
       runFunction installHomebrew
