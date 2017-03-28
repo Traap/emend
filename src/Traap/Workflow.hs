@@ -8,11 +8,9 @@
 
 module Traap.Workflow (orchestrate) where
 
-import           Control.Monad
 import qualified Data.ByteString as BL
 import qualified Data.Text as T
 import           Data.Yaml
-import           System.Directory
 import           System.Process
 import           Traap.DataTypes
 
@@ -48,15 +46,8 @@ makeSymLink s = mapM_ (system' . T.unpack) $ toSymlinks s CREATE
 -- | Clone repositories
 cloneRepo :: Repos -> IO ()
 cloneRepo r = do
-  mapM_ safelyRemoveDirectory $ toRepos r DELETE
+  mapM_ (system' . T.unpack) $ toRepos r DELETE
   mapM_ clone $ toRepos r CLONE
-
--- -----------------------------------------------------------------------------
--- | Safely remove the directory and all sub-folders.
-safelyRemoveDirectory :: T.Text -> IO ()
-safelyRemoveDirectory (T.unpack -> f) = do
-  b <- doesDirectoryExist f
-  Control.Monad.when b $ removeDirectoryRecursive f
 
 -- -----------------------------------------------------------------------------
 -- | Clone a repository.

@@ -83,7 +83,7 @@ toRepo REPO {..} a = map (\p -> toPath url p a) paths
 toPath :: T.Text -> Path -> Action -> T.Text
 toPath u p a = case a of
   CLONE -> mconcat ["git clone ", u, "/", source p, " ", target p]
-  DELETE -> mconcat [target p]
+  DELETE -> mconcat ["sudo rm -rfv", " ", target p]
   _ -> error "toPath Action must be [CLONE | DELETE]."
 
 -- -----------------------------------------------------------------------------
