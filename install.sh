@@ -21,15 +21,15 @@ main() {
     showHelp
   elif [ $allFlag == 1 ]; then
     if [[ ${OSTYPE} =~ "linux" ]]; then
+      runFunction aptUdate
       runFunction installHaskell 
-      runFunction runBootstrap
     elif [[ ${OSTYPE} =~ "darwin" ]]; then
       runFunction installHomebrew
       runFunction installHaskell 
-      runFunction runBootstrap
     else
-      echo "${OSTYPE} is not supported.  It probably never will be either!"
-    fi  
+      exitProgram
+    fi
+    runFunction runBootstrap
   else
     runFunction $fctToRun
   fi
@@ -106,10 +106,54 @@ runFunction() {
 }
 
 # ------------------------------------------------------------------------------
+# A function to exit this program and print a message. 
+# ------------------------------------------------------------------------------
+exitProgram() {
+  echo "${OSTYPE} is not installed.  Program exiting."
+  exit;
+}
+
+# ------------------------------------------------------------------------------
+# A function to to apt-get update Linux 
+# ------------------------------------------------------------------------------
+aptUpdate() {
+  if [[ ${OSTYPE} =~ "linux" ]]; then
+    curl -sSL https://get.haskellstack.org/ | sh
+  else
+    exitProgram
+  fi
+}
+
+# ------------------------------------------------------------------------------
+# A function to install Haskell dependencies. 
+# ------------------------------------------------------------------------------
+haskellDependencies() {
+  if [[ ${OSTYPE} =~ "linux" ]]; then
+    sudo apt-get -y install \
+      g++ \
+      gcc \
+      libc6-dev \
+      libffi-dev \
+      libgmp-dev \
+      make \
+      xz-utils \
+      zlib1g-dev \
+      gnupg \
+      python
+  else
+    exitProgram
+  fi
+}
+
+# ------------------------------------------------------------------------------
 # A function to install Homebrew.
 # ------------------------------------------------------------------------------
 installHomebrew() {
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  if [[ ${OSTYPE} =~ "darwin" ]]; then
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  else
+    exitProgram
+  fi
 }
 
 # ------------------------------------------------------------------------------
@@ -117,19 +161,13 @@ installHomebrew() {
 # ------------------------------------------------------------------------------
 installHaskell() {
   if [[ ${OSTYPE} =~ "linux" ]]; then
+    haskellDependencies
     curl -sSL https://get.haskellstack.org/ | sh
   elif [[ ${OSTYPE} =~ "darwin" ]]; then
-     brew cask install haskell-platform
+    brew cask install haskell-platform
   else
-   echo "${OSTYPE} is not installed.  Program exiting."
+    exitProgram 
   fi
-}
-
-# ------------------------------------------------------------------------------
-# A function to install tmux
-# ------------------------------------------------------------------------------
-installTmux() {
-  sudo apt-get install tmux 
 }
 
 # ------------------------------------------------------------------------------
@@ -146,7 +184,7 @@ runBootstrap() {
     cabal install
     ~/Library/Haskell/bin/bootstrap -f bootstrap.yaml
   else
-   echo "${OSTYPE} is not installed.  Program exiting."
+    exitProgram 
   fi
 
 }

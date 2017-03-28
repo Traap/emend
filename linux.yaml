@@ -13,14 +13,7 @@ installations:
       # Libraries Haskell Platform compiles and links with.
       #
       - sudo: true 
-        program: apt-get 
-        argument: install g++ gcc libc6-dev libffi-dev libgmp-dev 
-      - sudo: true 
-        program: apt-get 
-        argument: install dev make xz-utils zlib1g-dev
-      - sudo: true 
-        program: apt-get 
-        argument: install gnupg python
+        program: sudo apt-get -y install g++ gcc libc6-dev libffi-dev libgmp-dev make xz-utils zlib1g-dev gnupg python
       #
       # Build Vim from source 
       #
@@ -37,7 +30,13 @@ installations:
         program: make
         argument: -f ${HOME}/vim/src install
       #
-      # Tmux
+      #
+      # Install Tmux 
+      #
+      - sudo: true 
+        program: apt-get 
+        argument: install tmux 
+      # Tmux plugins
       #
       - sudo: false
         program: ${HOME}/.tmux/plugins/tpm/bin/install_plugins
