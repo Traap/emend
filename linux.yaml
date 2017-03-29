@@ -21,7 +21,7 @@ installations:
       - sudo: false
         program: cd ${HOME}/vim &&
         argument: ./configure --with-features=huge --enable-cscope --enable-gui=gnome2
-      - sudo: true
+      - sudo: false 
         program: cd ${HOME}/vim &&
         argument: make install
       #
