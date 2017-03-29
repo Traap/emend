@@ -19,11 +19,11 @@ installations:
         program: git
         argument: clone http://GitHub.com/vim/vim ${HOME}/vim
       - sudo: false
-        program: . ${HOME}/vim/configure
-        argument: --with-features=huge --enable-cscope --enable-gui=gnome2
+        program: cd ${HOME}/vim
+        argument: ./configure --with-features=huge --enable-cscope --enable-gui=gnome2
       - sudo: true
-        program: make
-        argument: -f ${HOME}/vim/src install
+        program: cd ${HOME}/vim
+        argument: make install
       #
       # Install Tmux
       #
