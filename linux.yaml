@@ -10,6 +10,12 @@ installations:
         program: apt-get
         argument: update
       #
+      # clang format 
+      #
+      - sudo: true
+        program: apt-get
+        argument: install clang-format 
+      #
       # Build Vim from source
       #
       - sudo: true

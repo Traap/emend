@@ -55,6 +55,9 @@ symlinks:
   - file: ~/git/vim/vimrc_background
     link: ~/.vimrc_background
     directory: false
+
+  - file: ~/git/cxxtest/cxxtest
+    link: /usr/local/include/cxxtest
 # -------------------------------------------------------------------------- }}}
 # {{{ Repositories
 repos:
@@ -90,4 +93,7 @@ repos:
 
       - source: magicmonty/bash-git-prompt
         target: ~/.bash-git-prompt
+
+      - source: CxxTest/cxxtest
+        target: ~/git/cxxtest
 # -------------------------------------------------------------------------- }}}
