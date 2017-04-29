@@ -15,51 +15,54 @@ fctTorun="";  # The function the uses requested to run.
 # ------------------------------------------------------------------------------
 # Orchestrate the show.
 # ------------------------------------------------------------------------------
-main {
+function main {
+  if [[ ${OSTYPE} =~ "linux" ]]; then
+    source linux/install.sh
+  elif [[ ${OSTYPE} =~ "darwin" ]]; then
+    source darwin/install.sh
+  else
+    exitProgram
+  fi
+
   parseOptions $@
+
   if [ $helpFlag == 1 -o $errorFlag == 1 ]; then
     showHelp
   elif [ $allFlag == 1 ]; then
-    if [[ ${OSTYPE} =~ "linux" ]]; then
-      source linux/install.sh
-    elif [[ ${OSTYPE} =~ "darwin" ]]; then
-      source darwin/install.sh
-    else
-      exitProgram
-    fi
     runFunction orchestrate
   else
     runFunction $fctToRun
   fi
 }
+
 # ------------------------------------------------------------------------------
 # 
 # ------------------------------------------------------------------------------
-orchestrate {
-    funFunction beforeInstall
-    runFunction install
-    runFunction runBootstrap
-    runFunction afterInstall
+function orchestrate {
+  runFunction beforeInstall
+  runFunction install
+  runFunction runBootstrap
+  runFunction afterInstall
 }
 
 # ------------------------------------------------------------------------------
 # 
 # ------------------------------------------------------------------------------
-beforeInstall {
+function beforeInstall {
   runFunction _beforeInstall
 }
 
 # ------------------------------------------------------------------------------
 # 
 # ------------------------------------------------------------------------------
-install {
+function install {
   runFunction _install
 }
 
 # ------------------------------------------------------------------------------
 # A function to bootstrap your personalization.  
 # ------------------------------------------------------------------------------
-runBootstrap {
+function runBootstrap {
   cd ${HOME}/bootstrap
   _runBootstrap
 }
@@ -67,14 +70,14 @@ runBootstrap {
 # ------------------------------------------------------------------------------
 # 
 # ------------------------------------------------------------------------------
-afterInstall {
+function afterInstall {
   runFunction _afterInstall
 }
 
 # ------------------------------------------------------------------------------
 # Show the help text for the script and then terminate execution.
 # ------------------------------------------------------------------------------
-showHelp {
+function showHelp {
    echo
    echo "Usage: install [OPTIONS]"
    echo "Run install to bootstrap a configurable bootstraper."
@@ -101,7 +104,7 @@ showHelp {
 # Arguments:
 # A non-empty array containing the command line options.
 # ------------------------------------------------------------------------------
-parseOptions {
+function parseOptions {
     # Iterate through the list of options.
     for var in "$@"
     do
@@ -134,7 +137,7 @@ parseOptions {
 # #Arguments:
 # $1 is the function to run
 # ------------------------------------------------------------------------------
-runFunction {
+function runFunction {
   cd ${HMST_ROOT}
   echo "*** Entering runFunction with" $1
   time $1
@@ -145,12 +148,10 @@ runFunction {
 # ------------------------------------------------------------------------------
 # A function to exit this program and print a message. 
 # ------------------------------------------------------------------------------
-exitProgram {
+function exitProgram {
   echo "${OSTYPE} is not installed.  Program exiting."
   exit;
 }
-
-
 
 # ------------------------------------------------------------------------------
 # Kick start this script.
