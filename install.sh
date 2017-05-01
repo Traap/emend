@@ -15,24 +15,63 @@ fctTorun="";  # The function the uses requested to run.
 # ------------------------------------------------------------------------------
 # Orchestrate the show.
 # ------------------------------------------------------------------------------
-main() {
+function main {
+  if [[ ${OSTYPE} =~ "linux" ]]; then
+    source linux/install.sh
+  elif [[ ${OSTYPE} =~ "darwin" ]]; then
+    source darwin/install.sh
+  else
+    exitProgram
+  fi
+
   parseOptions $@
+
   if [ $helpFlag == 1 -o $errorFlag == 1 ]; then
     showHelp
   elif [ $allFlag == 1 ]; then
-    if [[ ${OSTYPE} =~ "linux" ]]; then
-      runFunction aptUpdate
-      runFunction installHaskell 
-    elif [[ ${OSTYPE} =~ "darwin" ]]; then
-      runFunction installHomebrew
-      runFunction installHaskell 
-    else
-      exitProgram
-    fi
-    runFunction runBootstrap
+    runFunction orchestrate
   else
     runFunction $fctToRun
   fi
+}
+
+# ------------------------------------------------------------------------------
+# 
+# ------------------------------------------------------------------------------
+function orchestrate {
+  runFunction beforeInstall
+  runFunction install
+  runFunction runBootstrap
+  runFunction afterInstall
+}
+
+# ------------------------------------------------------------------------------
+# 
+# ------------------------------------------------------------------------------
+function beforeInstall {
+  runFunction _beforeInstall
+}
+
+# ------------------------------------------------------------------------------
+# 
+# ------------------------------------------------------------------------------
+function install {
+  runFunction _install
+}
+
+# ------------------------------------------------------------------------------
+# A function to bootstrap your personalization.  
+# ------------------------------------------------------------------------------
+function runBootstrap {
+  cd ${HOME}/bootstrap
+  _runBootstrap
+}
+
+# ------------------------------------------------------------------------------
+# 
+# ------------------------------------------------------------------------------
+function afterInstall {
+  runFunction _afterInstall
 }
 
 # ------------------------------------------------------------------------------
@@ -49,8 +88,9 @@ function showHelp {
    echo "  --debug         Echo enviroment variables to sysout."
    echo
    echo "  --function=     Internal function name to run."
-   echo "             installHaskell"
-   echo "             installHomeBrew"
+   echo "             beforeInstall"
+   echo "             install"
+   echo "             afterInstall"
    echo
    echo "  --help          Display this help message."
 }
@@ -97,7 +137,7 @@ function parseOptions {
 # #Arguments:
 # $1 is the function to run
 # ------------------------------------------------------------------------------
-runFunction() {
+function runFunction {
   cd ${HMST_ROOT}
   echo "*** Entering runFunction with" $1
   time $1
@@ -108,85 +148,9 @@ runFunction() {
 # ------------------------------------------------------------------------------
 # A function to exit this program and print a message. 
 # ------------------------------------------------------------------------------
-exitProgram() {
+function exitProgram {
   echo "${OSTYPE} is not installed.  Program exiting."
   exit;
-}
-
-# ------------------------------------------------------------------------------
-# A function to to apt-get update Linux 
-# ------------------------------------------------------------------------------
-aptUpdate() {
-  if [[ ${OSTYPE} =~ "linux" ]]; then
-    curl -sSL https://get.haskellstack.org/ | sh
-  else
-    exitProgram
-  fi
-}
-
-# ------------------------------------------------------------------------------
-# A function to install Haskell dependencies. 
-# ------------------------------------------------------------------------------
-haskellDependencies() {
-  if [[ ${OSTYPE} =~ "linux" ]]; then
-    sudo apt-get -y install \
-      g++ \
-      gcc \
-      libc6-dev \
-      libffi-dev \
-      libgmp-dev \
-      make \
-      xz-utils \
-      zlib1g-dev \
-      gnupg \
-      python
-  else
-    exitProgram
-  fi
-}
-
-# ------------------------------------------------------------------------------
-# A function to install Homebrew.
-# ------------------------------------------------------------------------------
-installHomebrew() {
-  if [[ ${OSTYPE} =~ "darwin" ]]; then
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  else
-    exitProgram
-  fi
-}
-
-# ------------------------------------------------------------------------------
-# A function to install haskell.
-# ------------------------------------------------------------------------------
-installHaskell() {
-  if [[ ${OSTYPE} =~ "linux" ]]; then
-    haskellDependencies
-    curl -sSL https://get.haskellstack.org/ | sh
-  elif [[ ${OSTYPE} =~ "darwin" ]]; then
-    brew cask install haskell-platform
-  else
-    exitProgram 
-  fi
-}
-
-# ------------------------------------------------------------------------------
-# A function to bootstrap your personalization.  
-# ------------------------------------------------------------------------------
-runBootstrap() {
-  cd ${HOME}/bootstrap
-  if [[ ${OSTYPE} =~ "linux" ]]; then
-    stack init --force
-    stack setup
-    stack build
-    stack exec -- bootstrap
-  elif [[ ${OSTYPE} =~ "darwin" ]]; then
-    cabal install
-    ~/Library/Haskell/bin/bootstrap -f bootstrap.yaml
-  else
-    exitProgram 
-  fi
-
 }
 
 # ------------------------------------------------------------------------------
