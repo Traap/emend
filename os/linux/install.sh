@@ -2,7 +2,7 @@
 # 
 # ------------------------------------------------------------------------------
 function _beforeInstall {
-  echo 
+  echo "_beforeInstall"
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
   # sudo apt-get -y install \
   #   g++ \
@@ -21,6 +21,7 @@ function _beforeInstall {
 # 
 # ------------------------------------------------------------------------------
 function _install {
+  echo "_install"
   brew cask install haskell-platform
 }
 
@@ -37,6 +38,6 @@ function _runBootstrap {
 # ------------------------------------------------------------------------------
 # 
 # ------------------------------------------------------------------------------
-function afterInstall { 
-  echo 
+function _afterInstall { 
+  echo "_afterInstall"
 }

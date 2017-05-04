@@ -2,6 +2,7 @@
 # 
 # ------------------------------------------------------------------------------
 function _beforeInstall {
+  echo "_beforeInstall"
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
@@ -9,6 +10,7 @@ function _beforeInstall {
 # 
 # ------------------------------------------------------------------------------
 function _install {
+  echo "_install"
   brew cask install haskell-platform
 }
 
@@ -16,6 +18,7 @@ function _install {
 # 
 # ------------------------------------------------------------------------------
 function _runBootstrap {
+  echo "_runBootstrap"
   cabal install
   ~/Library/Haskell/bin/bootstrap -f bootstrap.yaml
 }
@@ -24,5 +27,5 @@ function _runBootstrap {
 # 
 # ------------------------------------------------------------------------------
 function _afterInstall {
-  echo
+  echo "_afterInstall"
 }
