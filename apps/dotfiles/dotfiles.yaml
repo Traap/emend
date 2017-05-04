@@ -1,0 +1,24 @@
+# {{{ Symbolic Links
+symlinks:  
+  - file: ~/git/dotfiles/bash_profile
+    link: ~/.bash_profile
+    directory: false
+
+  - file: ~/git/dotfiles/bashrc
+    link: ~/.bashrc
+    directory: false
+
+  - file: ~/git/dotfiles/inputrc
+    link: ~/.inputrc
+    directory: false
+
+# -------------------------------------------------------------------------- }}}
+# {{{ Repositories
+repos:
+  - repo:
+    url: http://github.com
+    paths:
+      - source: Traap/dotfiles
+        target: ~/git/dotfiles
+
+# -------------------------------------------------------------------------- }}}

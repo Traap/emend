@@ -17,9 +17,9 @@ fctTorun="";  # The function the uses requested to run.
 # ------------------------------------------------------------------------------
 function main {
   if [[ ${OSTYPE} =~ "linux" ]]; then
-    source linux/install.sh
+    source os/linux/install.sh
   elif [[ ${OSTYPE} =~ "darwin" ]]; then
-    source darwin/install.sh
+    source os/darwin/install.sh
   else
     exitProgram
   fi

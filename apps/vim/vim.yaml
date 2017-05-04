@@ -19,6 +19,7 @@ symlinks:
   - file: ~/git/vim/vimrc_background
     link: ~/.vimrc_background
     directory: false
+
 # -------------------------------------------------------------------------- }}}
 # {{{ Repositories
 repos:
@@ -30,19 +31,21 @@ repos:
 
       - source: junegunn/vim-plug
         target: ~/git/vim/autoload/vim-plug
+
 # -------------------------------------------------------------------------- }}}
-# {{{ Installations 
+# {{{ Installations
 installations:
  - os:
-   name: darwin 
+   name: darwin
    command:
       - sudo: false
         program: brew
-        argument: install Caskroom/cask/xquartz 
+        argument: install Caskroom/cask/xquartz
       - sudo: false
         program: brew
         argument: install vim --with-client-server
       - sudo: false
         program: vim
         argument: +PlugInstall! +PlugClean +qall
+
 # -------------------------------------------------------------------------- }}}
