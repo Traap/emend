@@ -4,9 +4,26 @@
 function _beforeInstall {
   echo "_beforeInstall"
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
+
+  # Linuxbrew recommends build-essential after its installation completes.
   sudo apt-get install build-essential
+
+  # Make linuxbrew binary known to this shell.
   PATH="$HOME/.linuxbrew/bin:$PATH"
-  brew install gcc
+
+  # These applications are needed install haskell-stack and build bootstrap 
+  # using stack build.
+  sudo apt-get -y install \
+    g++ \
+    gcc \
+    libc-dev \
+    libffi-dev \
+    libgmp-dev \
+    make \
+    xy-utils \
+    zlib1g-dev \
+    gnupg \
+    python
 }
 
 # ------------------------------------------------------------------------------
