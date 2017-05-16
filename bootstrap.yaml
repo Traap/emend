@@ -98,3 +98,33 @@ repos:
       - source: CxxTest/cxxtest
         target: ~/git/cxxtest
 # -------------------------------------------------------------------------- }}}
+# {{{ Installations 
+installations:
+ - os:
+   name: darwin 
+   command:
+      - sudo: false
+        program: brew
+        argument: install bash-git-prompt mutt 
+      - sudo: false
+        program: brew
+        argument: install Caskroom/cask/xquartz 
+      - sudo: false
+        program: brew
+        argument: install vim --with-client-server
+      - sudo: false
+        program: brew
+        argument: install tmux 
+      - sudo: false
+        program: ${HOME}/.tmux/plugins/tpm/bin/install_plugins
+        argument: all
+      - sudo: false
+        program: vim
+        argument: +PlugInstall! +PlugClean +qall
+      - sudo: false
+        program: chmod
+        argument: 600 ${HOME}/.ssh/*
+      - sudo: false 
+        program: base16_woodland
+        argument: " "
+# -------------------------------------------------------------------------- }}}
