@@ -3,29 +3,84 @@
 # License BSD-3-Clause
 
 require 'optparse'
+require 'ostruct'
+require 'pp'
 
-options = {}
+# ------------------------------------------------------------------------------
+class CommandLineOptions
+  Version = '1.0.0'
 
-OptionParser.new do |opts|
-  opts.banner = "Usage: example.rb [options]"
+  attr_accessor :verbose, :dryrun, :filename
+  attr_reader :parser, :options
 
-  opts.on("-v", "--verbose", "Verbose") do |v|
-   options[:verbose] = v
+# ------------------------------------------------------------------------------
+  def initialize
+    self.verbose = false
+    self.dryrun = false
+    self.filename = []
   end
 
-  opts.on("-d", "--dryrun", "Dryrun") do |d|
-   options[:dryrun] = d
+# ------------------------------------------------------------------------------
+  def self.parse args
+    @options = CommandLineOptions.new
+    option_parser.parse! args
+    @options
   end
 
-  opts.on("-f", "--files", "Filename[s]") do |f|
-   options[:filenames] = f
+# ------------------------------------------------------------------------------
+  def self.option_parser
+    @parser ||= OptionParser.new do |parser|
+      parser.banner = "Usage: example.rb [options]"
+      parser.separator ""
+      parser.separator "Specific options:"
+
+      help_option parser
+      dryrun_option parser
+      file_list_option parser
+      verbose_option parser
+      version_option parser
+    end
   end
 
-  opts.on("-h", "--help", "Prints this help") do
-    puts opts
-  end 
-    
-end.parse!
+# ------------------------------------------------------------------------------
+  def self.help_option parser
+    parser.on_tail("-h", "--help", "Show this message") do
+      puts parser
+      exit
+    end
+  end
 
-p options
-p ARGV
+# ------------------------------------------------------------------------------
+  def self.dryrun_option parser
+    parser.on("-d", "--dryrun", "Dryrun") do |d|
+      @options.dryrun = d
+    end
+  end
+
+# ------------------------------------------------------------------------------
+  def self.verbose_option parser
+    parser.on("-v", "--verbose", "Verbose") do |v|
+      @options.verbose = v
+    end
+  end
+
+# ------------------------------------------------------------------------------
+  def self.file_list_option parser
+    parser.on("-f", "--file x,y,x MADATORY", Array, "Filename") do |f|
+      @options.filename = f
+    end
+  end
+
+# ------------------------------------------------------------------------------
+  def self.version_option parser
+    parser.on_tail("--version", "Show version") do
+      puts Version
+      exit
+    end
+  end
+
+# ------------------------------------------------------------------------------
+end # class CommandLineOptions
+
+o = CommandLineOptions.parse ARGV
+pp o
