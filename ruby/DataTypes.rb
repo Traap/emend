@@ -1,6 +1,7 @@
 #!/usr/local/bin/ruby
 # Copyright (c) Gary Allan Howard aka Traap.
 # License BSD-3-Clause
+# ------------------------------------------------------------------------------
 
 require 'yaml'
 
@@ -25,10 +26,10 @@ class SymLink
     end
     puts ""
   end
-end
+end # End SymLink
 
 # ------------------------------------------------------------------------------
-class Repos
+class Repo
   def initialize(data)
     @data = data
   end
@@ -42,7 +43,7 @@ class Repos
     end
     puts ""
   end
-end
+end # End Repo
 
 # ------------------------------------------------------------------------------
 class Install
@@ -63,6 +64,5 @@ class Install
     end
     puts ""
   end
-end
-
+end # End Install
 # ------------------------------------------------------------------------------

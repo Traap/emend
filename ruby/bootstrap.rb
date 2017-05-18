@@ -11,12 +11,19 @@
 # A YAML file is used to define SymLinks, Repositories, and Commands to run.
 # Orchestration orders the activities 1) deleting symbolic links, cloning
 # repositories, making symbolic links, and installing programs.
+# ------------------------------------------------------------------------------
 
+require 'pp'
 require 'yaml'
-require_relative 'Workflow'
+
 require_relative 'DataTypes'
+require_relative 'Options'
+require_relative 'Workflow'
 
-yaml_file = '../bootstrap.yaml'
-
-workflow = Workflow.new(yaml_file) 
-workflow.orchestrate
+# ------------------------------------------------------------------------------
+options = CommandLineOptions.parse ARGV
+if options
+  workflow = Workflow.new(options) 
+  workflow.orchestrate
+end
+# ------------------------------------------------------------------------------

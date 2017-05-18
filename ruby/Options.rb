@@ -81,6 +81,3 @@ class CommandLineOptions
 
 # ------------------------------------------------------------------------------
 end # class CommandLineOptions
-
-o = CommandLineOptions.parse ARGV
-pp o
