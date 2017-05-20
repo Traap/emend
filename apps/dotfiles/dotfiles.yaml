@@ -1,16 +1,17 @@
 # {{{ Symbolic Links
-symlinks:  
-  - file: ~/git/dotfiles/bash_profile
-    link: ~/.bash_profile
-    directory: false
+symlinks:
+  - symlink:
+    - file: ~/git/dotfiles/bash_profile
+      link: ~/.bash_profile
+      directory: false
 
-  - file: ~/git/dotfiles/bashrc
-    link: ~/.bashrc
-    directory: false
+    - file: ~/git/dotfiles/bashrc
+      link: ~/.bashrc
+      directory: false
 
-  - file: ~/git/dotfiles/inputrc
-    link: ~/.inputrc
-    directory: false
+    - file: ~/git/dotfiles/inputrc
+      link: ~/.inputrc
+      directory: false
 
 # -------------------------------------------------------------------------- }}}
 # {{{ Repositories

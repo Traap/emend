@@ -6,39 +6,73 @@
 require 'yaml'
 
 # ------------------------------------------------------------------------------
-class SymLink
-  def initialize(data)
+class Command
+  def initialize(data, options)
     @data = data
+    @options = options 
+    @command = nil
+  end
+  
+  def install_artifact; end
+
+  def remove_artifact; end
+
+  def do_command
+    dryrun_command if @options.verbose || @options.dryrun
+    run_command    if !@options.dryrun
   end
 
-  def delete_symlinks
+  def dryrun_command
+    puts @command
+  end
+
+  def run_command
+    puts "System command: #{@command}"
+  end
+
+end # End Command
+
+# ------------------------------------------------------------------------------
+class SymLink < Command
+  def initialize(data, options)
+    super(data, options)
+  end
+
+  def remove_artifact 
     puts "Deleting symbolic links"
     @data.each do |n|
-       puts "rm -frv #{n['link']}"
+      n['symlink'].each do |s|
+       @command = "rm -frv #{s['link']}"
+       do_command
+      end
     end
     puts ""
   end
 
-  def make_symlinks
+  def install_artifact 
     puts "Making symbolic links"
     @data.each do |n|
-      puts "rm -frv #{n['link']}"
+      n['symlink'].each do |s|
+        @command = "ln -s #{s['file']} #{s['link']}"
+        do_command
+      end
     end
     puts ""
   end
 end # End SymLink
 
 # ------------------------------------------------------------------------------
-class Repo
-  def initialize(data)
-    @data = data
+class Repo < Command
+  def initialize(data, options)
+    super(data, options)
   end
 
-  def clone_repository
+  def install_artifact 
     puts "Cloning repositories"
     @data.each do |n|
       n['paths'].each do |p|
-        puts "git clone #{n['url']}/#{p['source']} #{p['target']}"
+        @command = "git clone #{n['url']}/#{p['source']} #{p['target']}"
+        do_command
       end
     end
     puts ""
@@ -46,20 +80,21 @@ class Repo
 end # End Repo
 
 # ------------------------------------------------------------------------------
-class Install
-  def initialize(data)
-    @data = data
+class Install < Command
+  def initialize(data, options)
+    super(data, options)
   end
   
-  def install_programs
+  def install_artifact
     puts "Installing programs"
     @data.each do |n|
       n['command'].each do |c|
         if c['sudo'] then
-          puts "sudo #{c['program']} #{c['argument']}"
+          @command = "sudo #{c['program']} #{c['argument']}"
         else
-          puts "#{c['program']} #{c['argument']}"
+          @command ="#{c['program']} #{c['argument']}"
         end
+        do_command
       end
     end
     puts ""

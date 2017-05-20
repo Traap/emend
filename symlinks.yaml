@@ -1,62 +1,63 @@
 # {{{ Symbolic Links
-symlinks:  
-  - file: ~/git/dotfiles/bash_profile
-    link: ~/.bash_profile
-    directory: false
+symlinks:
+  - symlink:
+    - file: ~/git/dotfiles/bash_profile
+      link: ~/.bash_profile
+      directory: false
 
-  - file: ~/git/dotfiles/bashrc
-    link: ~/.bashrc
-    directory: false
+    - file: ~/git/dotfiles/bashrc
+      link: ~/.bashrc
+      directory: false
 
-  - file: ~/git/ssh/config.vim
-    link: ~/.config.vim
-    directory: false
+    - file: ~/git/ssh/config.vim
+      link: ~/.config.vim
+      directory: false
 
-  - file: ~/git/ssh/gitconfig
-    link: ~/.gitconfig
-    directory: false
+    - file: ~/git/ssh/gitconfig
+      link: ~/.gitconfig
+      directory: false
 
-  - file: ~/git/ssh/gitignore_global
-    link: ~/.gitignore_global
-    directory: false
+    - file: ~/git/ssh/gitignore_global
+      link: ~/.gitignore_global
+      directory: false
 
-  - file: ~/git/vim/gvimrc
-    link: ~/.gvimrc
-    directory: false
+    - file: ~/git/vim/gvimrc
+      link: ~/.gvimrc
+      directory: false
 
-  - file: ~/git/dotfiles/inputrc
-    link: ~/.inputrc
-    directory: false
+    - file: ~/git/dotfiles/inputrc
+      link: ~/.inputrc
+      directory: false
 
-  - file: ~/git/ssh
-    link: ~/.ssh
-    directory: true
+    - file: ~/git/ssh
+      link: ~/.ssh
+      directory: true
 
-  - file: ~/git/tmux
-    link: ~/.tmux
-    directory: true
+    - file: ~/git/tmux
+      link: ~/.tmux
+      directory: true
 
-  - file: ~/git/tmux/tmux.conf
-    link: ~/.tmux.conf
-    directory: false
+    - file: ~/git/tmux/tmux.conf
+      link: ~/.tmux.conf
+      directory: false
 
-  - file: ~/git/vim
-    link: ~/.vim
-    directory: true
+    - file: ~/git/vim
+      link: ~/.vim
+      directory: true
 
-  - file: ~/git/vim/viminfo
-    link: ~/.viminfo
-    directory: false
+    - file: ~/git/vim/viminfo
+      link: ~/.viminfo
+      directory: false
 
-  - file: ~/git/vim/vimrc
-    link: ~/.vimrc
-    directory: false
+    - file: ~/git/vim/vimrc
+      link: ~/.vimrc
+      directory: false
 
-  - file: ~/git/vim/vimrc_background
-    link: ~/.vimrc_background
-    directory: false
+    - file: ~/git/vim/vimrc_background
+      link: ~/.vimrc_background
+      directory: false
 
-  - file: ~/git/cxxtest/cxxtest
-    link: /usr/local/include/cxxtest
-    directory: false
+    - file: ~/git/cxxtest/cxxtest
+      link: /usr/local/include/cxxtest
+      directory: false
 # -------------------------------------------------------------------------- }}}

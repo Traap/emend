@@ -1,24 +1,25 @@
 # {{{ Symbolic Links
 symlinks:
-  - file: ~/git/vim/gvimrc
-    link: ~/.gvimrc
-    directory: false
+  - symlink:
+    - file: ~/git/vim/gvimrc
+      link: ~/.gvimrc
+      directory: false
 
-  - file: ~/git/vim
-    link: ~/.vim
-    directory: true
+    - file: ~/git/vim
+      link: ~/.vim
+      directory: true
 
-  - file: ~/git/vim/viminfo
-    link: ~/.viminfo
-    directory: false
+    - file: ~/git/vim/viminfo
+      link: ~/.viminfo
+      directory: false
 
-  - file: ~/git/vim/vimrc
-    link: ~/.vimrc
-    directory: false
+    - file: ~/git/vim/vimrc
+      link: ~/.vimrc
+      directory: false
 
-  - file: ~/git/vim/vimrc_background
-    link: ~/.vimrc_background
-    directory: false
+    - file: ~/git/vim/vimrc_background
+      link: ~/.vimrc_background
+      directory: false
 
 # -------------------------------------------------------------------------- }}}
 # {{{ Repositories
@@ -44,7 +45,7 @@ installations:
       - sudo: false
         program: brew
         argument: install vim --with-client-server
-      - sudo: false
+      - sudo: false 
         program: vim
         argument: +PlugInstall! +PlugClean +qall
 

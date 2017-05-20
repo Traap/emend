@@ -16,7 +16,7 @@ class CommandLineOptions
 # ------------------------------------------------------------------------------
   def initialize
     self.verbose = false
-    self.dryrun = false
+    self.dryrun = true 
     self.filename = []
   end
 
@@ -52,8 +52,8 @@ class CommandLineOptions
 
 # ------------------------------------------------------------------------------
   def self.dryrun_option parser
-    parser.on("-d", "--dryrun", "Dryrun") do |d|
-      @options.dryrun = d
+    parser.on("-n", "--nodryrun", "No Dryrun") do |d|
+      @options.dryrun ^= d
     end
   end
 

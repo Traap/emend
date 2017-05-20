@@ -1,0 +1,38 @@
+# {{{ Repositories
+repos:
+  - repo:
+    url: http://github.com
+    paths:
+      - source: Traap/dotfiles
+        target: ~/git/dotfiles
+
+      - source: Traap/vim
+        target: ~/git/vim
+
+      - source: Traap/tmux
+        target: ~/git/tmux
+
+      - source: tmux-plugins/tpm
+        target: ~/git/tmux/plugins/tpm
+
+      - source: Traap/ssh
+        target: ~/git/ssh
+
+      - source: junegunn/vim-plug
+        target: ~/git/vim/autoload/vim-plug
+
+      - source: chriskempson/base16-gnome-terminal
+        target: ~/git/color/base16-gnome-terminal
+
+      - source: chriskempson/base16-iterm2
+        target: ~/git/color/base16-iterm2
+
+      - source: chriskempson/base16-shell
+        target: ~/git/color/base16-shell
+
+      - source: magicmonty/bash-git-prompt
+        target: ~/.bash-git-prompt
+
+      - source: CxxTest/cxxtest
+        target: ~/git/cxxtest
+# -------------------------------------------------------------------------- }}}

@@ -1,12 +1,13 @@
 # {{{ Symbolic Links
 symlinks:
-  - file: ~/git/tmux
-    link: ~/.tmux
-    directory: true
+  - symlink:
+    - file: ~/git/tmux
+      link: ~/.tmux
+      directory: true
 
-  - file: ~/git/tmux/tmux.conf
-    link: ~/.tmux.conf
-    directory: false
+    - file: ~/git/tmux/tmux.conf
+      link: ~/.tmux.conf
+      directory: false
 
 # -------------------------------------------------------------------------- }}}
 # {{{ Repositories

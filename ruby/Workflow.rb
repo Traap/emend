@@ -14,49 +14,38 @@ class Workflow
   def initialize options
     @options = options
     @yaml_file = nil
-    @symlink = nil
-    @repo = nil
-    @install = nil
+    @commands = []
   end
 
 # ------------------------------------------------------------------------------
-  def parse_yaml_file(yaml_file)
-    puts "Parsing #{yaml_file}"
-    @yaml_file = YAML.load(File.open(yaml_file))
-    @yaml_file.each do |k,v|
-      v.each do |n|
-        case k
-        when "symlinks"
-          @symlink = SymLink.new(v)
-        when "repos"
-          @repo = Repo.new(v)
-        when "installations"
-          @install = Install.new(v)
-        else
-          puts "#{k} is not supported."
-        end
+  def orchestrate
+    @options.filename.each do |f|
+      parse_yaml_file f
+
+      @commands.each do |c| 
+        c.remove_artifact
+        c.install_artifact
       end
     end
   end
 
 # ------------------------------------------------------------------------------
-  def orchestrate
-    puts "orchestrate"
-
-    @options.filename.each do |f|
-      parse_yaml_file f
-
-      if @symlink 
-        @symlink.delete_symlinks
-      end
-      if @repo
-        @repo.clone_repository
-      end 
-      if @symlink 
-        @symlink.make_symlinks
-      end
-      if @install
-        @install.install_programs
+  def parse_yaml_file(yaml_file)
+    puts "Parsing #{yaml_file}"
+    @commands = []
+    @yaml_file = YAML.load(File.open(yaml_file))
+    @yaml_file.each do |k,v|
+      v.each do |n|
+        case k
+        when "symlinks"
+          @commands << SymLink.new(v, @options)
+        when "repos"
+          @commands << Repo.new(v, @options)
+        when "installations"
+          @commands << Install.new(v, @options)
+        else
+          puts "#{k} is not supported."
+        end
       end
     end
   end

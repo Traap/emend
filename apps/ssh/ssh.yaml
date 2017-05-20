@@ -1,20 +1,21 @@
 # {{{ Symbolic Links
 symlinks:  
-  - file: ~/git/ssh/config.vim
-    link: ~/.config.vim
-    directory: false
+  - symlink:  
+    - file: ~/git/ssh/config.vim
+      link: ~/.config.vim
+      directory: false
 
-  - file: ~/git/ssh/gitconfig
-    link: ~/.gitconfig
-    directory: false
+    - file: ~/git/ssh/gitconfig
+      link: ~/.gitconfig
+      directory: false
 
-  - file: ~/git/ssh/gitignore_global
-    link: ~/.gitignore_global
-    directory: false
+    - file: ~/git/ssh/gitignore_global
+      link: ~/.gitignore_global
+      directory: false
 
-  - file: ~/git/ssh
-    link: ~/.ssh
-    directory: true
+    - file: ~/git/ssh
+      link: ~/.ssh
+      directory: true
 
 # -------------------------------------------------------------------------- }}}
 # {{{ Repositories
