@@ -24,7 +24,7 @@ class Command
 
   def do_command
     echo_command if @options.verbose || @options.dryrun
-    run_command    if !@options.dryrun
+    run_command  if !@options.dryrun
   end
 
   def echo_command
@@ -33,29 +33,9 @@ class Command
 
   def run_command
     begin
-      puts system_command(command)
+      status = system(@command)
     rescue ShellError
-      abort "System command failed."
-    end
-  end
-
-  def system_command(*cmd)
-    exit_status=nil
-    err=nil
-    out=nil
-    Open3.popen3(*cmd) do |stdin, stdout, stderr, wait_thread|
-      err = stderr.gets(nil)
-      out = stdout.gets(nil)
-      [stdin, stdout, stderr].each{|stream| stream.send('close')}
-      exit_status = wait_thread.value
-    end
-    if exit_status.to_i > 0
-      err = err.chomp if err
-      raise ShellError, err
-    elsif out
-      return out.chomp
-    else
-      return true
+      abort "System command failed: #{status}"
     end
   end
 
