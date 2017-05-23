@@ -24,7 +24,7 @@ function _install {
 # ------------------------------------------------------------------------------
 function _runBootstrap {
   echo "_runBootstrap"
-  ruby ruby/bootstrap.rb --file ruby/apps/dotfiles/dotfiles.yaml -v
+  ruby ruby/bootstrap.rb --file apps/dotfiles/dotfiles.yaml -v
 }
 
 # ------------------------------------------------------------------------------
