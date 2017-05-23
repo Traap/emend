@@ -11,7 +11,6 @@ function _beforeInstall {
 # ------------------------------------------------------------------------------
 function _install {
   echo "_install"
-  brew cask install haskell-platform
 }
 
 # ------------------------------------------------------------------------------
@@ -19,8 +18,7 @@ function _install {
 # ------------------------------------------------------------------------------
 function _runBootstrap {
   echo "_runBootstrap"
-  cabal install
-  ~/Library/Haskell/bin/bootstrap -f bootstrap.yaml
+  ruby ruby/bootstrap.rb --file ruby/apps/dotfiles/dotfiles.yaml -v
 }
 
 # ------------------------------------------------------------------------------

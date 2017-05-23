@@ -1,6 +1,3 @@
-u!/usr/local/bin/ruby
-otstrap.rb --file ../apps/vim/vim.yaml
-
 # Copyright (c) Gary Allan Howard aka Traap.
 # License BSD-3-Clause
 

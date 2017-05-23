@@ -10,20 +10,6 @@ function _beforeInstall {
 
   # Make linuxbrew binary known to this shell.
   PATH="$HOME/.linuxbrew/bin:$PATH"
-
-  # These applications are needed install haskell-stack and build bootstrap 
-  # using stack build.
-  sudo apt-get -y install \
-    g++ \
-    gcc \
-    libc-dev \
-    libffi-dev \
-    libgmp-dev \
-    make \
-    xy-utils \
-    zlib1g-dev \
-    gnupg \
-    python
 }
 
 # ------------------------------------------------------------------------------
@@ -31,9 +17,6 @@ function _beforeInstall {
 # ------------------------------------------------------------------------------
 function _install {
   echo "_install"
-  brew install haskell-stack
-  stack init --force
-  stack build
 }
 
 # ------------------------------------------------------------------------------
@@ -41,7 +24,7 @@ function _install {
 # ------------------------------------------------------------------------------
 function _runBootstrap {
   echo "_runBootstrap"
-  stack exec -- bootstrap
+  ruby ruby/bootstrap.rb --file ruby/apps/dotfiles/dotfiles.yaml -v
 }
 
 # ------------------------------------------------------------------------------
