@@ -3,7 +3,12 @@
 # License BSD-3-Clause
 # ------------------------------------------------------------------------------
 
+require 'open3'
 require 'yaml'
+
+# ------------------------------------------------------------------------------
+
+class ShellError < StandardError; end
 
 # ------------------------------------------------------------------------------
 class Command
@@ -18,16 +23,40 @@ class Command
   def remove_artifact; end
 
   def do_command
-    dryrun_command if @options.verbose || @options.dryrun
+    echo_command if @options.verbose || @options.dryrun
     run_command    if !@options.dryrun
   end
 
-  def dryrun_command
+  def echo_command
     puts @command
   end
 
   def run_command
-    puts "System command: #{@command}"
+    begin
+      puts system_command(command)
+    rescue ShellError
+      abort "System command failed."
+    end
+  end
+
+  def system_command(*cmd)
+    exit_status=nil
+    err=nil
+    out=nil
+    Open3.popen3(*cmd) do |stdin, stdout, stderr, wait_thread|
+      err = stderr.gets(nil)
+      out = stdout.gets(nil)
+      [stdin, stdout, stderr].each{|stream| stream.send('close')}
+      exit_status = wait_thread.value
+    end
+    if exit_status.to_i > 0
+      err = err.chomp if err
+      raise ShellError, err
+    elsif out
+      return out.chomp
+    else
+      return true
+    end
   end
 
 end # End Command
