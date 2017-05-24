@@ -140,7 +140,7 @@ function parseOptions {
 function runFunction {
   cd ${HMST_ROOT}
   echo "*** Entering runFunction with" $1
-  time $1
+  $1
   echo "*** Exiting runFuction with" $1
   cd ${HMST_ROOT}
 }
