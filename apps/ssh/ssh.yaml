@@ -27,3 +27,16 @@ repos:
         target: ~/git/ssh
 
 # -------------------------------------------------------------------------- }}}
+# {{{ Installations
+installations:
+ - os:
+   name: any 
+   command:
+      - sudo: false
+        program: git 
+        argument: config --global user.name "Traap" 
+      - sudo: false
+        program: git 
+        argument: config --global user.email gary.a.howard@mac.com 
+
+# -------------------------------------------------------------------------- }}}

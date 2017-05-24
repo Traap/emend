@@ -23,3 +23,13 @@ repos:
         target: ~/git/dotfiles
 
 # -------------------------------------------------------------------------- }}}
+# {{{ Installations
+installations:
+ - os:
+   name: any 
+   command:
+      - sudo: false
+        program: source 
+        argument: ~/bashrc 
+
+# -------------------------------------------------------------------------- }}}
