@@ -9,7 +9,7 @@ function _beforeInstall {
   sudo apt-get install build-essential
 
   # Make linuxbrew binary known to this shell.
-  PATH="/home/.linuxbrew/bin:$PATH"
+  PATH="$HOME/.linuxbrew/bin:$PATH"
 }
 
 # ------------------------------------------------------------------------------
