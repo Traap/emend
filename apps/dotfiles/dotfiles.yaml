@@ -30,6 +30,6 @@ installations:
    command:
       - sudo: false
         program: source 
-        argument: ~/bashrc 
+        argument: ~/.bashrc 
 
 # -------------------------------------------------------------------------- }}}
