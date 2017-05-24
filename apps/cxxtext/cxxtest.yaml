@@ -1,0 +1,17 @@
+# {{{ Symbolic Links
+symlinks:
+  - symlink:
+    - file: ~/git/cxxtest/cxxtest
+      link: /usr/local/include/cxxtest
+      directory: false
+
+# -------------------------------------------------------------------------- }}}
+# {{{ Repositories
+repos:
+  - repo:
+    url: http://github.com
+    paths:
+      - source: CxxTest/cxxtest
+        target: ~/git/cxxtest
+
+# -------------------------------------------------------------------------- }}}

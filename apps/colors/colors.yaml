@@ -1,0 +1,15 @@
+# {{{ Repositories
+repos:
+  - repo:
+    url: http://github.com
+    paths:
+      - source: chriskempson/base16-gnome-terminal
+        target: ~/git/color/base16-gnome-terminal
+
+      - source: chriskempson/base16-iterm2
+        target: ~/git/color/base16-iterm2
+
+      - source: chriskempson/base16-shell
+        target: ~/git/color/base16-shell
+
+# -------------------------------------------------------------------------- }}}

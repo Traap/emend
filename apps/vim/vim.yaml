@@ -42,6 +42,9 @@ installations:
       # - sudo: false
       #   program: brew
       #   argument: install Caskroom/cask/xquartz
+ - os:
+   name: any 
+   command:
       - sudo: false
         program: brew
         argument: install vim --with-client-server
