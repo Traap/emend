@@ -19,10 +19,11 @@ symlinks:
 
 # -------------------------------------------------------------------------- }}}
 # {{{ Repositories
-#repos:
-#  - repo:
-#    url: http://github.com
-#    paths:
-#      - source: Traap/ssh
-#        target: ~/git/ssh
+repos:
+  - repo:
+    url: http://github.com
+    paths:
+      - source: Traap/ssh
+        target: ~/git/ssh
+
 # -------------------------------------------------------------------------- }}}
