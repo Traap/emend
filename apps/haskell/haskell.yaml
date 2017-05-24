@@ -10,7 +10,7 @@ installations:
  - os:
    name: linux 
    command:
-      - sudo: false
+      - sudo: true 
         program: apt-get 
         argument:  install haskell-platform
 
