@@ -39,9 +39,9 @@ installations:
  - os:
    name: darwin
    command:
-      - sudo: false
-        program: brew
-        argument: install Caskroom/cask/xquartz
+      # - sudo: false
+      #   program: brew
+      #   argument: install Caskroom/cask/xquartz
       - sudo: false
         program: brew
         argument: install vim --with-client-server
