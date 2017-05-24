@@ -10,13 +10,31 @@ $ git clone http://github.com/Traap/bootstrap.git \
       && cd bootstrap \
       && chmod +x install.sh \
       && ./install.sh --all \
-      && source ${HOME}.bashrc \
-      && vim
+      && source ${HOME}.bashrc
 ```
 
-## Dependencies 
-* [The Haskell Tool Stack](https://docs.haskellstack.org/en/stable/README/#the-haskell-tool-stack)
+## Note
+This installation instructions installs my personal dotfiles in a directory named
+~/git/dotfiles.
+
+## Custom installations:
+This example shows how to install TMUX.
+
+```bash
+cd ~\bootstrap
+ruby ruby/bootstrap.rb --nodryrun --verbose --file apps/tmux/tmux.yaml
+```
+
+# YAML File
+## Symbolic Links
+TODO:  Describe YAML syntax for Symbolic Links.
+
+## Clone Repositories
+TODO:  Describe YAML syntax for cloning repositories.
+
+## Installations
+TODO:  Describe YAML syntax to install a program and or run a command.
 
 # Project Management
-Please refer to my [Lightweight Project Mangement](https://github.com/Traap/lpm)
+Please refer to my [Lightweight Project Management](https://github.com/Traap/lpm)
 for the project management strategy I use.
