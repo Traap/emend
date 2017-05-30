@@ -5,26 +5,13 @@
 #   This Travis continuous integration file is use to build and test boostrap
 #   software written in Haskell.
 
-sudo: true 
+language: ruby
 
-language: generic 
+os:
+  - linux
 
-cache:
-  directories:
-    - $HOME/.stack
-
-before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -y libgmp-dev
-  - mkdir -p ~/.local/bin
-  - export PATH=$HOME/.local/bin:$PATH
-  - travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
-
-install:
-  - stack --no-terminal --install-ghc test --only-dependencies
-
-script:
- - stack --no-terminal build
+rvm:
+  - 2.1.3
 
 notifications:
   email: false

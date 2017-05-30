@@ -1,0 +1,42 @@
+# {{{ Symbolic Links
+symlinks:  
+  - symlink:  
+    - file: ~/git/ssh/config.vim
+      link: ~/.config.vim
+      directory: false
+
+    - file: ~/git/ssh/gitconfig
+      link: ~/.gitconfig
+      directory: false
+
+    - file: ~/git/ssh/gitignore_global
+      link: ~/.gitignore_global
+      directory: false
+
+    - file: ~/git/ssh
+      link: ~/.ssh
+      directory: true
+
+# -------------------------------------------------------------------------- }}}
+# {{{ Repositories
+repos:
+  - repo:
+    url: http://github.com
+    paths:
+      - source: Traap/ssh
+        target: ~/git/ssh
+
+# -------------------------------------------------------------------------- }}}
+# {{{ Installations
+installations:
+ - os:
+   name: any 
+   command:
+      - sudo: false
+        program: git 
+        argument: config --global user.name "Traap" 
+      - sudo: false
+        program: git 
+        argument: config --global user.email gary.a.howard@mac.com 
+
+# -------------------------------------------------------------------------- }}}

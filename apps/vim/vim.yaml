@@ -1,0 +1,55 @@
+# {{{ Symbolic Links
+symlinks:
+  - symlink:
+    - file: ~/git/vim/gvimrc
+      link: ~/.gvimrc
+      directory: false
+
+    - file: ~/git/vim
+      link: ~/.vim
+      directory: true
+
+    - file: ~/git/vim/viminfo
+      link: ~/.viminfo
+      directory: false
+
+    - file: ~/git/vim/vimrc
+      link: ~/.vimrc
+      directory: false
+
+    - file: ~/git/vim/vimrc_background
+      link: ~/.vimrc_background
+      directory: false
+
+# -------------------------------------------------------------------------- }}}
+# {{{ Repositories
+repos:
+  - repo:
+    url: http://github.com
+    paths:
+      - source: Traap/vim
+        target: ~/git/vim
+
+      - source: junegunn/vim-plug
+        target: ~/git/vim/autoload/vim-plug
+
+# -------------------------------------------------------------------------- }}}
+# {{{ Installations
+installations:
+ - os:
+   name: darwin
+   command:
+      # - sudo: false
+      #   program: brew
+      #   argument: install Caskroom/cask/xquartz
+ - os:
+   name: any 
+   command:
+      - sudo: false
+        program: brew
+        argument: install vim --with-client-server
+      - sudo: false 
+        program: vim
+        argument: +PlugInstall! +PlugClean +qall
+
+# -------------------------------------------------------------------------- }}}
