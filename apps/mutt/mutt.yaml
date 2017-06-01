@@ -22,10 +22,10 @@ repos:
 # {{{ Installations
 installations:
  - os:
-   name: any 
-   command:
-      - sudo: false
-        program: brew
-        argument: install mutt
+   - name: any
+     command:
+        - sudo: false
+          program: brew
+          argument: install mutt
 
 # -------------------------------------------------------------------------- }}}

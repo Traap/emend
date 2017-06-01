@@ -21,7 +21,6 @@ class Workflow
   def orchestrate
     @options.filename.each do |f|
       parse_yaml_file f
-
       @commands.each do |c| 
         c.remove_artifact
         c.install_artifact
@@ -42,6 +41,7 @@ class Workflow
         when "repos"
           @commands << Repo.new(v, @options)
         when "installations"
+          puts "installations #{v}\n"
           @commands << Install.new(v, @options)
         else
           puts "#{k} is not supported."

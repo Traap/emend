@@ -4,6 +4,7 @@
 # ------------------------------------------------------------------------------
 
 require 'open3'
+require 'rbconfig'
 require 'yaml'
 
 # ------------------------------------------------------------------------------
@@ -97,16 +98,26 @@ class Install < Command
   def install_artifact
     puts "Installing programs"
     @data.each do |n|
-      n['command'].each do |c|
-        if c['sudo'] then
-          @command = "sudo #{c['program']} #{c['argument']}"
-        else
-          @command ="#{c['program']} #{c['argument']}"
+      n['os'].each do |o|
+        if install_on_this_os? o['name'] then
+          o['command'].each do |c|
+            if c['sudo'] then
+              @command = "sudo #{c['program']} #{c['argument']}"
+            else
+              @command ="#{c['program']} #{c['argument']}"
+            end
+            do_command
+          end
         end
-        do_command
       end
     end
     puts ""
   end
+
+  def install_on_this_os?(os)
+    return true if os == "any"
+    return true if RbConfig::CONFIG["host_os"].start_with? os
+  end
+
 end # End Install
 # ------------------------------------------------------------------------------

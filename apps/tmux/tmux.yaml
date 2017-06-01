@@ -25,14 +25,14 @@ repos:
 # {{{ Installations
 installations:
  - os:
-   name: any 
-   command:
-      - sudo: false
-        program: brew
-        argument: install tmux
-
-      - sudo: false
-        program: ${HOME}/.tmux/plugins/tpm/bin/install_plugins
-        argument: all
+   - name: any 
+     command:
+        - sudo: false
+          program: brew
+          argument: install tmux
+  
+        - sudo: false
+          program: ${HOME}/.tmux/plugins/tpm/bin/install_plugins
+          argument: all
 
 # -------------------------------------------------------------------------- }}}
