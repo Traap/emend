@@ -18,16 +18,18 @@ class Command
     @options = options 
     @command = nil
   end
-  
+ 
   def install_artifact; end
 
   def remove_artifact; end
 
-  def do_command
-    echo_command if @options.verbose || @options.dryrun
-    run_command  if !@options.dryrun
+  protected
+  def do_command(included_file)
+    echo_command if included_file || @options.verbose || @options.dryrun 
+    run_command  if included_file || !@options.dryrun 
   end
 
+  private
   def echo_command
     puts @command
   end
@@ -53,7 +55,7 @@ class SymLink < Command
     @data.each do |n|
       n['symlink'].each do |s|
        @command = "rm -frv #{s['link']}"
-       do_command
+       do_command false
       end
     end
     puts ""
@@ -64,7 +66,7 @@ class SymLink < Command
     @data.each do |n|
       n['symlink'].each do |s|
         @command = "ln -s #{s['file']} #{s['link']}"
-        do_command
+        do_command false
       end
     end
     puts ""
@@ -82,7 +84,7 @@ class Repo < Command
     @data.each do |n|
       n['paths'].each do |p|
         @command = "git clone #{n['url']}/#{p['source']} #{p['target']}"
-        do_command
+        do_command false
       end
     end
     puts ""
@@ -106,7 +108,7 @@ class Install < Command
             else
               @command ="#{c['program']} #{c['argument']}"
             end
-            do_command
+            do_command false
           end
         end
       end
@@ -128,16 +130,16 @@ class Include < Command
   end
 
   def install_artifact 
-    puts "Including files"
     @data.each do |n|
       n['file'].each do |f|
         @command ="ruby ruby/bootstrap.rb --file " + f['name']
         @command.concat " --verbose"  if @options.verbose
         @command.concat " --nodryrun" if !@options.dryrun
-        do_command
+        puts "Including file " + f['name']
+        puts
+        do_command true
       end
     end
-    puts ""
   end
 end # End Repo
 
