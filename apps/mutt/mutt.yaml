@@ -1,0 +1,31 @@
+# {{{ Symbolic Links
+symlinks:
+  - symlink:
+    - file: ~/git/mutt
+      link: ~/.mutt
+      directory: true
+
+    - file: ~/git/mutt/muttrc
+      link: ~/.muttrc
+      directory: false
+
+# -------------------------------------------------------------------------- }}}
+# {{{ Repositories
+repos:
+  - repo:
+    url: http://github.com
+    paths:
+      - source: Traap/mutt
+        target: ~/git/mutt
+
+# -------------------------------------------------------------------------- }}}
+# {{{ Installations
+installations:
+ - os:
+   name: any 
+   command:
+      - sudo: false
+        program: brew
+        argument: install mutt
+
+# -------------------------------------------------------------------------- }}}
