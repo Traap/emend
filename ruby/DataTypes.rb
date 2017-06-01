@@ -120,4 +120,25 @@ class Install < Command
   end
 
 end # End Install
+
+# ------------------------------------------------------------------------------
+class Include < Command
+  def initialize(data, options)
+    super(data, options)
+  end
+
+  def install_artifact 
+    puts "Including files"
+    @data.each do |n|
+      n['file'].each do |f|
+        @command ="ruby ruby/bootstrap.rb --file " + f['name']
+        @command.concat " --verbose"  if @options.verbose
+        @command.concat " --nodryrun" if !@options.dryrun
+        do_command
+      end
+    end
+    puts ""
+  end
+end # End Repo
+
 # ------------------------------------------------------------------------------

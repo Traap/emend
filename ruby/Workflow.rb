@@ -41,8 +41,9 @@ class Workflow
         when "repos"
           @commands << Repo.new(v, @options)
         when "installations"
-          puts "installations #{v}\n"
           @commands << Install.new(v, @options)
+        when "includes"
+          @commands << Include.new(v, @options)
         else
           puts "#{k} is not supported."
         end
