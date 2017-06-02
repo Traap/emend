@@ -1,7 +1,7 @@
 # {{{ Installations
 installations:
  - os:
-   - name: osx 
+   - name: darwin 
      command:
         - sudo: false
           program: brew
