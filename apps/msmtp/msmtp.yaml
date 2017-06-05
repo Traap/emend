@@ -1,12 +1,12 @@
 # {{{ Symbolic Links
 symlinks:
   - symlink:
-    - file: ~/git/mutt
-      link: ~/.mutt
+    - file: ~/git/msmtp
+      link: ~/.msmtp
       directory: true
 
-    - file: ~/git/mutt/muttrc
-      link: ~/.muttrc
+    - file: ~/git/msmtp/msmtprc
+      link: ~/.msmtprc
       directory: false
 
 # -------------------------------------------------------------------------- }}}
@@ -15,8 +15,8 @@ repos:
   - repo:
     url: http://github.com
     paths:
-      - source: Traap/mutt
-        target: ~/git/mutt
+      - source: Traap/msmtp
+        target: ~/git/msmtp
 
 # -------------------------------------------------------------------------- }}}
 # {{{ Installations
@@ -26,18 +26,6 @@ installations:
      command:
         - sudo: false
           program: brew
-          argument: install mutt
-
-        - sudo: false
-          program: mkdir
-          argument: -p ~/mail/mutt/cache/headers
-
-        - sudo: false
-          program: mkdir
-          argument: -p ~/mail/mutt/cache/bodies
-
-        - sudo: false
-          program: mkdir
-          argument: -p ~/mail/mutt/temp
+          argument: install msmtp 
 
 # -------------------------------------------------------------------------- }}}
