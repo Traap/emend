@@ -32,6 +32,10 @@ installations:
           argument: install tmux
   
         - sudo: false
+          program: brew
+          argument: install reattach-to-user-namespace 
+  
+        - sudo: false
           program: ${HOME}/.tmux/plugins/tpm/bin/install_plugins
           argument: all
 
