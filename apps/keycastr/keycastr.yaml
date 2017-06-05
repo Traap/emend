@@ -1,0 +1,14 @@
+# {{{ Installations
+installations:
+ - os:
+   - name: darwin 
+     command:
+        - sudo: false
+          program: brew
+          argument: tap caskroom/cask
+
+        - sudo: false
+          program: brew
+          argument: cask install keycastr 
+
+# -------------------------------------------------------------------------- }}}

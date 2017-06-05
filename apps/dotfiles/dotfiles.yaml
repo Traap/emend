@@ -26,10 +26,10 @@ repos:
 # {{{ Installations
 installations:
  - os:
-   name: any 
-   command:
-      - sudo: false
-        program: source 
-        argument: ~/.bashrc 
+   - name: any 
+     command:
+        - sudo: false
+          program: source 
+          argument: ~/.bashrc 
 
 # -------------------------------------------------------------------------- }}}

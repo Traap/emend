@@ -4,6 +4,7 @@
 # ------------------------------------------------------------------------------
 
 require 'open3'
+require 'rbconfig'
 require 'yaml'
 
 # ------------------------------------------------------------------------------
@@ -17,16 +18,18 @@ class Command
     @options = options 
     @command = nil
   end
-  
+ 
   def install_artifact; end
 
   def remove_artifact; end
 
-  def do_command
-    echo_command if @options.verbose || @options.dryrun
-    run_command  if !@options.dryrun
+  protected
+  def do_command(included_file)
+    echo_command if included_file || @options.verbose || @options.dryrun 
+    run_command  if included_file || !@options.dryrun 
   end
 
+  private
   def echo_command
     puts @command
   end
@@ -52,7 +55,7 @@ class SymLink < Command
     @data.each do |n|
       n['symlink'].each do |s|
        @command = "rm -frv #{s['link']}"
-       do_command
+       do_command false
       end
     end
     puts ""
@@ -63,7 +66,7 @@ class SymLink < Command
     @data.each do |n|
       n['symlink'].each do |s|
         @command = "ln -s #{s['file']} #{s['link']}"
-        do_command
+        do_command false
       end
     end
     puts ""
@@ -81,7 +84,7 @@ class Repo < Command
     @data.each do |n|
       n['paths'].each do |p|
         @command = "git clone #{n['url']}/#{p['source']} #{p['target']}"
-        do_command
+        do_command false
       end
     end
     puts ""
@@ -97,16 +100,47 @@ class Install < Command
   def install_artifact
     puts "Installing programs"
     @data.each do |n|
-      n['command'].each do |c|
-        if c['sudo'] then
-          @command = "sudo #{c['program']} #{c['argument']}"
-        else
-          @command ="#{c['program']} #{c['argument']}"
+      n['os'].each do |o|
+        if install_on_this_os? o['name'] then
+          o['command'].each do |c|
+            if c['sudo'] then
+              @command = "sudo #{c['program']} #{c['argument']}"
+            else
+              @command ="#{c['program']} #{c['argument']}"
+            end
+            do_command false
+          end
         end
-        do_command
       end
     end
     puts ""
   end
+
+  def install_on_this_os?(os)
+    return true if os == "any"
+    return true if RbConfig::CONFIG["host_os"].start_with? os
+  end
+
 end # End Install
+
+# ------------------------------------------------------------------------------
+class Include < Command
+  def initialize(data, options)
+    super(data, options)
+  end
+
+  def install_artifact 
+    @data.each do |n|
+      n['file'].each do |f|
+        @command ="ruby ruby/bootstrap.rb --file " + f['name']
+        @command.concat " --verbose"  if @options.verbose
+        @command.concat " --nodryrun" if !@options.dryrun
+        puts "Including file " + f['name']
+        puts
+        do_command true
+      end
+    end
+  end
+end # End Repo
+
 # ------------------------------------------------------------------------------
