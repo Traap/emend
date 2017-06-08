@@ -8,6 +8,7 @@ integration and AllanConsulting.slack.com for centralized notification.
 $ cd $HOME
 $ git clone http://github.com/Traap/bootstrap.git \
       && cd bootstrap \
+      && git checkout Sprint.V1.1.2 \
       && ruby ruby/bootstrap.rb --file apps/brew.yaml --verbose --nodryrun 
       && source ${HOME}.bashrc
 ```
