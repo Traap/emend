@@ -8,8 +8,7 @@ integration and AllanConsulting.slack.com for centralized notification.
 $ cd $HOME
 $ git clone http://github.com/Traap/bootstrap.git \
       && cd bootstrap \
-      && chmod +x install.sh \
-      && ./install.sh --all \
+      && ruby ruby/bootstrap.rb --file apps/brew.yaml --verbose --nodryrun 
       && source ${HOME}.bashrc
 ```
 
