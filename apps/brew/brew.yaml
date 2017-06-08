@@ -18,5 +18,4 @@ installations:
       - sudo: false
         program: ruby
         argument: ruby/bootstrap.rb --nodryrun --verbose --file apps/dotfiles/dotfiles.yaml
-        argument: +PlugInstall! +PlugClean +qall
 # -------------------------------------------------------------------------- }}}
