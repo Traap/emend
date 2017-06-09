@@ -11,7 +11,7 @@ $ git clone http://github.com/Traap/bootstrap.git \
       && git checkout Sprint.V1.1.2 \
       && gem build bootstrap.gemspec \
       && gem install bootstrap \
-      && bootstrap --file apps/brew.yaml --verbose --nodryrun \
+      && bootstrap --file incs/basic/basic.yaml --verbose --nodryrun \
       && brew --version
 ```
 
