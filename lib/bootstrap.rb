@@ -16,14 +16,19 @@
 require 'pp'
 require 'yaml'
 
-require_relative 'DataTypes'
-require_relative 'Options'
-require_relative 'Workflow'
+require 'bootstrap/DataTypes'
+require 'bootstrap/Options'
+require 'bootstrap/Workflow'
 
 # ------------------------------------------------------------------------------
-options = CommandLineOptions.parse ARGV
-if options
-  workflow = Workflow.new(options) 
-  workflow.orchestrate
+class Bootstrap
+  def self.machine(args)
+    puts "args: #{args}"
+    options = CommandLineOptions.parse args 
+    if options
+      workflow = Workflow.new(options) 
+      workflow.orchestrate
+    end
+  end
 end
 # ------------------------------------------------------------------------------

@@ -6,8 +6,8 @@
 require 'pp'
 require 'yaml'
 
-require_relative 'DataTypes'
-require_relative 'Options'
+require 'bootstrap/DataTypes'
+require 'bootstrap/Options'
 
 # ------------------------------------------------------------------------------
 class Workflow 

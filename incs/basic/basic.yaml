@@ -1,10 +1,10 @@
-# {{{ Include files 
+# {{{ Include files
 includes:
   - file:
     - name: apps/colors/colors.yaml
     - name: apps/dotfiles/dotfiles.yaml
     - name: apps/git-bash-prompt/git-bash-prompt.yaml
-    - name: apps/vim/vim.yaml
+    - name: apps/brew/brew.yaml
 
 # -------------------------------------------------------------------------- }}}
 

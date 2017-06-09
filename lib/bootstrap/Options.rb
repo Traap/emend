@@ -30,7 +30,7 @@ class CommandLineOptions
 # ------------------------------------------------------------------------------
   def self.option_parser
     @parser ||= OptionParser.new do |parser|
-      parser.banner = "Usage: example.rb [options]"
+      parser.banner = "Usage: bootstrap [options]"
       parser.separator ""
       parser.separator "Specific options:"
 
