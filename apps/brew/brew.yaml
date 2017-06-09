@@ -13,9 +13,4 @@ installations:
         program: ruby
         argument: -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
 
-   - name: any
-     command:
-      - sudo: false
-        program: ruby
-        argument: ruby/bootstrap.rb --nodryrun --verbose --file apps/dotfiles/dotfiles.yaml
 # -------------------------------------------------------------------------- }}}
