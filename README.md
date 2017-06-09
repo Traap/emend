@@ -9,9 +9,9 @@ $ cd $HOME
 $ git clone http://github.com/Traap/bootstrap.git \
       && cd bootstrap \
       && git checkout Sprint.V1.1.2 \
-      && gem build bootstrap
-      && gem install bootstrap
-      && bootstrap --file apps/brew.yaml --verbose --nodryrun 
+      && gem build bootstrap \
+      && gem install bootstrap \
+      && bootstrap --file apps/brew.yaml --verbose --nodryrun \
       && brew --version
 ```
 
