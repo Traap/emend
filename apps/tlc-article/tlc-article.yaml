@@ -1,0 +1,33 @@
+# {{{ Repositories
+repos:
+  - repo:
+    url: http://github.com
+    paths:
+      - source: Traap/tlc-article
+        target: ~/git/tlc-article
+
+# -------------------------------------------------------------------------- }}}
+# {{{ Installations
+installations:
+ - os:
+   - name: any
+     command:
+        - sudo: yes
+          program: mkdir
+          argument: -p /usr/local/texlive/texmf-local/tex/latex/tlc-article
+
+        - sudo: no 
+          program: sudo mv -v
+          argument: ${HOME}/git/tlc-article/tlc-article.cls /usr/local/texlive/texmf-local/tex/latex/tlc-article/.
+
+        # Note permission 775 did not work Windows 10 / bash
+        - sudo: yes
+          program: chmod 
+          argument: -R 777 /usr/local/texlive/texmf-local/
+
+        - sudo: no 
+          program: mktexlsr
+          argument: 
+
+# -------------------------------------------------------------------------- }}}
+
