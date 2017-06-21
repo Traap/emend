@@ -11,14 +11,14 @@ includes:
     - name: apps/tmux/tmux.yaml
 
     # Install Binaries.
-    - name: apps/xcode/xcode.yaml
+    #- name: apps/xcode/xcode.yaml
     - name: apps/iterm2/iterm2.yaml
     - name: apps/keycastr/keycastr.yaml
     - name: apps/google-chrome/google-chrome.yaml
 
     # Compile binaries from source code.
     - name: apps/vim/vim.yaml
-    # Need TeX
-    #- name: apps/tlc-article/tlc-article.yaml
+    - name: apps/texlive/texlive.yaml
+    - name: apps/tlc-article/tlc-article.yaml
 
 # -------------------------------------------------------------------------- }}}
