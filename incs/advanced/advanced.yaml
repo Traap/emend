@@ -1,0 +1,25 @@
+# {{{ Include files
+includes:
+  - file:
+    # These applications install very quickly.
+    - name: apps/brew/brew.yaml
+    - name: apps/colors/colors.yaml
+    - name: apps/dotfiles/dotfiles.yaml
+    - name: apps/git-bash-prompt/git-bash-prompt.yaml
+    - name: apps/brew/brew.yaml
+    - name: apps/mutt/mutt.yaml
+    - name: apps/ssh/ssh.yaml
+    - name: apps/tmux/tmux.yaml
+
+    # Install Binaries.
+    - name: apps/xcode/xcode.yaml
+    - name: apps/iterm2/iterm2.yaml
+    - name: apps/keycastr/keycastr.yaml
+    - name: apps/google-chrome/google-chrome.yaml
+
+    # Compile binaries from source code.
+    - name: apps/vim/vim.yaml
+    # Need TeX
+    #- name: apps/tlc-article/tlc-article.yaml
+
+# -------------------------------------------------------------------------- }}}
