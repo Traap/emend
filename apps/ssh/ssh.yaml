@@ -45,8 +45,8 @@ installations:
           argument: config --global user.email gary.a.howard@mac.com 
 
         - sudo: false
-          program: eval "$(ssh-agent -s)"
-          argument:
+          program: ssh-agent
+          argument: -s
 
         - sudo: false
           program: ssh-add 
