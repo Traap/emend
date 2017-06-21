@@ -1,6 +1,6 @@
 # {{{ Symbolic Links
-symlinks:  
-  - symlink:  
+symlinks:
+  - symlink:
     - file: ~/git/ssh/config.vim
       link: ~/.config.vim
       directory: false
@@ -30,26 +30,25 @@ repos:
 # {{{ Installations
 installations:
  - os:
-   - name: any 
+   - name: any
      command:
         - sudo: false
           program: chmod
           argument: 600 ~/git/ssh/*
 
         - sudo: false
-          program: git 
-          argument: config --global user.name "Traap" 
+          program: git
+          argument: config --global user.name "Traap"
 
         - sudo: false
-          program: git 
-          argument: config --global user.email gary.a.howard@mac.com 
+          program: git
+          argument: config --global user.email gary.a.howard@mac.com
 
         - sudo: false
           program: ssh-agent
           argument: -s
 
         - sudo: false
-          program: ssh-add 
+          program: ssh-add
           argument: ~/.ssh/traap_rsa
-}
 # -------------------------------------------------------------------------- }}}
