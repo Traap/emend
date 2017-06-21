@@ -1,0 +1,13 @@
+# {{{ Installations
+installations:
+ - os:
+   - name: darwin
+     command:
+      - sudo: false
+        program: xcode-select 
+        argument: -all 
+
+      - sudo: true 
+        program: xcodebuild 
+        argument: -license
+# -------------------------------------------------------------------------- }}}
