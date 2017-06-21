@@ -33,6 +33,10 @@ installations:
    - name: any 
      command:
         - sudo: false
+          program: chmod
+          argument: 600 ~/git/ssh/*
+
+        - sudo: false
           program: git 
           argument: config --global user.name "Traap" 
 
@@ -40,4 +44,12 @@ installations:
           program: git 
           argument: config --global user.email gary.a.howard@mac.com 
 
+        - sudo: false
+          program: eval "$(ssh-agent -s)"
+          argument:
+
+        - sudo: false
+          program: ssh-add 
+          argument: ~/.ssh/traap_rsa
+}
 # -------------------------------------------------------------------------- }}}
