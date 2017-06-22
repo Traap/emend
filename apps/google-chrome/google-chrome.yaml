@@ -6,4 +6,14 @@ installations:
       - sudo: false
         program: brew 
         argument: cask install google-chrome 
+
+   - name: linux 
+     command:
+      - sudo: false
+        program: wget 
+        argument: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        
+      - sudo: yes
+        program: gdebi
+        argument: google-chrome-stable_current_amd64.deb
 # -------------------------------------------------------------------------- }}}
