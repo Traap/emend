@@ -2,6 +2,7 @@
 includes:
   - file:
     # These applications install very quickly.
+    - name: apps/operating-system/operating-system.yaml
     - name: apps/brew/brew.yaml
     - name: apps/colors/colors.yaml
     - name: apps/dotfiles/dotfiles.yaml

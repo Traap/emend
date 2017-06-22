@@ -1,0 +1,13 @@
+# {{{ Installations
+installations:
+ - os:
+   - name: linux
+     command:
+      - sudo: true 
+        program: apt-get 
+        argument: update 
+
+      - sudo: true 
+        program: apt-get 
+        argument: upgrade
+# -------------------------------------------------------------------------- }}}
