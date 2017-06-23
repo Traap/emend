@@ -38,6 +38,7 @@ class CommandLineOptions
       dryrun_option parser
       app_list_option parser
       bundle_list_option parser
+      file_list_option parser
       verbose_option parser
       version_option parser
     end
@@ -76,6 +77,13 @@ class CommandLineOptions
   def self.bundle_list_option parser
     parser.on("-b", "--bundle x,y,x", Array, "Bundle name") do |bundle|
       @options.filename = bundle.map! {|b| "bundle/#{b}/#{b}.yaml"}
+    end
+  end
+
+# ------------------------------------------------------------------------------
+  def self.file_list_option parser
+    parser.on("-f", "--file x,y,x", Array, "File name") do |file|
+      @options.filename = file 
     end
   end
 

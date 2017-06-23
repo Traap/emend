@@ -10,8 +10,7 @@ $ git clone http://github.com/Traap/bootstrap.git \
       && cd bootstrap \
       && gem build bootstrap.gemspec \
       && sudo gem install bootstrap \
-      && bootstrap --file incs/basic/basic.yaml --verbose --nodryrun \
-      && brew --version
+      && bootstrap --verbose --nodryrun --bundle=basic\
 ```
 
 ## Note
@@ -33,15 +32,22 @@ consumed.
 
 ## Include files
 The **includes** link is used to process other YAML files as a logical units.
-This example shows four files being included.
+This example shows using -app, -bundle, and -file. 
 ```
 includes:
+  - bundle:
+    - name: basic 
   - file:
-    - name: apps/colors/colors.yaml
-    - name: apps/dotfiles/dotfiles.yaml
-    - name: apps/git-bash-prompt/git-bash-prompt.yaml
-    - name: apps/vim/vim.yaml
+    - name: app/ssh/ssh.yaml
+  - app:
+    - name: mutt
 ```
+**Note:** The command below will demonstrates this example without making any
+changes to your machine.
+```
+bootstrap --verbose --file=examle/example.yaml
+```
+
 
 ## Symbolic Links
 The **symlinks** node is used to define a map between a source and target file.

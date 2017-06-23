@@ -1,0 +1,11 @@
+# {{{ Include files
+includes:
+  - bundle:
+    - name: basic 
+  - file:
+    - name: app/ssh/ssh.yaml
+  - app:
+    - name: mutt
+
+# -------------------------------------------------------------------------- }}}
+

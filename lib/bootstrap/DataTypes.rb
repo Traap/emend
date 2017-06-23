@@ -136,6 +136,8 @@ class Include < Command
         include_this_file v, "--app"
       when "bundle"
         include_this_file v, "--bundle"
+      when "file"
+        include_this_file v, "--file"
       end
     end
   end
