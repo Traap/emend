@@ -1,0 +1,25 @@
+# {{{ Include files
+includes:
+  - file:
+    # These applications install very quickly.
+    - name: operating-system
+    - name: brew
+    - name: colors
+    - name: dotfiles
+    - name: git-bash-prompt
+    - name: mutt
+    - name: ssh
+    - name: tmux
+
+    # Install Binaries.
+    #- name: xcode
+    - name: iterm2
+    - name: keycastr
+    - name: google-chrome
+
+    # Compile binaries from source code.
+    - name: vim
+    - name: texlive
+    - name: tlc-article
+
+# -------------------------------------------------------------------------- }}}

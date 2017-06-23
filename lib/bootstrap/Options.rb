@@ -8,7 +8,7 @@ require 'pp'
 
 # ------------------------------------------------------------------------------
 class CommandLineOptions
-  Version = '1.0.0'
+  Version = '1.1.3'
 
   attr_accessor :verbose, :dryrun, :filename
   attr_reader :parser, :options
@@ -36,7 +36,8 @@ class CommandLineOptions
 
       help_option parser
       dryrun_option parser
-      file_list_option parser
+      app_list_option parser
+      bundle_list_option parser
       verbose_option parser
       version_option parser
     end
@@ -65,9 +66,16 @@ class CommandLineOptions
   end
 
 # ------------------------------------------------------------------------------
-  def self.file_list_option parser
-    parser.on("-f", "--file x,y,x MADATORY", Array, "Filename") do |f|
-      @options.filename = f
+  def self.app_list_option parser
+    parser.on("-a", "--app x,y,x", Array, "App name") do |apps|
+      @options.filename = apps.map! {|a| "app/#{a}/#{a}.yaml"}
+    end
+  end
+
+# ------------------------------------------------------------------------------
+  def self.bundle_list_option parser
+    parser.on("-b", "--bundle x,y,x", Array, "Bundle name") do |bundle|
+      @options.filename = bundle.map! {|b| "bundle/#{b}/#{b}.yaml"}
     end
   end
 

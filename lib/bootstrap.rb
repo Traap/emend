@@ -23,7 +23,6 @@ require 'bootstrap/Workflow'
 # ------------------------------------------------------------------------------
 class Bootstrap
   def self.machine(args)
-    puts "args: #{args}"
     options = CommandLineOptions.parse args 
     if options
       workflow = Workflow.new(options) 

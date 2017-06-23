@@ -1,0 +1,9 @@
+# {{{ Include files
+includes:
+  - file:
+    - name: colors
+    - name: dotfiles
+    - name: git-bash-prompt
+    - name: brew
+
+# -------------------------------------------------------------------------- }}}
