@@ -1,0 +1,9 @@
+# {{{ Include files
+includes:
+  - bundle:
+    - name: basic 
+    - name: advanced
+  - app:
+    - name: texlive
+    - name: tlc-article
+# -------------------------------------------------------------------------- }}}

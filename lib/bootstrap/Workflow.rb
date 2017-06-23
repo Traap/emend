@@ -43,7 +43,7 @@ class Workflow
         when "installations"
           @commands << Install.new(v, @options)
         when "includes"
-          @commands << Include.new(v, @options)
+          @commands << Include.new(n, @options)
         else
           puts "#{k} is not supported."
         end

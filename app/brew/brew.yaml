@@ -7,6 +7,14 @@ installations:
         program: ruby
         argument: -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
+   - name: linux
+     command:
+      - sudo: false
+        program: ruby
+        argument: -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
+
+   - name: any 
+     command:
       - sudo: false
         program: brew 
         argument: doctor 
@@ -14,11 +22,5 @@ installations:
       - sudo: false
         program: brew 
         argument: update 
-
-   - name: linux
-     command:
-      - sudo: false
-        program: ruby
-        argument: -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
 
 # -------------------------------------------------------------------------- }}}
