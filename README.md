@@ -45,7 +45,7 @@ includes:
 **Note:** The command below will demonstrates this example without making any
 changes to your machine.
 ```
-bootstrap --verbose --file=examle/example.yaml
+bootstrap --verbose --file=example/example.yaml
 ```
 
 
