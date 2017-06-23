@@ -70,10 +70,10 @@ machine.  The example below clones Traap's dotfiles.
 ```
 repos:
   - repo:
-      url: http://github.com
-          paths:
-                - source: Traap/dotfiles
-                        target: ~/git/dotfiles
+    url: http://github.com
+    paths:
+      - source: Traap/dotfiles
+        target: ~/git/dotfiles
 ```
 
 ## Installations
@@ -103,7 +103,9 @@ Usage: bootstrap.rb [options]
 
 Specific options:
     -n, --nodryrun                   No Dryrun
-    -f, --file x,y,x MADATORY        Filename
+    -a, --app x,y,x                  App name
+    -b, --bundle x,y,x               Bundle name
+    -f, --file x,y,x                 File name
     -v, --verbose                    Verbose
     -h, --help                       Show this message
         --version                    Show version
@@ -113,6 +115,14 @@ By default, **bootstrap** does not modify your computer.  You must explicitly
 use the **--nodryrun** options to cause side effects.  The commands that would
 have been executed are echoed to system out.
 
+## --app
+A comma-separated list of app names **bootstrap** is to process.  The following
+directoy and YAML file name onvention is manditory: app/an-app/an-app.yaml.
+```
+--app=an-app
+```
+
+## --bundle
 ## --file
 A comma-separated list of file names **bootstrap** is to process.
 
