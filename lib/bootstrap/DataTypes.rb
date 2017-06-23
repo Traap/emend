@@ -131,7 +131,7 @@ class Include < Command
 
   def install_artifact 
     @data.each do |n|
-      n['file'].each do |f|
+      n['app'].each do |f|
         @command ="bootstrap --app=" + f['name']
         @command.concat " --verbose"  if @options.verbose
         @command.concat " --nodryrun" if !@options.dryrun

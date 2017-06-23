@@ -1,6 +1,6 @@
 # {{{ Include files
 includes:
-  - file:
+  - app:
     - name: colors
     - name: dotfiles
     - name: git-bash-prompt

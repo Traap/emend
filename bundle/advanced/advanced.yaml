@@ -1,6 +1,6 @@
 # {{{ Include files
 includes:
-  - file:
+  - app:
     # These applications install very quickly.
     - name: operating-system
     - name: brew
