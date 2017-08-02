@@ -1,0 +1,26 @@
+# {{{ Installations
+installations:
+ - os:
+   - name: linux 
+     command:
+        - sudo: true 
+          program: apt-get 
+          argument: install build-essential
+
+        - sudo: false 
+          program: brew 
+          argument: gcc 
+
+        - sudo: false 
+          program: brew 
+          argument: update 
+
+        # No kidding, do it twice.
+        - sudo: false 
+          program: brew 
+          argument: update 
+
+        - sudo: false 
+          program: brew 
+          argument: doctor 
+# -------------------------------------------------------------------------- }}}
