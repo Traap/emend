@@ -25,7 +25,7 @@ repos:
 # {{{ Installations
 installations:
  - os:
-   - name: any 
+   - name: darwin 
      command:
         - sudo: false
           program: brew
@@ -34,9 +34,17 @@ installations:
         - sudo: false
           program: brew
           argument: install reattach-to-user-namespace 
+
+   - name: linux 
+     command:
+        - sudo: yes 
+          program: apt-get 
+          argument: install tmux
   
+   - name: any 
+     command:
         - sudo: false
-          program: ${HOME}/.tmux/plugins/tpm/bin/install_plugins
+          program: ~/.tmux/plugins/tpm/bin/install_plugins
           argument: all
 
 # -------------------------------------------------------------------------- }}}
