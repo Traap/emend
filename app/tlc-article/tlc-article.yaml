@@ -18,7 +18,7 @@ installations:
 
         - sudo: no
           program: sudo mv -v
-          argument: ${HOME}/git/tlc-article/tlc-article.cls /usr/local/texlive/texmf-local/tex/latex/tlc-article/.
+          argument: ~/git/tlc-article/tlc-article.cls /usr/local/texlive/texmf-local/tex/latex/tlc-article/.
 
         # Note permission 775 did not work Windows 10 Ubuntu bash
         - sudo: yes
@@ -29,6 +29,5 @@ installations:
         - sudo: yes
           program: mktexlsr
           argument:
-
 # -------------------------------------------------------------------------- }}}
 
