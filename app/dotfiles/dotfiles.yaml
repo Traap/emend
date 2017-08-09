@@ -13,7 +13,7 @@ symlinks:
       link: ~/.inputrc
       directory: false
 
-    - file: ~/git/vim/dircolors
+    - file: ~/git/dotfiles/dircolors
       link: ~/.dircolors
       directory: false
 # -------------------------------------------------------------------------- }}}
