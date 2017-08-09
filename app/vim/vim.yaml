@@ -101,30 +101,6 @@ installations:
         program: cd ~/vim && make
         argument: install 
 
-      - sudo: no
-        program: cd ~/vim && make
-        argument: MRUNTIMEDIR=/usr/local/share/vim/vim80
-
-      - sudo: no
-        program: cd ~/vim && make
-        argument: MRUNTIMEDIR=/usr/local/share/vim/vim80
-
-      - sudo: no
-        program: cd ~/vim && make
-        argument: MRUNTIMEDIR=/usr/local/share/vim/vim80
-
-      - sudo: no
-        program: cd ~/vim && make
-        argument: MRUNTIMEDIR=/usr/local/share/vim/vim80
-
-      - sudo: no
-        program: cd ~/vim && make
-        argument: MRUNTIMEDIR=/usr/local/share/vim/vim80
-
-      - sudo: no
-        program: cd ~/vim && make
-        argument: MRUNTIMEDIR=/usr/local/share/vim/vim80
-
    - name: any
      command:
       - sudo: false
