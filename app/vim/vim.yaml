@@ -21,6 +21,9 @@ symlinks:
       link: ~/.vimrc_background
       directory: false
 
+    - file: ~/git/vim/dircolors
+      link: ~/.dircolors
+      directory: false
 # -------------------------------------------------------------------------- }}}
 # {{{ Repositories
 repos:
