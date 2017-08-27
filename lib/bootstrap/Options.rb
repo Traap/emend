@@ -8,7 +8,7 @@ require 'pp'
 
 # ------------------------------------------------------------------------------
 class CommandLineOptions
-  Version = '1.1.3'
+  @version = '1.1.4'
 
   attr_accessor :verbose, :dryrun, :filename
   attr_reader :parser, :options
@@ -90,7 +90,7 @@ class CommandLineOptions
 # ------------------------------------------------------------------------------
   def self.version_option parser
     parser.on_tail("--version", "Show version") do
-      puts Version
+      puts @version
       exit
     end
   end

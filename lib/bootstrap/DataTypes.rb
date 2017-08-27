@@ -54,7 +54,12 @@ class SymLink < Command
     puts "Deleting symbolic links"
     @data.each do |n|
       n['symlink'].each do |s|
-       @command = "rm -frv #{s['link']}"
+        if s['directory'] then
+          slash = "/"
+        else
+          slash = ""
+        end
+        @command = "rm -frv #{s['link']}#{slash}" 
        do_command false
       end
     end
