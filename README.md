@@ -10,7 +10,7 @@ $ git clone http://github.com/Traap/bootstrap.git \
       && cd bootstrap \
       && gem build bootstrap.gemspec \
       && sudo gem install bootstrap \
-      && bootstrap --verbose --nodryrun --bundle=basic\
+      && bootstrap --verbose --nodryrun --bundle=basic
 ```
 
 ## Note

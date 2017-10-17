@@ -6,7 +6,7 @@ includes:
     - name: brew
     - name: colors
     - name: dotfiles
-    - name: git-bash-prompt
+    - name: bash-git-prompt
     - name: mutt
     - name: ssh
     - name: tmux

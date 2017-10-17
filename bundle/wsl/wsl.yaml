@@ -5,7 +5,7 @@ includes:
     - name: operating-system
     - name: colors
     - name: dotfiles
-    - name: git-bash-prompt
+    - name: bash-git-prompt
     - name: ssh
     - name: tmux
 
