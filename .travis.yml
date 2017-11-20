@@ -5,13 +5,15 @@
 #   This Travis continuous integration file is use to build and test boostrap
 #   software written in Haskell.
 
+sudo: false
+
 language: ruby
 
-os:
-  - linux
+# os:
+#   - linux
 
 rvm:
-  - 2.1.3
+  - 2.3.3
 
 notifications:
   email: false
