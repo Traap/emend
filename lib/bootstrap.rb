@@ -16,10 +16,10 @@
 require 'pp'
 require 'yaml'
 
-require 'bootstrap/datatypes'
 require 'bootstrap/options'
 require 'bootstrap/version'
 require 'bootstrap/workflow'
+require 'bootstrap/datatypes'
 
 # ------------------------------------------------------------------------------
 class Bootstrap
