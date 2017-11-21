@@ -5,18 +5,17 @@
 require 'optparse'
 require 'ostruct'
 require 'pp'
-
+require 'bootstrap/version'
 # ------------------------------------------------------------------------------
-class CommandLineOptions
-  @version = '1.1.4'
 
+class CommandLineOptions
   attr_accessor :verbose, :dryrun, :filename
   attr_reader :parser, :options
 
 # ------------------------------------------------------------------------------
   def initialize
     self.verbose = false
-    self.dryrun = true 
+    self.dryrun = true
     self.filename = []
   end
 
@@ -83,17 +82,18 @@ class CommandLineOptions
 # ------------------------------------------------------------------------------
   def self.file_list_option parser
     parser.on("-f", "--file x,y,x", Array, "File name") do |file|
-      @options.filename = file 
+      @options.filename = file
     end
   end
 
 # ------------------------------------------------------------------------------
   def self.version_option parser
     parser.on_tail("--version", "Show version") do
-      puts @version
+      puts BBootstrap::VERSION 
       exit
     end
   end
 
 # ------------------------------------------------------------------------------
 end # class CommandLineOptions
+# ------------------------------------------------------------------------------

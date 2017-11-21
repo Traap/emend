@@ -1,7 +1,7 @@
 #!/usr/local/bin/ruby
 # Copyright (c) Gary Allan Howard aka Traap.
 # License BSD-3-Clause
-# ------------------------------------------------------------------------------
+
 
 require 'pp'
 require 'yaml'
@@ -10,6 +10,7 @@ require 'bootstrap/DataTypes'
 require 'bootstrap/Options'
 
 # ------------------------------------------------------------------------------
+
 class Workflow 
   def initialize options
     @options = options

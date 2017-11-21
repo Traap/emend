@@ -6,7 +6,7 @@
 # consists of three parts, namely: 1) setup symbolic links to files or
 # directories that are under version control,  2) clone GitHub.com repositories
 # that are needed to personalize programs such as vim or bash, 3) Install
-# programs.  
+# programs.
 #
 # A YAML file is used to define SymLinks, Repositories, and Commands to run.
 # Orchestration orders the activities 1) deleting symbolic links, cloning
@@ -16,16 +16,17 @@
 require 'pp'
 require 'yaml'
 
-require 'bootstrap/DataTypes'
-require 'bootstrap/Options'
-require 'bootstrap/Workflow'
+require 'bootstrap/dataTypes'
+require 'bootstrap/options'
+require 'bootstrap/version'
+require 'bootstrap/workflow'
 
 # ------------------------------------------------------------------------------
 class Bootstrap
   def self.machine(args)
-    options = CommandLineOptions.parse args 
+    options = CommandLineOptions.parse args
     if options
-      workflow = Workflow.new(options) 
+      workflow = Workflow.new(options)
       workflow.orchestrate
     end
   end

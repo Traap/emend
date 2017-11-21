@@ -59,7 +59,7 @@ class SymLink < Command
         else
           slash = ""
         end
-        @command = "rm -frv #{s['link']}#{slash}" 
+        @command = "rm -frv #{s['link']}#{slash}"
        do_command false
       end
     end
@@ -156,6 +156,6 @@ class Include < Command
     puts
     do_command true
   end
-end # End Repo
+end # End Include
 
 # ------------------------------------------------------------------------------
