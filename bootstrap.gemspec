@@ -14,11 +14,17 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/Traap/bootstrap"
   s.license     = "BSD-3-Clause"
 
-  s.files       = ["lib/bootstrap.rb",
-                   "lib/bootstrap/datatypes.rb",
-                   "lib/bootstrap/options.rb",
-                   "lib/bootstrap/version.rb",
-                   "lib/bootstrap/workflow.rb"]
+
+  s.files         = `git ls-files -z`.split("\x0").reject do |f|
+    f.match(%r{^(test|spec|features)/})
+  end
+
+  # s.files       = ["lib/bootstrap.rb",
+  #                  "lib/bootstrap/datatypes.rb",
+  #                  "lib/bootstrap/options.rb",
+  #                  "lib/bootstrap/version.rb",
+  #                  "lib/bootstrap/workflow.rb"]
+
   s.executables << "bootstrap"
   s.require_paths = ["lib"]
 
