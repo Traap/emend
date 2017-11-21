@@ -16,7 +16,7 @@
 require 'pp'
 require 'yaml'
 
-require 'bootstrap/dataTypes'
+require 'bootstrap/datatypes'
 require 'bootstrap/options'
 require 'bootstrap/version'
 require 'bootstrap/workflow'
