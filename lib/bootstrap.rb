@@ -13,8 +13,6 @@
 # repositories, making symbolic links, and installing programs.
 # ------------------------------------------------------------------------------
 
-require 'rubygems'
-require 'bundler/setup'
 require 'pp'
 require 'yaml'
 
