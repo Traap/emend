@@ -1,17 +1,9 @@
-#!/usr/local/bin/ruby
 # Copyright (c) Gary Allan Howard aka Traap.
 # License BSD-3-Clause
-
-
-require 'pp'
-require 'yaml'
-
-require 'bootstrap/DataTypes'
-require 'bootstrap/Options'
-
 # ------------------------------------------------------------------------------
-
-class Workflow 
+module Bootstrap
+# ------------------------------------------------------------------------------
+class Workflow
   def initialize options
     @options = options
     @yaml_file = nil
@@ -22,7 +14,7 @@ class Workflow
   def orchestrate
     @options.filename.each do |f|
       parse_yaml_file f
-      @commands.each do |c| 
+      @commands.each do |c|
         c.remove_artifact
         c.install_artifact
       end
@@ -54,4 +46,6 @@ class Workflow
 
 # ------------------------------------------------------------------------------
 end # End Workflow
+# ------------------------------------------------------------------------------
+end # module
 # ------------------------------------------------------------------------------

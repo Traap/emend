@@ -1,13 +1,8 @@
-#!/usr/local/bin/ruby
 # Copyright (c) Gary Allan Howard aka Traap.
 # License BSD-3-Clause
-
-require 'optparse'
-require 'ostruct'
-require 'pp'
-require 'bootstrap/version'
 # ------------------------------------------------------------------------------
-
+module Bootstrap
+# ------------------------------------------------------------------------------
 class CommandLineOptions
   attr_accessor :verbose, :dryrun, :filename
   attr_reader :parser, :options
@@ -89,11 +84,13 @@ class CommandLineOptions
 # ------------------------------------------------------------------------------
   def self.version_option parser
     parser.on_tail("--version", "Show version") do
-      puts BBootstrap::VERSION 
+      puts Bootstrap::VERSION
       exit
     end
   end
 
 # ------------------------------------------------------------------------------
 end # class CommandLineOptions
+# ------------------------------------------------------------------------------
+end # module
 # ------------------------------------------------------------------------------

@@ -1,16 +1,9 @@
-#!/usr/local/bin/ruby
 # Copyright (c) Gary Allan Howard aka Traap.
 # License BSD-3-Clause
 # ------------------------------------------------------------------------------
-
-require 'open3'
-require 'rbconfig'
-require 'yaml'
-
+module Bootstrap
 # ------------------------------------------------------------------------------
-
 class ShellError < StandardError; end
-
 # ------------------------------------------------------------------------------
 class Command
   def initialize(data, options)
@@ -157,5 +150,6 @@ class Include < Command
     do_command true
   end
 end # End Include
-
+# ------------------------------------------------------------------------------
+end # module
 # ------------------------------------------------------------------------------

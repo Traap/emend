@@ -1,4 +1,3 @@
-#!/usr/local/bin/ruby
 # Copyright (c) Gary Allan Howard aka Traap.
 # License BSD-3-Clause
 #
@@ -13,21 +12,17 @@
 # repositories, making symbolic links, and installing programs.
 # ------------------------------------------------------------------------------
 
-require 'pp'
-require 'yaml'
-
-require 'bootstrap/options'
-require 'bootstrap/version'
-require 'bootstrap/workflow'
-require 'bootstrap/datatypes'
+require 'bootstrap/initialize'
 
 # ------------------------------------------------------------------------------
-class Bootstrap
-  def self.machine(args)
-    options = CommandLineOptions.parse args
-    if options
-      workflow = Workflow.new(options)
-      workflow.orchestrate
+module Bootstrap
+  class CLI
+    def execute(args)
+      options = CommandLineOptions.parse args
+      if options
+        workflow = Workflow.new(options)
+        workflow.orchestrate
+      end
     end
   end
 end
