@@ -1,9 +1,0 @@
-# {{{ Repositories
-repos:
-  - repo:
-    url: http://github.com
-    paths:
-      - source: magicmonty/bash-git-prompt
-        target: ~/.bash-git-prompt
-
-# -------------------------------------------------------------------------- }}}
