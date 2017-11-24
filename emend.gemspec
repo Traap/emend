@@ -1,21 +1,21 @@
 $:.unshift File.expand_path('../lib', __FILE__)
-require 'bootstrap/version'
+require 'emend/version'
 
 Gem::Specification.new do |s|
-  s.name          = 'bootstrap'
-  s.version       = Bootstrap::VERSION
-  s.summary       = 'Bootstrap a development environment.'
-  s.description   = 'Bootstrap process YAML files to configure your computer.'
+  s.name          = 'emend'
+  s.version       = Emend::VERSION
+  s.summary       = 'emend a development environment.'
+  s.description   = 'emend process YAML files to configure your computer.'
   s.authors       = ['Gary A. Howard']
   s.email         = ['gary.a.howard@mac.com']
-  s.homepage      = 'https://github.com/Traap/bootstrap'
+  s.homepage      = 'https://github.com/Traap/emend'
   s.license       = 'BSD-3-Clause'
 
   s.require_paths = ['lib']
   s.files         = Dir['lib/**/*']
   s.test_files    = Dir['text/**/*.rb']
 
-  s.executables   = %w(bootstrap)
+  s.executables   = %w(emend)
 
   s.required_ruby_version = '>= 1.9.3'
 

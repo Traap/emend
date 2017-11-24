@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bootstrap (1.1.7)
+    emend (1.1.7)
 
 GEM
   remote: https://rubygems.org/
@@ -15,8 +15,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap!
   bundler (~> 1.16)
+  emend!
   rake (~> 10.0)
   test-unit (~> 3.2.3, ~> 3.2)
 

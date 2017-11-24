@@ -2,6 +2,6 @@
 # License BSD-3-Clause
 # ------------------------------------------------------------------------------
 
-module Bootstrap
+module Emend 
   VERSION = "1.1.7"
 end

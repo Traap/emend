@@ -1,7 +1,4 @@
-# Copyright (c) Gary Allan Howard aka Traap.
-# License BSD-3-Clause
-# ------------------------------------------------------------------------------
-module Bootstrap
+module Emend
 # ------------------------------------------------------------------------------
 class CommandLineOptions
   attr_accessor :verbose, :dryrun, :filename
@@ -24,7 +21,7 @@ class CommandLineOptions
 # ------------------------------------------------------------------------------
   def self.option_parser
     @parser ||= OptionParser.new do |parser|
-      parser.banner = "Usage: bootstrap [options]"
+      parser.banner = "Usage: emend [options]"
       parser.separator ""
       parser.separator "Specific options:"
 
@@ -84,7 +81,7 @@ class CommandLineOptions
 # ------------------------------------------------------------------------------
   def self.version_option parser
     parser.on_tail("--version", "Show version") do
-      puts Bootstrap::VERSION
+      puts Emend::VERSION
       exit
     end
   end

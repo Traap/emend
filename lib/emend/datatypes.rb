@@ -1,7 +1,4 @@
-# Copyright (c) Gary Allan Howard aka Traap.
-# License BSD-3-Clause
-# ------------------------------------------------------------------------------
-module Bootstrap
+module Emend 
 # ------------------------------------------------------------------------------
 class ShellError < StandardError; end
 # ------------------------------------------------------------------------------
@@ -142,7 +139,7 @@ class Include < Command
 
   def include_this_file(name, opt)
     opt_and_files = "#{opt}=#{name.map{|n| n.values}.join(',')}"
-    @command ="bootstrap #{opt_and_files}"
+    @command ="emend #{opt_and_files}"
     @command.concat " --verbose"  if @options.verbose
     @command.concat " --nodryrun" if !@options.dryrun
     puts "Including #{opt_and_files}"

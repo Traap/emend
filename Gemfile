@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-git_source(:github) {|repo_name| "https://github.com/Traap/#{bootstrap}" }
+git_source(:github) {|repo_name| "https://github.com/Traap/#{emend}" }
 
-# Bootstrap dependencies are listed here.
+# emend dependencies are listed here.
 gemspec

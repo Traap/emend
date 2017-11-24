@@ -1,34 +1,60 @@
-The **Bootstrap** repository uses a SCRUM framework adapted to standard GitHub
-tooling.  **Bootstrap** is integrated with Travis-ci.org for continuous
-integration and AllanConsulting.slack.com for centralized notification.
+**emend** is a Ruby gem that is used to change a computers configuration.
+**emend** can clone repositories, create symbolic links, and run commands.
+**emend** has been tested with cygwin, linix, linux (mint), and wsl.
+
+# Prerequisites 
+1. git client
+2. ruby 
 
 # Installation
-## Bootstrap 
+## Using the gem
 ```bash
-$ cd $HOME
-$ git clone http://github.com/Traap/bootstrap.git \
-      && cd bootstrap \
-      && gem build bootstrap.gemspec \
-      && sudo gem install bootstrap \
-      && bootstrap --verbose --nodryrun --bundle=basic
+$ CD $HOME
+$ gem install emend
+$ gem --verbose --app=dotfiles
 ```
 
-## Note
-This installation instructions installs my personal dotfiles in a directory named
-~/git/dotfiles.
+## Working with source 
+Copy the text below and paste into a shell.  The commands will:
+1. Change directory to home
+2. Clone Traap/emend
+3. Move to emend directory
+4. Download dependencies
+5. Run unit test
+5. Build and install local gem
+6. Run emend and display emend's current version.
+
+```bash
+$ cd $HOME \
+     && git clone http://github.com/Traap/emend.git \
+            && cd emend \
+            && bundle install \
+            && bundle exec rake \
+            && bundle exec rake install
+            && emend --verbose
+```
+
+# Traap/emend-computer
+[emend-computer](https://github.com/Traap/emend-computer) repository has app
+(applications) and bundles **emend** knows how to install.
+
+## Install and configure Vim
+```bash
+emend --verbose --nodryrun --app=dotfiles
+```
 
 ## Custom installations:
 This example shows how to install TMUX.
 
 ```bash
-cd ~\bootstrap
-ruby ruby/bootstrap.rb --nodryrun --verbose --file apps/tmux/tmux.yaml
+cd ~\emend
+emend --verbose --app=tmux.yaml
 ```
 
 # YAML Files
 ## Processing Order
-**bootstrap** process YAML files and their contents is the order they are
-consumed.
+**emend** process YAML files and their contents is the order they are
+consumed.  **emdend** 
 
 ## Include files
 The **includes** link is used to process other YAML files as a logical units.
@@ -45,7 +71,7 @@ includes:
 **Note:** The command below will demonstrates this example without making any
 changes to your machine.
 ```
-bootstrap --verbose --file=example/example.yaml
+emend --verbose --file=example/example.yaml
 ```
 
 
@@ -96,10 +122,10 @@ installations:
         argument: install vim --with-client-server
 ```
 
-## bootstrap command line
-ruby ruby/bootstrap.rb --help
+## emend command line
+ruby ruby/emend.rb --help
 
-Usage: bootstrap.rb [options]
+Usage: emend.rb [options]
 
 Specific options:
     -n, --nodryrun                   No Dryrun
@@ -111,20 +137,24 @@ Specific options:
         --version                    Show version
 
 ## --nodryrun
-By default, **bootstrap** does not modify your computer.  You must explicitly
+By default, **emend** does not modify your computer.  You must explicitly
 use the **--nodryrun** options to cause side effects.  The commands that would
 have been executed are echoed to system out.
 
 ## --app
-A comma-separated list of app names **bootstrap** is to process.  The following
-directoy and YAML file name onvention is manditory: app/an-app/an-app.yaml.
+A comma-separated list of app names **emend** is to process.  The following
+directory and YAML file name convention is mandatory: app/an-app/an-app.yaml.
 ```
 --app=an-app
 ```
 
 ## --bundle
+A comma-separated list of bundle names **emend** is to process.  The following
+directory and YAML file name convention is mandatory:
+bundle/a-bundle/a-bundle.yaml.
+
 ## --file
-A comma-separated list of file names **bootstrap** is to process.
+A comma-separated list of file names **emend** is to process.
 
 ## --verbose
 Echo commands to system output.
@@ -135,5 +165,9 @@ Show this message.
 1.0.0 is this the current version.
 
 # Project Management
+The **emend** repository uses a SCRUM framework adapted to standard GitHub
+tooling.  **emend** is integrated with Travis-ci.org for continuous
+integration and AllanConsulting.slack.com for centralized notification.
+
 Please refer to my [Lightweight Project Management](https://github.com/Traap/lpm)
 for the project management strategy I use.

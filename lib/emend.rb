@@ -1,7 +1,7 @@
 # Copyright (c) Gary Allan Howard aka Traap.
 # License BSD-3-Clause
 #
-# This program is used to bootstrap a development environment.  Bootstrapping
+# This program is used to emend a development environment.  emending
 # consists of three parts, namely: 1) setup symbolic links to files or
 # directories that are under version control,  2) clone GitHub.com repositories
 # that are needed to personalize programs such as vim or bash, 3) Install
@@ -12,10 +12,10 @@
 # repositories, making symbolic links, and installing programs.
 # ------------------------------------------------------------------------------
 
-require 'bootstrap/initialize'
+require 'emend/initialize'
 
 # ------------------------------------------------------------------------------
-module Bootstrap
+module Emend
   class CLI
     def execute(args)
       options = CommandLineOptions.parse args

@@ -1,7 +1,7 @@
 # Copyright (c) Gary Allan Howard aka Traap.
 # License BSD-3-Clause
 # ------------------------------------------------------------------------------
-module Bootstrap
+module Emend 
 # ------------------------------------------------------------------------------
 class Workflow
   def initialize options
