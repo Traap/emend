@@ -91,7 +91,7 @@ newApp() {
 
   mkdir -pv ${subdir}
 
-  cp -v data/newapp.yaml ${subdir}/${APP}.yaml
+  cp -v ${HOME}/git/emend/data/newapp.yaml ${subdir}/${APP}.yaml
 }
 
 # ------------------------------------------------------------------------------
@@ -104,7 +104,7 @@ newBundle() {
 
   mkdir -pv ${subdir}
 
-  cp -v data/newbundle.yaml ${subdir}/${BUNDLE}.yaml
+  cp -v ${HOME}/git/data/newbundle.yaml ${subdir}/${BUNDLE}.yaml
 }
 # ------------------------------------------------------------------------------
 # Move from source to destination location.
