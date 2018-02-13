@@ -1,0 +1,39 @@
+# {{{ Symbolic Links
+symlinks:
+  - symlink:
+    - file: ~/git/foo
+      link: ~/.foo
+      directory: false
+
+# -------------------------------------------------------------------------- }}}
+# {{{ Repositories
+repos:
+  - repo:
+    url: http://github.com
+    paths:
+      - source: Traap/foo
+        target: ~/git/foo
+
+# -------------------------------------------------------------------------- }}}
+# {{{ Installations
+installations:
+  - os:
+    - name: darwin
+      command:
+       - sudo: false
+         program: echo 
+         argument: Hello foo 
+ 
+    - name: linux
+      command:
+       - sudo: false
+         program: echo
+         argument: Hello foo
+ 
+    - name: any
+      command:
+       - sudo: false
+         program: echo  
+         argument: Goodbye foo 
+ 
+# -------------------------------------------------------------------------- }}}
