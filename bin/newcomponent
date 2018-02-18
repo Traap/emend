@@ -6,7 +6,7 @@
 
 # These flags enable optional features.
 appFlag=0     # Create a new emend applicaiton folder and file.
-bundleFlag=0  # Create a new amend bundle folder and file.
+bundleFlag=0  # Create a new emend bundle folder and file.
 errorFlag=0;  # A parseOptions error occured.
 helpFlag=1;   # Show help.
 
