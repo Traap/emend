@@ -85,36 +85,32 @@ function parseOptions {
 # Create a new app. 
 # ------------------------------------------------------------------------------
 newApp() {
- echo "Creating emend application $APP"
-
-  subdir='app/'"${APP}"''
-
-  mkdir -pv ${subdir}
-
-  cp -v ${HOME}/git/emend/data/newapp.yaml ${subdir}/${APP}.yaml
+  newFile "app" $APP
 }
 
 # ------------------------------------------------------------------------------
 # Create a new bundle. 
 # ------------------------------------------------------------------------------
 newBundle() {
- echo "Creating emend bundle $BUNDLE"
+  newFile "bundle" $BUNDLE
+}
 
-  subdir='bundle/'"${BUNDLE}"''
+# ------------------------------------------------------------------------------
+# newFile 
+# $1 app or bundle 
+# $2 filename of app or bundle 
+# ------------------------------------------------------------------------------
+newFile() {
+ echo "Creating amber test case $2"
+
+  subdir=''"$1"'/'"$2"''
 
   mkdir -pv ${subdir}
 
-  cp -v ${HOME}/git/data/newbundle.yaml ${subdir}/${BUNDLE}.yaml
+  cp -v ${HOME}/git/emend/data/new$1.yaml ${subdir}/$2.yaml
 }
+
 # ------------------------------------------------------------------------------
-# Move from source to destination location.
-# Arguments:
-# #1 - Source file to move
-# #2 - destination location
-# ------------------------------------------------------------------------------
-moveFile() {
-  cp -fv $1 $2/
-}
 # Kick start this script.
 # ------------------------------------------------------------------------------
 main $@
