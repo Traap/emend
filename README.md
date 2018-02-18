@@ -2,19 +2,19 @@
 **emend** can clone repositories, create symbolic links, and run commands.
 **emend** has been tested with cygwin, linix, linux (mint), and wsl.
 
-# Prerequisites 
+## Prerequisites 
 1. git client
 2. ruby 
 
-# Installation
-## Using the gem
+## Installation
+### Using the gem
 ```bash
 $ CD $HOME
 $ gem install emend
 $ gem --verbose --app=dotfiles
 ```
 
-## Working with source 
+### Working with source 
 Copy the text below and paste into a shell.  The commands will:
 1. Change directory to home
 2. Clone Traap/emend
@@ -34,16 +34,16 @@ $ cd $HOME \
             && emend --verbose
 ```
 
-# Traap/emend-computer
+## Traap/emend-computer
 [emend-computer](https://github.com/Traap/emend-computer) repository has app
 (applications) and bundles **emend** knows how to install.
 
-## Install and configure Vim
+### Install and configure Vim
 ```bash
 emend --verbose --nodryrun --app=dotfiles
 ```
 
-## Custom installations:
+### Custom installations:
 This example shows how to install TMUX.
 
 ```bash
@@ -51,12 +51,12 @@ cd ~\emend
 emend --verbose --app=tmux.yaml
 ```
 
-# YAML Files
-## Processing Order
+## YAML Files
+### Processing Order
 **emend** process YAML files and their contents is the order they are
 consumed.  **emdend** 
 
-## Include files
+### Include files
 The **includes** link is used to process other YAML files as a logical units.
 This example shows using -app, -bundle, and -file. 
 ```
@@ -75,7 +75,7 @@ emend --verbose --file=example/example.yaml
 ```
 
 
-## Symbolic Links
+### Symbolic Links
 The **symlinks** node is used to define a map between a source and target file.
 The following example creates two symbolic links.
 ```
@@ -90,7 +90,7 @@ symlinks:
       directory: false
 ```
 
-## Clone Repositories
+### Clone Repositories
 The **repos** node is used to clone git-based repositories to your local
 machine.  The example below clones Traap's dotfiles.
 ```
@@ -102,7 +102,7 @@ repos:
         target: ~/git/dotfiles
 ```
 
-## Installations
+### Installations
 The **installation** node installs programs or runs programs on your local
 machine.  The example below is use to install and compile Vim from source code.
 Valid name tags are: all, darwin and linux.
@@ -122,7 +122,7 @@ installations:
         argument: install vim --with-client-server
 ```
 
-## emend command line
+### emend command line
 ruby ruby/emend.rb --help
 
 Usage: emend.rb [options]
@@ -136,35 +136,46 @@ Specific options:
     -h, --help                       Show this message
         --version                    Show version
 
-## --nodryrun
+### --nodryrun
 By default, **emend** does not modify your computer.  You must explicitly
 use the **--nodryrun** options to cause side effects.  The commands that would
 have been executed are echoed to system out.
 
-## --app
+### --app
 A comma-separated list of app names **emend** is to process.  The following
 directory and YAML file name convention is mandatory: app/an-app/an-app.yaml.
 ```
 --app=an-app
 ```
 
-## --bundle
+### --bundle
 A comma-separated list of bundle names **emend** is to process.  The following
 directory and YAML file name convention is mandatory:
 bundle/a-bundle/a-bundle.yaml.
 
-## --file
+### --file
 A comma-separated list of file names **emend** is to process.
 
-## --verbose
+### --verbose
 Echo commands to system output.
 
-## --help
+### --help
 Show this message.
-## --version
-1.0.0 is this the current version.
+### --version
 
-# Project Management
+1.0.0 is this the current version.
+## Add this function to .bashrc
+```bash
+EMENDPATH=${HOME}/git/emend
+export EMENDPATH
+
+function newcomponent() {
+  ${EMENDPATH}/bin/newcomponent $@
+}
+```
+
+
+## Project Management
 The **emend** repository uses a SCRUM framework adapted to standard GitHub
 tooling.  **emend** is integrated with Travis-ci.org for continuous
 integration and AllanConsulting.slack.com for centralized notification.
