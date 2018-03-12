@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    emend (1.1.7)
+    emend (1.1.8)
 
 GEM
   remote: https://rubygems.org/
@@ -21,4 +21,4 @@ DEPENDENCIES
   test-unit (~> 3.2.3, ~> 3.2)
 
 BUNDLED WITH
-   1.16.0
+   1.16.1

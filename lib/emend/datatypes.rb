@@ -99,10 +99,15 @@ class Install < Command
         if install_on_this_os? o['name'] then
           o['command'].each do |c|
             if c['sudo'] then
-              @command = "sudo #{c['program']} #{c['argument']}"
+              if ["cygwin", "mingw32"].include?(RbConfig::CONFIG['host_os']) then
+                sudo = nil
+              else
+                sudo = "sudo "
+              end
             else
-              @command ="#{c['program']} #{c['argument']}"
+              sudo = nil
             end
+            @command = "#{sudo}#{c['program']} #{c['argument']}"
             do_command false
           end
         end
