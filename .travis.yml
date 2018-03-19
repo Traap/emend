@@ -37,4 +37,4 @@ deploy:
 
 notifications:
   email: false
-  slackllanconsulting: G3bl6A0q7AL6R7p1YW40vYWd 
+  slack: allanconsulting:kkNikw4bLEJRZwBRJmP5YSPd
