@@ -2,6 +2,6 @@
 # License BSD-3-Clause
 # ------------------------------------------------------------------------------
 
-module Emend 
-  VERSION = "1.1.8"
+module Emend
+  VERSION = '1.1.9'.freeze
 end

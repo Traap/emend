@@ -16,13 +16,12 @@ require 'emend/initialize'
 
 # ------------------------------------------------------------------------------
 module Emend
+  # Command Line Interface.
   class CLI
     def execute(args)
       options = CommandLineOptions.parse args
-      if options
-        workflow = Workflow.new(options)
-        workflow.orchestrate
-      end
+      workflow = Workflow.new(options)
+      workflow.orchestrate
     end
   end
 end

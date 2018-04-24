@@ -1,4 +1,4 @@
-$:.unshift File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift File.expand_path('lib', __dir__)
 require 'emend/version'
 
 Gem::Specification.new do |s|
@@ -15,9 +15,9 @@ Gem::Specification.new do |s|
   s.files         = Dir['lib/**/*']
   s.test_files    = Dir['text/**/*.rb']
 
-  s.executables   = %w(emend)
+  s.executables   = %w[emend]
 
-  s.required_ruby_version = '>= 1.9.3'
+  s.required_ruby_version = '>= 2.1'
 
   s.add_development_dependency 'bundler', '~> 1.16'
   s.add_development_dependency 'rake', '~> 10.0'
