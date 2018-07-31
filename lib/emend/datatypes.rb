@@ -27,7 +27,7 @@ module Emend
     end
 
     def run_command
-      status = system(@command)
+      status = system(Emend::Substitute.expand_path(@command))
     rescue ShellError
       abort "System command failed: #{status}"
     end
@@ -93,7 +93,7 @@ module Emend
         n['os'].each do |o|
           next unless install_on_this_os? o['name']
           o['command'].each do |c|
-            sudo = sudo_or_nil
+            sudo = sudo_or_nil c
             @command = "#{sudo}#{c['program']} #{c['argument']}"
             do_command false
           end
