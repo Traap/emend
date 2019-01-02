@@ -19,8 +19,9 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 2.1'
 
-  s.add_development_dependency 'bundler', '~> 1.16'
-  s.add_development_dependency 'rake', '~> 10.0'
-  s.add_development_dependency 'rspec', '~> 3.7'
-  s.add_development_dependency 'test-unit', '~>3.2', '~> 3.2.3'
+  s.add_development_dependency 'bundler', '~> 1.17'
+  s.add_development_dependency 'rake', '~> 12.3'
+  s.add_development_dependency 'require_all'
+  s.add_development_dependency 'rspec', '~> 3.8'
+  s.add_development_dependency 'simplecov', '~> 0.16'
 end
