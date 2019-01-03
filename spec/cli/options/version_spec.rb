@@ -7,7 +7,7 @@ require 'emend'
 describe 'Emend Version' do
 
   before(:all) do
-    @version = '1.2.19'
+    @version = '1.2.21'
   end
 
   describe '--version' do
@@ -33,6 +33,5 @@ describe 'Emend Version' do
       expect(Emend::VERSION).to eql(@version)
     end
   end
-
 
 end
