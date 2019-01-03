@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "C:/Users/gahoward/git/emend/spec/cli/options/file_spec.rb": [
+      "C:/Users/Owner/git/emend/spec/cli/options/file_spec.rb": [
         1,
         1,
         null,
@@ -43,7 +43,7 @@
         null,
         null
       ],
-      "C:/Users/gahoward/git/emend/spec/cli/options/nodryrun_spec.rb": [
+      "C:/Users/Owner/git/emend/spec/cli/options/nodryrun_spec.rb": [
         1,
         1,
         null,
@@ -77,7 +77,7 @@
         null,
         null
       ],
-      "C:/Users/gahoward/git/emend/spec/cli/options/verbose_spec.rb": [
+      "C:/Users/Owner/git/emend/spec/cli/options/verbose_spec.rb": [
         1,
         1,
         null,
@@ -111,7 +111,7 @@
         null,
         null
       ],
-      "C:/Users/gahoward/git/emend/spec/cli/options/version_spec.rb": [
+      "C:/Users/Owner/git/emend/spec/cli/options/version_spec.rb": [
         1,
         1,
         null,
@@ -151,7 +151,7 @@
         null,
         null
       ],
-      "C:/Users/gahoward/git/emend/spec/utility/substitute_spec.rb": [
+      "C:/Users/Owner/git/emend/spec/utility/substitute_spec.rb": [
         1,
         1,
         null,
@@ -178,6 +178,6 @@
         null
       ]
     },
-    "timestamp": 1546467181
+    "timestamp": 1546495396
   }
 }

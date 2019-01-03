@@ -7,7 +7,7 @@ require 'emend'
 describe 'Emend Version' do
 
   before(:all) do
-    @version = '1.2.12'
+    @version = '1.2.19'
   end
 
   describe '--version' do
