@@ -13,4 +13,4 @@ require 'require_all'
 require_rel ''
 
 # Rspec test coverage
-require 'simplecov'
+# require 'simplecov'
