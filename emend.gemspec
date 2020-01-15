@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.name          = 'emend'
   s.version       = Emend::VERSION
   s.summary       = 'emend a development environment.'
-  s.description   = 'emend process YAML files to configure your computer.'
+  s.description   = 'emend processes YAML files to configure your computer.'
   s.authors       = ['Gary A. Howard']
   s.email         = ['gary.a.howard@mac.com']
   s.homepage      = 'https://github.com/Traap/emend'
