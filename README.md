@@ -1,10 +1,14 @@
 **emend** is a Ruby gem that is used to change a computers configuration.
 **emend** can clone repositories, create symbolic links, and run commands.
-**emend** has been tested with cygwin, linix, linux (mint), and wsl.
+**emend** has been tested with cygwin, linix, linux, and wsl.
 
 ## Prerequisites 
 1. git client
-2. ruby 
+2. Ruby
+3. Ruby gem bundle
+4. Ruby gem rake 
+5. [emend-computer](https://github.com/Traap/emend-computer) repository has app
+(applications) and bundles **emend** knows how to install.  
 
 ## Installation
 ### Using the gem
@@ -28,28 +32,22 @@ Copy the text below and paste into a shell.  The commands will:
 $ cd $HOME \
      && git clone http://github.com/Traap/emend.git \
             && cd emend \
-            && bundle install \
-            && bundle exec rake \
-            && bundle exec rake install
+            && rake build:emend \ 
             && emend --verbose
 ```
 
 ## Traap/emend-computer
 [emend-computer](https://github.com/Traap/emend-computer) repository has app
-(applications) and bundles **emend** knows how to install.
+(applications) and bundles **emend** knows how to install.  
+
+Please do not just run these samples without first inspecting the app or bundle
+file.  Use my examples to create ones custom to your liking.
 
 ### Install and configure Vim
 ```bash
-emend --verbose --nodryrun --app=dotfiles
+emend --verbose --nodryrun --app=vim
 ```
 
-### Custom installations:
-This example shows how to install TMUX.
-
-```bash
-cd ~\emend
-emend --verbose --app=tmux.yaml
-```
 
 ## YAML Files
 ### Processing Order
@@ -58,22 +56,21 @@ consumed.  **emdend**
 
 ### Include files
 The **includes** link is used to process other YAML files as a logical units.
-This example shows using -app, -bundle, and -file. 
+This example shows using -app, -bundle, and -file.
 ```
 includes:
   - bundle:
     - name: basic 
   - file:
-    - name: app/ssh/ssh.yaml
+    - name: app/dotfiles/dotfiles.yaml
   - app:
-    - name: mutt
+    - name: vim 
 ```
 **Note:** The command below will demonstrates this example without making any
 changes to your machine.
 ```
 emend --verbose --file=example/example.yaml
 ```
-
 
 ### Symbolic Links
 The **symlinks** node is used to define a map between a source and target file.
@@ -174,11 +171,3 @@ function newcomponent() {
 }
 ```
 
-
-## Project Management
-The **emend** repository uses a SCRUM framework adapted to standard GitHub
-tooling.  **emend** is integrated with Travis-ci.org for continuous
-integration and AllanConsulting.slack.com for centralized notification.
-
-Please refer to my [Lightweight Project Management](https://github.com/Traap/lpm)
-for the project management strategy I use.
