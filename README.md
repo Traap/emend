@@ -11,14 +11,6 @@
 (applications) and bundles **emend** knows how to install.  
 
 ## Installation
-### Using the gem
-```bash
-$ CD $HOME
-$ gem install emend
-$ gem --verbose --app=dotfiles
-```
-
-### Working with source 
 Copy the text below and paste into a shell.  The commands will:
 1. Change directory to home
 2. Clone Traap/emend
