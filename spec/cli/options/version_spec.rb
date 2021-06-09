@@ -7,7 +7,7 @@ require 'emend'
 describe 'Emend Version' do
 
   before(:all) do
-    @version = '1.2.24'
+    @version = '1.2.25'
   end
 
   describe '--version' do
@@ -20,11 +20,11 @@ describe 'Emend Version' do
     it 'has been used from the command line.' do
       ARGV.replace ['--version']
       options = Emend::CommandLineOptions.parse(ARGV)
-      expect(options.verbose).to be(false) 
+      expect(options.verbose).to be(false)
     end
   end
 
-  describe 'Version' do 
+  describe 'Version' do
     it 'has a version number' do
       expect(Emend::VERSION).not_to be nil
     end
