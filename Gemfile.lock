@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    emend (1.2.25)
+    emend (1.2.26)
 
 GEM
   remote: https://rubygems.org/
@@ -34,4 +34,4 @@ DEPENDENCIES
   rspec (>= 3.10.0)
 
 BUNDLED WITH
-   2.2.19
+   2.2.29

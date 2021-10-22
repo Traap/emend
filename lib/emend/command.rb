@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Emend
   # ----------------------------------------------------------------------------
   class ShellError < StandardError; end
@@ -33,6 +35,5 @@ module Emend
       abort "System command failed: #{status}"
     end
   end
-
 end
 # ------------------------------------------------------------------------------

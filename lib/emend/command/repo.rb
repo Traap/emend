@@ -1,10 +1,8 @@
+# frozen_string_literal: true
+
 module Emend
+  # This class clones a repository.
   class Repo < Command
-
-    def initialize(data, options)
-      super(data, options)
-    end
-
     def install_artifact
       puts 'Cloning repositories'
       @data.each do |n|
@@ -15,6 +13,5 @@ module Emend
       end
       puts ''
     end
-
   end
 end

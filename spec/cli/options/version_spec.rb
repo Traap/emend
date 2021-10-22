@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rspec'
 require 'emend'
 # ------------------------------------------------------------------------------
@@ -5,9 +7,8 @@ require 'emend'
 # [--version]
 # ------------------------------------------------------------------------------
 describe 'Emend Version' do
-
   before(:all) do
-    @version = '1.2.25'
+    @version = '1.2.32'
   end
 
   describe '--version' do
@@ -33,5 +34,4 @@ describe 'Emend Version' do
       expect(Emend::VERSION).to eql(@version)
     end
   end
-
 end

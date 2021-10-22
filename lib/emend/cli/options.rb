@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Emend
-  # Options the user has chosen.  
+  # Options the user has chosen.
   class Options
     attr_accessor :dryrun, :filename, :verbose, :version
 
@@ -11,6 +11,5 @@ module Emend
       @verbose = false
       @version = Emend::VERSION
     end
-
   end
 end
