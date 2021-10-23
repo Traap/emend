@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    emend (1.2.25)
+    emend (1.5.0.117)
 
 GEM
   remote: https://rubygems.org/
@@ -27,11 +27,11 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bundler (>= 2.1.0)
+  bundler (>= 2.1.10)
   emend!
   rake (>= 12.3.3)
   require_all
   rspec (>= 3.10.0)
 
 BUNDLED WITH
-   2.2.19
+   2.2.29

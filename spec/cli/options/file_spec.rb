@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rspec'
 require 'emend'
 # ------------------------------------------------------------------------------
@@ -5,10 +7,9 @@ require 'emend'
 # [-f | --file]
 # ------------------------------------------------------------------------------
 describe 'Emend File' do
-
   describe 'no -f' do
     it 'has not been used.' do
-      options = Emend::Options.new 
+      options = Emend::Options.new
       expect(options.filename).to eq([])
     end
   end
@@ -36,5 +37,4 @@ describe 'Emend File' do
       expect(options.filename).to eq(['c.yaml'])
     end
   end
-
 end

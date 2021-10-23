@@ -1,9 +1,8 @@
-module Emend
-  class Include < Command
-    def initialize(data, options)
-      super(data, options)
-    end
+# frozen_string_literal: true
 
+module Emend
+  # This class includes an app, a bundle, or a file command.
+  class Include < Command
     def install_artifact
       @data.each do |k, v|
         case k
@@ -26,6 +25,5 @@ module Emend
       puts
       do_command true
     end
-
   end
 end

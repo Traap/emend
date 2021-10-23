@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rspec'
 require 'emend'
 # ------------------------------------------------------------------------------
@@ -5,7 +7,6 @@ require 'emend'
 # [-v | --verbose]
 # ------------------------------------------------------------------------------
 describe 'Emend Verbose' do
-
   describe 'no -v' do
     it 'has not been used.' do
       options = Emend::Options.new
@@ -28,5 +29,4 @@ describe 'Emend Verbose' do
       expect(options.verbose).to be(true)
     end
   end
-
 end

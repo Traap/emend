@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rspec'
 require 'emend'
 # ------------------------------------------------------------------------------
@@ -5,7 +7,6 @@ require 'emend'
 # [-v | --verbose]
 # ------------------------------------------------------------------------------
 describe 'Emend NoDryRun' do
-
   describe 'no -n' do
     it 'has not been used.' do
       options = Emend::Options.new
@@ -28,5 +29,4 @@ describe 'Emend NoDryRun' do
       expect(options.dryrun).to be(false)
     end
   end
-
 end
