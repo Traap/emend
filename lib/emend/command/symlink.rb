@@ -6,9 +6,9 @@ module Emend
     def remove_artifact
       puts 'Deleting symbolic links'
       @data.each do |node|
-        node['symlink'].each do |link|
+        node['symlink'].each do |symlink|
           slash = symlink['directory'] ? '/' : ''
-          @command = "rm -frv #{link['link']}#{slash}"
+          @command = "rm -frv #{symlink['link']}#{slash}"
           do_command false
         end
       end

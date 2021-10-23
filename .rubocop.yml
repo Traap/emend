@@ -1,0 +1,50 @@
+AllCops:
+  Include:
+    - '**/*.rb'
+    - '**/Rakefile'
+    - '**/*.rake'
+
+AbcSize:
+  Enabled: true
+
+ClassLength:
+  Enabled: true
+
+CyclomaticComplexity:
+  Enabled: true
+
+Documentation:
+  Enabled: true
+
+EmptyLineBetweenDefs:
+  AllowAdjacentOneLineDefs: true
+
+FileName:
+  Enabled: true
+
+LineLength:
+  Enabled: true
+
+MethodLength:
+  Enabled: true
+
+NumericLiterals:
+  unabled: true
+
+ParameterLists:
+  Enabled: true
+
+Semicolon:
+  AllowAsExpressionSeparator: true
+
+SignalException:
+  EnforcedStyle: only_raise
+
+SingleLineBlockParams:
+  Enabled: true
+
+SingleLineMethods:
+  AllowIfMethodIsEmpty: true
+
+UnusedBlockArgument:
+  Enabled: true

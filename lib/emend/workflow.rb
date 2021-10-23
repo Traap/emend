@@ -38,40 +38,21 @@ module Emend
       puts "Parsing #{yaml_file}"
       @commands = []
       @yaml_file = YAML.safe_load(File.open(yaml_file))
-      parse_each_command_type
-    end
-
-    # ---------------------------------------------------------------------- }}}
-    # {{{ Parse each command type.
-
-    def parse_each_command_type
       @yaml_file.each do |key, value|
-        parse_each_node(key, value)
-      end
-    end
-
-    # ---------------------------------------------------------------------- }}}
-    # {{{ Parse each node.
-
-    def parse_each_node(key, value)
-      value.each do |node|
-        make_the_command(node, key, value)
-      end
-    end
-
-    # ---------------------------------------------------------------------- }}}
-    # {{{ Make the commands.
-
-    def make_the_command(node, key, value)
-      command = nil
-      command << SymLink.new(value, @options) if key.eql? 'symlinks'
-      command << Repo.new(value, @options)    if key.eql? 'repos'
-      command << Install.new(value, @options) if key.eql? 'installations'
-      command << Include.new(node, @options)  if key.eql? 'includes'
-      if command.nil?
-        puts "#{key} is not supported."
-      else
-        @commands << command
+        value.each do |node|
+          case key
+          when 'symlinks'
+            @commands << SymLink.new(value, @options)
+          when 'repos'
+            @commands << Repo.new(value, @options)
+          when 'installations'
+            @commands << Install.new(value, @options)
+          when 'includes'
+            @commands << Include.new(node, @options)
+          else
+            puts "#{key} is not supported."
+          end
+        end
       end
     end
 
